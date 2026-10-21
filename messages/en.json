@@ -1,0 +1,98 @@
+{
+  "meta": {
+    "siteName": "Amin Maghrebi",
+    "tagline": "Automation, Telegram bots and smart business systems"
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "portfolio": "Portfolio",
+    "blog": "Blog",
+    "resume": "Resume",
+    "contact": "Contact",
+    "menu": "Menu",
+    "close": "Close",
+    "skip": "Skip to content",
+    "switchTo": "فارسی",
+    "switchLabel": "Switch language to Persian"
+  },
+  "common": {
+    "viewAll": "View all",
+    "readMore": "Read more",
+    "contactMe": "Contact me",
+    "getQuote": "Request a consultation",
+    "minutes": "min read",
+    "visit": "View project",
+    "useCases": "Typical use cases",
+    "role": "My role",
+    "backToList": "Back to list"
+  },
+  "projectType": {
+    "web-app": "Web app",
+    "bot": "Bot",
+    "mobile-app": "Mobile app"
+  },
+  "home": {
+    "servicesTitle": "Services",
+    "servicesLead": "Solutions that make your sales and business processes simpler and automatic.",
+    "projectsTitle": "Featured work",
+    "projectsLead": "A few real systems I have built.",
+    "ctaTitle": "Have an idea or a manual process?",
+    "ctaText": "Tell me what you want to automate; the first review is free."
+  },
+  "services": {
+    "title": "Services",
+    "lead": "From a Telegram bot to a full management system, tailored to your business."
+  },
+  "portfolio": {
+    "title": "Portfolio",
+    "lead": "Projects I have designed and built."
+  },
+  "blog": {
+    "title": "Articles & tutorials",
+    "lead": "Notes on automation, bots and AI.",
+    "empty": "No articles have been published yet. Please check back soon."
+  },
+  "contact": {
+    "title": "Contact",
+    "lead": "Write your message and I will reply as soon as I can.",
+    "direct": "Direct contact",
+    "email": "Email",
+    "telegram": "Telegram"
+  },
+  "resume": {
+    "title": "Resume",
+    "download": "Download PDF"
+  },
+  "form": {
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "send": "Send message",
+    "sending": "Sending...",
+    "success": "Your message was received. Thank you! I will reply soon.",
+    "errors": {
+      "name_short": "Name must be at least 2 characters.",
+      "name_long": "Name must be at most 80 characters.",
+      "email_invalid": "Enter a valid email address.",
+      "message_short": "Message must be at least 10 characters.",
+      "message_long": "Message must be at most 2000 characters.",
+      "spam": "Could not send. Please try again.",
+      "rate_limited": "Too many requests. Please try again later.",
+      "delivery_failed": "Could not send. Please contact me directly by email or Telegram.",
+      "generic": "Something went wrong. Please try again."
+    }
+  },
+  "footer": {
+    "rights": "All rights reserved.",
+    "contact": "Contact",
+    "follow": "Social",
+    "pages": "Pages"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "text": "The address does not exist or has moved.",
+    "home": "Back to home"
+  }
+}

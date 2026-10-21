@@ -1,0 +1,16 @@
+node_modules/
+.next/
+out/
+coverage/
+playwright-report/
+test-results/
+.env
+.env.*
+!.env.example
+*.log
+*.tmp
+*.tmp.py
+.DS_Store
+Thumbs.db
+next-env.d.ts
+*.tsbuildinfo

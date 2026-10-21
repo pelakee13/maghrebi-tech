@@ -1,0 +1,44 @@
+{
+  "name": "maghrebi-tech",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Bilingual (fa/en) portfolio website for maghrebi.tech",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "test": "vitest run",
+    "test:e2e": "playwright test",
+    "lhci": "lhci autorun"
+  },
+  "dependencies": {
+    "gray-matter": "^4.0.3",
+    "next": "~15.5.28",
+    "next-intl": "^4.14.9",
+    "next-mdx-remote": "^6.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "server-only": "^0.0.1",
+    "vazirmatn": "^33.0.3",
+    "zod": "^4.0.0"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.0.0",
+    "@playwright/test": "^1.50.0",
+    "@tailwindcss/postcss": "^4.0.0",
+    "@tailwindcss/typography": "^0.5.16",
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "eslint": "^9.0.0",
+    "eslint-config-next": "~15.5.28",
+    "tailwindcss": "^4.0.0",
+    "typescript": "^5.6.0",
+    "vitest": "^3.0.0"
+  }
+}

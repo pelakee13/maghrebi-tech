@@ -1,0 +1,68 @@
+import { z } from 'zod';
+
+const kebab = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
+const isoDate = /^\d{4}-\d{2}-\d{2}$/;
+
+export const serviceSchema = z.object({
+  id: z.string().regex(kebab),
+  order: z.number().int().positive(),
+  title: z.string().min(3).max(60),
+  summary: z.string().min(10).max(160),
+  icon: z.enum(['system', 'bot', 'support', 'training']),
+  useCases: z.array(z.string().min(2)).min(2).max(6),
+});
+
+export const projectSchema = z.object({
+  id: z.string().regex(kebab),
+  order: z.number().int().positive(),
+  title: z.string().min(3).max(60),
+  type: z.enum(['web-app', 'bot', 'mobile-app']),
+  summary: z.string().min(10).max(200),
+  role: z.string().min(3),
+  featured: z.boolean().default(false),
+  image: z.string().startsWith('/images/').optional(),
+  url: z.url().optional(),
+  tags: z.array(z.string()).max(6).optional(),
+});
+
+export const articleSchema = z.object({
+  slug: z.string().regex(kebab),
+  title: z.string().min(5).max(100),
+  date: z.string().regex(isoDate),
+  updated: z.string().regex(isoDate).optional(),
+  summary: z.string().min(50).max(200),
+  cover: z.string().startsWith('/images/').optional(),
+  translationKey: z.string().regex(kebab).optional(),
+  draft: z.boolean().default(false),
+});
+
+export const pageSchema = z.object({
+  title: z.string().min(1).max(70),
+  description: z.string().min(50).max(160),
+});
+
+export const homePageSchema = pageSchema.extend({
+  hero: z.object({
+    eyebrow: z.string().min(2),
+    headline: z.string().min(5),
+    subheadline: z.string().min(10),
+    primaryCta: z.string().min(2),
+    secondaryCta: z.string().min(2),
+  }),
+});
+
+export const contactSchema = z.object({
+  name: z.string().trim().min(2, 'name_short').max(80, 'name_long'),
+  email: z.string().trim().max(254, 'email_invalid').pipe(z.email('email_invalid')),
+  message: z.string().trim().min(10, 'message_short').max(2000, 'message_long'),
+  locale: z.enum(['fa', 'en']),
+  website: z.string().max(0).optional().default(''),
+  startedAt: z.coerce.number().int().optional(),
+});
+
+export type ServiceMeta = z.infer<typeof serviceSchema>;
+export type ProjectMeta = z.infer<typeof projectSchema>;
+export type ArticleMeta = z.infer<typeof articleSchema>;
+export type PageMeta = z.infer<typeof pageSchema>;
+export type HomePageMeta = z.infer<typeof homePageSchema>;
+export type ContactInput = z.infer<typeof contactSchema>;
