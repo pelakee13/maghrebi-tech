@@ -4,9 +4,9 @@
       "startServerCommand": "pnpm start -p 3111",
       "startServerReadyPattern": "Ready in",
       "url": [
-        "http://localhost:3111/fa",
         "http://localhost:3111/en",
-        "http://localhost:3111/fa/services",
+        "http://localhost:3111/fa",
+        "http://localhost:3111/en/services",
         "http://localhost:3111/en/blog/telegram-bot-for-sales"
       ],
       "numberOfRuns": 1,

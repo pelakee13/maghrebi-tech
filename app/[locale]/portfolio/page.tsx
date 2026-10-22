@@ -11,6 +11,7 @@ import { ExternalButtonLink } from '@/components/ui/Button';
 import { ProjectImagePlaceholder } from '@/components/content/ProjectImagePlaceholder';
 import { MdxRenderer } from '@/components/content/MdxRenderer';
 import Image from 'next/image';
+import { ProjectGallery } from '@/components/content/ProjectGallery';
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -22,7 +23,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     locale,
     path: '/portfolio',
     title: t('title'),
-    description: t('lead') + ' ' + (locale === 'fa' ? 'سیستم مدیریت سالن زیبایی، ربات تلگرام و اپلیکیشن دویدن.' : 'A salon management system, a Telegram bot and a running app.'),
+    description: t('lead') + ' ' + (locale === 'fa' ? 'سیستم مدیریت سالن زیبایی، کنداکتور فوتبال، ربات تلگرام و اپلیکیشن دویدن.' : 'A salon management system, a football schedule tool, a Telegram bot and a running app.'),
   });
 }
 
@@ -45,6 +46,7 @@ export default async function PortfolioPage({ params }: Props) {
             ) : (
               <ProjectImagePlaceholder type={meta.type} />
             )}
+            {meta.gallery && <ProjectGallery images={meta.gallery} title={meta.title} />}
             <Badge className="self-start">{pt(meta.type)}</Badge>
             <h2 className="text-xl font-semibold">{meta.title}</h2>
             <p className="text-sm leading-7 text-fg-muted">{meta.summary}</p>

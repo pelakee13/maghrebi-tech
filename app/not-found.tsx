@@ -1,14 +1,14 @@
 import './globals.css';
 import { NextIntlClientProvider } from 'next-intl';
-import faMessages from '@/messages/fa.json';
+import enMessages from '@/messages/en.json';
 import { NotFoundContent } from '@/components/layout/NotFoundContent';
 
-// Fallback for unsupported locales (e.g. /de/about): Persian 404, since there is no locale layout here.
+// Fallback for unsupported locales (e.g. /de/about): English 404 (default locale), since there is no locale layout here.
 export default function GlobalNotFound() {
   return (
-    <html lang="fa" dir="rtl">
+    <html lang="en" dir="ltr">
       <body>
-        <NextIntlClientProvider locale="fa" messages={faMessages}>
+        <NextIntlClientProvider locale="en" messages={enMessages}>
           <NotFoundContent />
         </NextIntlClientProvider>
       </body>

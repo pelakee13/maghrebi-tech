@@ -21,6 +21,7 @@ export const projectSchema = z.object({
   role: z.string().min(3),
   featured: z.boolean().default(false),
   image: z.string().startsWith('/images/').optional(),
+  gallery: z.array(z.string().startsWith('/images/')).max(8).optional(),
   url: z.url().optional(),
   tags: z.array(z.string()).max(6).optional(),
 });

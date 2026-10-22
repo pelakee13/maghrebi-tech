@@ -17,7 +17,7 @@ export default defineConfig({
   ],
   webServer: {
     command: `pnpm start -p ${PORT}`,
-    url: `http://localhost:${PORT}/fa`,
+    url: `http://localhost:${PORT}/en`,
     reuseExistingServer: !process.env.CI,
     timeout: 60_000,
   },

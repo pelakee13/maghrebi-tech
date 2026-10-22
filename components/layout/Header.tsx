@@ -11,7 +11,6 @@ export function Header({ counterparts }: { counterparts: ArticleCounterparts }) 
       <Container className="relative flex h-16 items-center justify-between gap-4">
         <Link href="/" className="text-lg font-bold text-fg">
           {t('siteName')}
-          <span className="text-accent">.</span>
         </Link>
         <Nav className="hidden md:block" />
         <div className="flex items-center gap-2">

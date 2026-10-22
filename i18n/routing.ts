@@ -2,9 +2,9 @@ import { defineRouting } from 'next-intl/routing';
 
 export const routing = defineRouting({
   locales: ['fa', 'en'],
-  defaultLocale: 'fa',
+  defaultLocale: 'en',
   localePrefix: 'always',
-  // Never override the Persian default using the Accept-Language header.
+  // Never override the English default using the Accept-Language header.
   localeDetection: false,
 });
 

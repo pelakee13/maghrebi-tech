@@ -18,7 +18,7 @@ export function ProjectsHighlight({
 }) {
   return (
     <Section title={title} lead={lead}>
-      <div className="grid gap-5 md:grid-cols-3">
+      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
         {items.map((p) => (
           <ProjectCard key={p.id} meta={p} typeLabel={typeLabels[p.type] ?? p.type} />
         ))}

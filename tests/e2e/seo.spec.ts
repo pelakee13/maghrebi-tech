@@ -10,7 +10,7 @@ for (const locale of ['fa', 'en']) {
       await expect(page.locator('link[rel=canonical]')).toHaveAttribute('href', `https://maghrebi.tech/${locale}${p}`);
       await expect(page.locator('link[rel=alternate][hreflang=fa]')).toHaveAttribute('href', `https://maghrebi.tech/fa${p}`);
       await expect(page.locator('link[rel=alternate][hreflang=en]')).toHaveAttribute('href', `https://maghrebi.tech/en${p}`);
-      await expect(page.locator('link[rel=alternate][hreflang=x-default]')).toHaveAttribute('href', `https://maghrebi.tech/fa${p}`);
+      await expect(page.locator('link[rel=alternate][hreflang=x-default]')).toHaveAttribute('href', `https://maghrebi.tech/en${p}`);
       expect((await page.title()).length).toBeGreaterThan(2);
     });
   }

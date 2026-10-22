@@ -19,7 +19,7 @@ export function buildMetadata(opts: {
   const languages: Record<string, string> =
     opts.languagesOverride ??
     Object.fromEntries(routing.locales.map((l) => [l, `${site.url}/${l}${path}`]));
-  languages['x-default'] = languages['fa'] ?? `${site.url}/fa${path}`;
+  languages['x-default'] = languages['en'] ?? Object.values(languages)[0] ?? `${site.url}/en${path}`;
 
   return {
     metadataBase: new URL(site.url),

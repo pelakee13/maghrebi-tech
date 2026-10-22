@@ -2,8 +2,11 @@
 
 import { useLocale, useTranslations } from 'next-intl';
 import { Link, usePathname } from '@/i18n/navigation';
+import { Flag } from '@/components/ui/Flag';
 
 /** counterparts[fromLocale][slug] = slug in the other locale, or null when none exists. */
+const COUNTRY = { fa: 'ir', en: 'gb' } as const;
+
 export type ArticleCounterparts = Record<string, Record<string, string | null>>;
 
 export function LanguageSwitcher({ counterparts }: { counterparts: ArticleCounterparts }) {
@@ -27,9 +30,12 @@ export function LanguageSwitcher({ counterparts }: { counterparts: ArticleCounte
       hrefLang={other}
       lang={other}
       aria-label={t('switchLabel')}
-      className="rounded-lg border border-border px-3 py-1.5 text-sm font-medium text-accent hover:bg-surface"
+      className="flex items-center gap-2 rounded-lg border border-border px-3 py-1.5 text-sm font-medium text-accent hover:bg-surface"
     >
-      {t('switchTo')}
+      <Flag country={COUNTRY[locale === 'fa' ? 'fa' : 'en']} />
+      <span aria-hidden="true">/</span>
+      <Flag country={COUNTRY[other]} />
+      <span>{t('switchTo')}</span>
     </Link>
   );
 }
