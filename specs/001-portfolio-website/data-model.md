@@ -33,11 +33,12 @@ Launch set: `smart-business-systems`, `telegram-bots`, `support-maintenance`, `a
 | `id` | string | shared across locales |
 | `title` | string | 3-60 chars |
 | `type` | enum | `web-app` \| `bot` \| `mobile-app` |
-| `summary` | string | <= 200 chars |
+| `summary` | string | <= 260 chars |
 | `role` | string | Amin's role/outcome |
 | `featured` | boolean | featured items appear on Home |
 | `order` | integer | unique per locale |
 | `image` | path? | under `public/images/projects/`, optional (placeholder when absent) |
+| `gallery` | path[]? | up to 8 images under `/images/`, shown as a thumbnail strip |
 | `url` | URL? | optional external link, opens in new tab with `rel="noopener noreferrer"` |
 | `tags` | string[]? | <= 6 |
 | `body` | MDX | detail |

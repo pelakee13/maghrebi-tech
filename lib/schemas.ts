@@ -17,7 +17,7 @@ export const projectSchema = z.object({
   order: z.number().int().positive(),
   title: z.string().min(3).max(60),
   type: z.enum(['web-app', 'bot', 'mobile-app']),
-  summary: z.string().min(10).max(200),
+  summary: z.string().min(10).max(260),
   role: z.string().min(3),
   featured: z.boolean().default(false),
   image: z.string().startsWith('/images/').optional(),

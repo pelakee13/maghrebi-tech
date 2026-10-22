@@ -14,7 +14,7 @@ describe('frontmatter schemas', () => {
     const ok = { id: 'running-app', order: 3, title: 'Running app', type: 'mobile-app', summary: 'A running companion app', role: 'Design and build' };
     expect(projectSchema.safeParse(ok).success).toBe(true);
     expect(projectSchema.safeParse({ ...ok, type: 'desktop' }).success).toBe(false);
-    expect(projectSchema.safeParse({ ...ok, summary: 'x'.repeat(201) }).success).toBe(false);
+    expect(projectSchema.safeParse({ ...ok, summary: 'x'.repeat(261) }).success).toBe(false);
     expect(projectSchema.safeParse({ ...ok, tags: ['1', '2', '3', '4', '5', '6', '7'] }).success).toBe(false);
   });
 
