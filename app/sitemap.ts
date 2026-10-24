@@ -3,7 +3,7 @@ import { routing } from '@/i18n/routing';
 import { getArticles, getCounterpartSlug } from '@/lib/content';
 import { site } from '@/lib/site';
 
-const STATIC_PATHS = ['', '/about', '/services', '/portfolio', '/blog', '/resume', '/contact'];
+const STATIC_PATHS = ['', '/about', '/services', '/portfolio', '/courses', '/blog', '/resume', '/contact'];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const entries: MetadataRoute.Sitemap = [];

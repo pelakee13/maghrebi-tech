@@ -37,6 +37,28 @@ export const articleSchema = z.object({
   draft: z.boolean().default(false),
 });
 
+export const courseSchema = z.object({
+  slug: z.string().regex(kebab),
+  title: z.string().min(5).max(120),
+  summary: z.string().min(20).max(260),
+  date: z.string().regex(isoDate),
+  duration: z.string().min(2).max(40), // approximate, human-readable (e.g. "60 minutes")
+  order: z.number().int().positive(),
+  translationKey: z.string().regex(kebab),
+  draft: z.boolean().default(false),
+  // Downloadable files; each url MUST point to an existing file under /public.
+  files: z
+    .array(
+      z.object({
+        label: z.string().min(2).max(60),
+        url: z.string().startsWith('/courses/').regex(/\.(pdf|pptx?|zip)$/i),
+        format: z.enum(['pdf', 'ppt', 'pptx', 'zip']),
+      }),
+    )
+    .max(6)
+    .default([]),
+});
+
 export const pageSchema = z.object({
   title: z.string().min(1).max(70),
   description: z.string().min(50).max(160),
@@ -64,6 +86,7 @@ export const contactSchema = z.object({
 export type ServiceMeta = z.infer<typeof serviceSchema>;
 export type ProjectMeta = z.infer<typeof projectSchema>;
 export type ArticleMeta = z.infer<typeof articleSchema>;
+export type CourseMeta = z.infer<typeof courseSchema>;
 export type PageMeta = z.infer<typeof pageSchema>;
 export type HomePageMeta = z.infer<typeof homePageSchema>;
 export type ContactInput = z.infer<typeof contactSchema>;

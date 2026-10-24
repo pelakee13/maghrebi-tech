@@ -4,7 +4,7 @@ import { useLocale, useTranslations } from 'next-intl';
 import { Link, usePathname } from '@/i18n/navigation';
 import { Flag } from '@/components/ui/Flag';
 
-/** counterparts[fromLocale][slug] = slug in the other locale, or null when none exists. */
+/** counterparts[fromLocale][`section:slug`] = slug in the other locale, or null when none exists. */
 const COUNTRY = { fa: 'ir', en: 'gb' } as const;
 
 export type ArticleCounterparts = Record<string, Record<string, string | null>>;
@@ -16,11 +16,12 @@ export function LanguageSwitcher({ counterparts }: { counterparts: ArticleCounte
   const other = locale === 'fa' ? 'en' : 'fa';
 
   let href = pathname;
-  const match = pathname.match(/^\/blog\/([^/]+)$/);
-  if (match?.[1]) {
-    const counterpart = counterparts[locale]?.[match[1]];
-    // No counterpart -> blog list, avoids a dead end (FR-002).
-    href = counterpart ? `/blog/${counterpart}` : '/blog';
+  const match = pathname.match(/^\/(blog|courses)\/([^/]+)$/);
+  if (match?.[1] && match[2]) {
+    const section = match[1];
+    const counterpart = counterparts[locale]?.[`${section}:${match[2]}`];
+    // No counterpart -> section list, avoids a dead end (FR-002).
+    href = counterpart ? `/${section}/${counterpart}` : `/${section}`;
   }
 
   return (

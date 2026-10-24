@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { articleSchema, projectSchema, serviceSchema } from '../../lib/schemas';
+import { articleSchema, courseSchema, projectSchema, serviceSchema } from '../../lib/schemas';
 import { checkIdParity, isPublished, readingMinutes, sortArticles } from '../../lib/content-utils';
 
 describe('frontmatter schemas', () => {
@@ -23,6 +23,20 @@ describe('frontmatter schemas', () => {
     expect(articleSchema.safeParse(ok).success).toBe(true);
     expect(articleSchema.safeParse({ ...ok, slug: 'پست' }).success).toBe(false);
     expect(articleSchema.safeParse({ ...ok, date: '02/01/2026' }).success).toBe(false);
+  });
+});
+
+describe('course schema', () => {
+  const ok = { slug: 'ai-session-1', title: 'A valid course title', summary: 'A valid summary with enough characters.', date: '2026-10-22', duration: '60 minutes', order: 1, translationKey: 'ai-session-1', files: [{ label: 'Slides', url: '/courses/a.pdf', format: 'pdf' }] };
+  it('accepts a valid course and defaults draft/files', () => {
+    const r = courseSchema.safeParse({ ...ok, files: undefined });
+    expect(r.success).toBe(true);
+    if (r.success) expect(r.data.files).toEqual([]);
+  });
+  it('only allows downloads under /courses with a document extension', () => {
+    expect(courseSchema.safeParse({ ...ok, files: [{ label: 'x1', url: '/other/a.pdf', format: 'pdf' }] }).success).toBe(false);
+    expect(courseSchema.safeParse({ ...ok, files: [{ label: 'x1', url: '/courses/a.exe', format: 'pdf' }] }).success).toBe(false);
+    expect(courseSchema.safeParse({ ...ok, files: [{ label: 'x1', url: '/courses/a.pptx', format: 'pptx' }] }).success).toBe(true);
   });
 });
 

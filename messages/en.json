@@ -15,7 +15,8 @@
     "close": "Close",
     "skip": "Skip to content",
     "switchTo": "فارسی",
-    "switchLabel": "Switch language to Persian"
+    "switchLabel": "Switch language to Persian",
+    "courses": "Courses"
   },
   "common": {
     "viewAll": "View all",
@@ -94,5 +95,21 @@
     "title": "Page not found",
     "text": "The address does not exist or has moved.",
     "home": "Back to home"
+  },
+  "courses": {
+    "title": "Courses",
+    "lead": "Practical lessons on AI and automation, with downloadable slides.",
+    "empty": "No courses have been published yet.",
+    "session": "Session",
+    "duration": "Approx. duration",
+    "date": "Date",
+    "files": "Course files",
+    "download": "Download",
+    "noFiles": "No files are attached to this course yet.",
+    "open": "View lesson",
+    "back": "Back to courses",
+    "pdf": "Slides (PDF)",
+    "ppt": "Slides (PowerPoint)",
+    "zip": "Archive"
   }
 }

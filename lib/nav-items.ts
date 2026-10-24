@@ -4,6 +4,7 @@ export const NAV_ITEMS = [
   { href: '/about', key: 'about' },
   { href: '/services', key: 'services' },
   { href: '/portfolio', key: 'portfolio' },
+  { href: '/courses', key: 'courses' },
   { href: '/blog', key: 'blog' },
   { href: '/resume', key: 'resume' },
   { href: '/contact', key: 'contact' },
