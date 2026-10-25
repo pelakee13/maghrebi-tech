@@ -11,6 +11,8 @@ test('language switch keeps the page and flips direction and font', async ({ pag
   await page.locator('a[hreflang=fa]').first().click();
   await expect(page).toHaveURL(/\/fa\/services$/);
   await expect(page.locator('html')).toHaveAttribute('dir', 'rtl');
+  const faFont = await page.evaluate(() => getComputedStyle(document.body).fontFamily);
+  expect(faFont.toLowerCase()).toContain('iransans');
 });
 
 test('article switcher goes to the counterpart article', async ({ page }) => {

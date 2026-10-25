@@ -1,7 +1,7 @@
 # maghrebi.tech — personal portfolio website
 
 Bilingual (English default, Persian with full RTL) portfolio for Amin Maghrebi. Next.js 15 (App Router) +
-TypeScript + Tailwind CSS 4, navy/cyan dark theme, Vazirmatn + Inter. Live at https://maghrebi.tech
+TypeScript + Tailwind CSS 4, navy/cyan dark theme, IRANSans + Inter. Live at https://maghrebi.tech
 (deployed by Vercel from `github.com/pelakee13/maghrebi-tech`, branch `main`).
 
 ## Where things live

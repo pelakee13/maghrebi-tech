@@ -29,9 +29,6 @@ importers:
       server-only:
         specifier: ^0.0.1
         version: 0.0.1
-      vazirmatn:
-        specifier: ^33.0.3
-        version: 33.0.3
       zod:
         specifier: ^4.0.0
         version: 4.6.7
@@ -2949,9 +2946,6 @@ packages:
 
   util-deprecate@1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
-
-  vazirmatn@33.0.3:
-    resolution: {integrity: sha512-fbjNc0CMjazZpIegWzz9OHGzI1APFboT+x7ZecXlUCtDe/nkyx7gtCTZnWS/+eeXG7fbfXymCPKJI8EsnM3iqw==}
 
   vfile-matter@5.0.1:
     resolution: {integrity: sha512-o6roP82AiX0XfkyTHyRCMXgHfltUNlXSEqCIS80f+mbAyiQBE2fxtDVMtseyytGx75sihiJFo/zR6r/4LTs2Cw==}
@@ -6282,8 +6276,6 @@ snapshots:
       '@types/react': 19.3.0
 
   util-deprecate@1.0.2: {}
-
-  vazirmatn@33.0.3: {}
 
   vfile-matter@5.0.1:
     dependencies:

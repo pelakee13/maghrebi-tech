@@ -38,8 +38,8 @@ Colours MUST be defined once as design tokens (Tailwind theme / CSS variables) a
 hard-coded in components. Text/background contrast MUST meet WCAG AA. Any added light theme MUST
 be optional and MUST NOT change the dark theme as the default.
 
-### V. Typography: Vazirmatn for Persian, Inter for English
-Persian text MUST use Vazirmatn and English text MUST use Inter. Fonts MUST be self-hosted or
+### V. Typography: IRANSans for Persian, Inter for English
+Persian text MUST use IRANSans and English text MUST use Inter. Fonts MUST be self-hosted or
 loaded through `next/font` with `display: swap` and only the required subsets and weights, so
 that no layout shift or render-blocking font request occurs. The font family MUST switch
 automatically according to the active locale.
