@@ -14,6 +14,12 @@ export function ProjectCard({ meta, typeLabel }: { meta: ProjectMeta; typeLabel:
       <Badge className="self-start">{typeLabel}</Badge>
       <h3 className="text-lg font-semibold">{meta.title}</h3>
       <p className="text-sm leading-7 text-fg-muted">{meta.summary}</p>
+      {meta.result && (
+        <p className="mt-auto border-t border-border pt-3 text-sm leading-6 text-fg">
+          <span className="font-medium">↳ </span>
+          {meta.result}
+        </p>
+      )}
     </Card>
   );
 }

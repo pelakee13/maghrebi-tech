@@ -36,23 +36,23 @@
   },
   "home": {
     "servicesTitle": "Services",
-    "servicesLead": "Solutions that make your sales and business processes simpler and automatic.",
+    "servicesLead": "Four things I do for clients, described plainly.",
     "projectsTitle": "Featured work",
-    "projectsLead": "A few real systems I have built.",
-    "ctaTitle": "Have an idea or a manual process?",
-    "ctaText": "Tell me what you want to automate; the first review is free."
+    "projectsLead": "Systems running today. Each card says what problem it solved.",
+    "ctaTitle": "Tell me about the manual process",
+    "ctaText": "Describe the task your team repeats every day. First consultation is free and you will get my honest opinion — including if a simple spreadsheet beats custom software."
   },
   "services": {
     "title": "Services",
-    "lead": "From a Telegram bot to a full management system, tailored to your business."
+    "lead": "From a Telegram bot to a full management system, scoped to what your business actually needs."
   },
   "portfolio": {
     "title": "Portfolio",
-    "lead": "Projects I have designed and built."
+    "lead": "What was built, which problem it solved, and what it does today."
   },
   "blog": {
     "title": "Articles & tutorials",
-    "lead": "Notes on automation, bots and AI.",
+    "lead": "Notes from real projects: automation, Telegram bots and AI.",
     "empty": "No articles have been published yet. Please check back soon."
   },
   "contact": {
