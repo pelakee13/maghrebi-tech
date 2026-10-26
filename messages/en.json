@@ -40,7 +40,12 @@
     "projectsTitle": "Featured work",
     "projectsLead": "Systems running today. Each card says what problem it solved.",
     "ctaTitle": "Tell me about the manual process",
-    "ctaText": "Describe the task your team repeats every day. First consultation is free and you will get my honest opinion — including if a simple spreadsheet beats custom software."
+    "ctaText": "Describe the task your team repeats every day. First consultation is free and you will get my honest opinion — including if a simple spreadsheet beats custom software.",
+    "techTitle": "Tools I build with",
+    "techLead": "Chosen for reliability, not novelty.",
+    "testimonialsTitle": "What clients say",
+    "testimonialsLead": "Feedback from people who use these systems daily.",
+    "testimonialsProject": "Project"
   },
   "services": {
     "title": "Services",
@@ -111,5 +116,40 @@
     "pdf": "Slides (PDF)",
     "ppt": "Slides (PowerPoint)",
     "zip": "Archive"
+  },
+  "projectCard": {
+    "problem": "Problem",
+    "built": "Built",
+    "tech": "Tech stack"
+  },
+  "techStack": {
+    "title": "Tools I build with",
+    "lead": "Chosen for reliability, not novelty."
+  },
+  "testimonials": {
+    "title": "What clients say",
+    "lead": "Feedback from people who use these systems daily.",
+    "project": "Project"
+  },
+  "quickForm": {
+    "title": "Get a free process review",
+    "lead": "Tell me what you want to automate; the first review is free.",
+    "contact": "Telegram / Email / Phone",
+    "process": "What manual process do you want to automate?",
+    "submit": "Send request",
+    "orTelegram": "Or quick chat on Telegram",
+    "success": "Your request was received. I will reply soon.",
+    "errors": {
+      "name_short": "Name must be at least 2 characters.",
+      "name_long": "Name must be at most 80 characters.",
+      "contact_required": "Enter a Telegram ID, email or phone number.",
+      "contact_long": "Contact must be at most 120 characters.",
+      "process_short": "Describe the process in at least 10 characters.",
+      "process_long": "Keep it under 2000 characters.",
+      "spam": "Could not send. Please try again.",
+      "rate_limited": "Too many requests. Please try again later.",
+      "delivery_failed": "Could not send. Please contact me directly by email or Telegram.",
+      "generic": "Something went wrong. Please try again."
+    }
   }
 }

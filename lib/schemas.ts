@@ -20,6 +20,15 @@ export const projectSchema = z.object({
   summary: z.string().min(10).max(260),
   role: z.string().min(3),
   result: z.string().min(10).max(200).optional(),
+  // Case-study fields: the business problem, what was built, and the outcome.
+  problem: z.string().min(10).max(200).optional(),
+  solution: z.string().min(10).max(200).optional(),
+  impact: z.string().min(3).max(60).optional(),
+  techStack: z.array(z.string().min(2).max(30)).max(10).optional(),
+  // Optional animated/high-res preview (gif, mp4, webm or image) rendered on the card.
+  mediaPreview: z.string().startsWith('/').optional(),
+  // Consumer/hobby projects are shown on /portfolio only, not on the homepage.
+  consumer: z.boolean().default(false),
   featured: z.boolean().default(false),
   image: z.string().startsWith('/images/').optional(),
   gallery: z.array(z.string().startsWith('/images/')).max(8).optional(),

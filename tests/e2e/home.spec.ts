@@ -13,12 +13,13 @@ test('unprefixed paths go to the English version', async ({ page }) => {
   await expect(page).toHaveURL(/\/en\/about$/);
 });
 
-test('home shows hero, 4 services, 4 featured projects and a contact CTA', async ({ page }) => {
+test('home shows hero, 4 services, tech stack, 3 business projects and a contact CTA', async ({ page }) => {
   await page.goto('/en');
   await expect(page.locator('html')).toHaveAttribute('dir', 'ltr');
   await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
   await expect(page.locator('#main section').nth(1).locator('h3')).toHaveCount(4);
-  await expect(page.locator('#main section').nth(2).locator('h3')).toHaveCount(4);
+  // TechStackBanner (nth 2) has an h2 and a tech list; projects section is nth 3.
+  await expect(page.locator('#main section').nth(3).locator('h3')).toHaveCount(3);
   await page.locator('#main').getByRole('link', { name: 'Contact me' }).first().click();
   await expect(page).toHaveURL(/\/en\/contact$/);
 });

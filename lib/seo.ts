@@ -50,6 +50,31 @@ export function personJsonLd(locale: string) {
   };
 }
 
+export function professionalServiceJsonLd(locale: string) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ProfessionalService',
+    name: site.name[locale === 'fa' ? 'fa' : 'en'],
+    url: `${site.url}/${locale}`,
+    email: site.email,
+    areaServed: 'Worldwide',
+    availableLanguage: ['en', 'fa'],
+    knowsAbout: [
+      'Business automation',
+      'Telegram bot development',
+      'Web app development',
+      'Mobile app development',
+      'AI training',
+    ],
+    serviceType: [
+      'Business automation',
+      'Telegram bot development',
+      'Web app development',
+      'AI training',
+    ],
+  };
+}
+
 export function articleJsonLd(opts: { locale: string; slug: string; title: string; description: string; date: string }) {
   return {
     '@context': 'https://schema.org',

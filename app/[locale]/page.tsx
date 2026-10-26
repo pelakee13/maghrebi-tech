@@ -4,10 +4,12 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import { getHomePage, getProjects, getServices } from '@/lib/content';
-import { buildMetadata, personJsonLd } from '@/lib/seo';
+import { buildMetadata, personJsonLd, professionalServiceJsonLd } from '@/lib/seo';
 import { Hero } from '@/components/sections/Hero';
 import { ServicesHighlight } from '@/components/sections/ServicesHighlight';
+import { TechStackBanner } from '@/components/sections/TechStackBanner';
 import { ProjectsHighlight } from '@/components/sections/ProjectsHighlight';
+import { Testimonials } from '@/components/sections/Testimonials';
 import { CtaBanner } from '@/components/sections/CtaBanner';
 import { JsonLd } from '@/components/ui/JsonLd';
 
@@ -30,16 +32,27 @@ export default async function HomePage({ params }: Props) {
   const pt = await getTranslations('projectType');
   const { meta } = getHomePage(locale);
   const services = getServices(locale).map((s) => s.meta);
-  const projects = getProjects(locale).filter((p) => p.meta.featured).map((p) => p.meta);
+  // Homepage stays business-focused: consumer/hobby projects live on /portfolio only.
+  const projects = getProjects(locale)
+    .filter((p) => p.meta.featured && !p.meta.consumer)
+    .map((p) => p.meta);
   const typeLabels = { 'web-app': pt('web-app'), bot: pt('bot'), 'mobile-app': pt('mobile-app') };
 
   return (
     <>
       <JsonLd data={personJsonLd(locale)} />
+      <JsonLd data={professionalServiceJsonLd(locale)} />
       <Hero hero={meta.hero} />
       <ServicesHighlight title={t('servicesTitle')} lead={t('servicesLead')} items={services} viewAll={c('viewAll')} />
+      <TechStackBanner title={t('techTitle')} lead={t('techLead')} />
       <ProjectsHighlight title={t('projectsTitle')} lead={t('projectsLead')} items={projects} typeLabels={typeLabels} viewAll={c('viewAll')} />
-      <CtaBanner title={t('ctaTitle')} text={t('ctaText')} cta={c('contactMe')} />
+      <Testimonials
+        locale={locale === 'fa' ? 'fa' : 'en'}
+        title={t('testimonialsTitle')}
+        lead={t('testimonialsLead')}
+        projectLabel={t('testimonialsProject')}
+      />
+      <CtaBanner title={t('ctaTitle')} text={t('ctaText')} />
     </>
   );
 }
