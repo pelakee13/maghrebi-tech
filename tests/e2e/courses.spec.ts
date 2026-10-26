@@ -14,8 +14,9 @@ test('nav has a Courses link and the list shows the sample session', async ({ pa
   }
   await expect(page).toHaveURL(/\/en\/courses$/);
   // first h2 is the page title; the rest are course cards
-  await expect(page.locator('main h2')).toHaveCount(2);
+  await expect(page.locator('main h2')).toHaveCount(3);
   await expect(page.locator('main h2').nth(1)).toContainText('Where Did AI Come From');
+  await expect(page.locator('main h2').nth(2)).toContainText('How Do Machines Learn');
 });
 
 test('Persian list is RTL and has the Persian title and nav label', async ({ page }) => {
