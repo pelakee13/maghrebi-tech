@@ -14,7 +14,8 @@ function MediaPreview({ src, alt }: { src: string; alt: string }) {
         loop
         muted
         playsInline
-        aria-label={alt}
+        aria-label={alt || undefined}
+        aria-hidden={alt ? undefined : true}
         className="aspect-[16/9] w-full rounded-xl border border-border object-cover"
       />
     );
@@ -29,9 +30,9 @@ export function ProjectCard({ meta, typeLabel }: { meta: ProjectMeta; typeLabel:
   return (
     <Card className="flex h-full flex-col gap-4">
       {meta.mediaPreview ? (
-        <MediaPreview src={meta.mediaPreview} alt={meta.title} />
+        <MediaPreview src={meta.mediaPreview} alt="" />
       ) : meta.image ? (
-        <Image src={meta.image} alt={meta.title} width={640} height={360} className="aspect-[16/9] w-full rounded-xl object-cover" />
+        <Image src={meta.image} alt="" width={640} height={360} className="aspect-[16/9] w-full rounded-xl object-cover" />
       ) : (
         <ProjectImagePlaceholder type={meta.type} />
       )}

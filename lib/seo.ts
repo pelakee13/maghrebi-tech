@@ -33,9 +33,10 @@ export function buildMetadata(opts: {
       siteName: site.name[locale === 'fa' ? 'fa' : 'en'],
       locale: OG_LOCALE[locale] ?? 'fa_IR',
       type: opts.type ?? 'website',
+      images: [{ url: `${site.url}/og-image.png`, width: 1600, height: 840 }],
       ...(opts.publishedTime ? { publishedTime: opts.publishedTime } : {}),
     },
-    twitter: { card: 'summary_large_image', title, description },
+    twitter: { card: 'summary_large_image', title, description, images: [`${site.url}/og-image.png`] },
   };
 }
 

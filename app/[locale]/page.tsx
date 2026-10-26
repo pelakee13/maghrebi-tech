@@ -10,6 +10,8 @@ import { ServicesHighlight } from '@/components/sections/ServicesHighlight';
 import { TechStackBanner } from '@/components/sections/TechStackBanner';
 import { ProjectsHighlight } from '@/components/sections/ProjectsHighlight';
 import { Testimonials } from '@/components/sections/Testimonials';
+import { ProcessSteps } from '@/components/sections/ProcessSteps';
+import { Bio } from '@/components/sections/Bio';
 import { CtaBanner } from '@/components/sections/CtaBanner';
 import { JsonLd } from '@/components/ui/JsonLd';
 
@@ -52,6 +54,11 @@ export default async function HomePage({ params }: Props) {
         lead={t('testimonialsLead')}
         projectLabel={t('testimonialsProject')}
       />
+      <ProcessSteps
+        title={t('processTitle')}
+        steps={[1, 2, 3].map((n) => ({ title: t(`step${n}Title` as never), text: t(`step${n}Text` as never) }))}
+      />
+      <Bio title={t('bioTitle')} text={t('bioText')} />
       <CtaBanner title={t('ctaTitle')} text={t('ctaText')} />
     </>
   );
