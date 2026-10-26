@@ -11,7 +11,7 @@ export function ProjectImagePlaceholder({ type }: { type: ProjectMeta['type'] })
   return (
     <div
       aria-hidden="true"
-      className="flex aspect-[16/9] w-full items-center justify-center rounded-xl bg-gradient-to-br from-surface-2 to-bg"
+      className="flex aspect-[16/9] w-full items-center justify-center rounded-xl bg-surface-2"
     >
       <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <path d={ICONS[type]} />

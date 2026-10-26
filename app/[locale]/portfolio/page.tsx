@@ -50,6 +50,12 @@ export default async function PortfolioPage({ params }: Props) {
             <Badge className="self-start">{pt(meta.type)}</Badge>
             <h2 className="text-xl font-semibold">{meta.title}</h2>
             <p className="text-sm leading-7 text-fg-muted">{meta.summary}</p>
+            {meta.result && (
+              <p className="text-sm leading-6 text-fg">
+                <span className="font-medium">↳ </span>
+                {meta.result}
+              </p>
+            )}
             <MdxRenderer source={body} />
             <p className="text-sm">
               <span className="font-semibold">{c('role')}: </span>
