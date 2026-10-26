@@ -3,7 +3,7 @@
 import { headers } from 'next/headers';
 import { contactSchema } from '@/lib/schemas';
 import { notifier } from '@/lib/notify';
-import { rateLimit } from '@/lib/rate-limit';
+import { guardSubmission } from '@/lib/form-guard';
 
 export type FieldKey = 'name' | 'email' | 'message';
 export type ContactState =
@@ -20,24 +20,6 @@ export type ContactState =
       code: 'spam' | 'rate_limited' | 'delivery_failed';
       values: { name: string; email: string; message: string };
     };
-
-const MIN_FILL_MS = 3000;
-
-async function verifyTurnstile(token: string | undefined): Promise<boolean> {
-  const secret = process.env.TURNSTILE_SECRET_KEY;
-  if (!secret) return true; // optional: disabled unless configured
-  if (!token) return false;
-  try {
-    const res = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
-      method: 'POST',
-      body: new URLSearchParams({ secret, response: token }),
-    });
-    const json = (await res.json()) as { success?: boolean };
-    return json.success === true;
-  } catch {
-    return false;
-  }
-}
 
 export async function submitContact(_prev: ContactState, formData: FormData): Promise<ContactState> {
   const raw = {
@@ -68,19 +50,16 @@ export async function submitContact(_prev: ContactState, formData: FormData): Pr
   }
 
   const { startedAt, locale, message } = parsed.data;
-  if (typeof startedAt === 'number' && Date.now() - startedAt < MIN_FILL_MS) {
-    return { status: 'error', code: 'spam', values };
-  }
 
   const h = await headers();
   const ip = h.get('x-forwarded-for')?.split(',')[0]?.trim() || h.get('x-real-ip') || 'unknown';
-  if (!rateLimit(`contact:${ip}`, 5, 60 * 60 * 1000)) {
-    return { status: 'error', code: 'rate_limited', values };
-  }
-
-  if (!(await verifyTurnstile(String(formData.get('cf-turnstile-response') ?? '') || undefined))) {
-    return { status: 'error', code: 'spam', values };
-  }
+  const guard = await guardSubmission({
+    startedAt,
+    ip,
+    bucket: 'contact',
+    turnstileToken: String(formData.get('cf-turnstile-response') ?? '') || undefined,
+  });
+  if (guard !== 'ok') return { status: 'error', code: guard, values };
 
   const result = await notifier.notify({ locale, messageLength: message.length });
   if (!result.ok) return { status: 'error', code: 'delivery_failed', values };

@@ -122,15 +122,6 @@
     "built": "Built",
     "tech": "Tech stack"
   },
-  "techStack": {
-    "title": "Tools I build with",
-    "lead": "Chosen for reliability, not novelty."
-  },
-  "testimonials": {
-    "title": "What clients say",
-    "lead": "Feedback from people who use these systems daily.",
-    "project": "Project"
-  },
   "quickForm": {
     "title": "Get a free process review",
     "lead": "Tell me what you want to automate; the first review is free.",

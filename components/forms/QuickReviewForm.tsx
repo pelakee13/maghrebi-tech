@@ -4,6 +4,7 @@ import { useActionState, useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import { submitQuickReview, type QuickFormState } from '@/actions/quick-review';
 import { Button, ExternalButtonLink } from '@/components/ui/Button';
+import { Turnstile } from './Turnstile';
 import { site } from '@/lib/site';
 
 const initial: QuickFormState = { status: 'idle' };
@@ -98,8 +99,10 @@ export function QuickReviewForm() {
           {fields.process && <p className="mt-1 text-sm text-danger">{err(fields.process)}</p>}
         </div>
 
+        <Turnstile />
+
         <Button type="submit" disabled={pending}>
-          {pending ? t('submit') : t('submit')}
+          {t('submit')}
         </Button>
       </form>
       <div className="mt-4 text-center">
