@@ -7,7 +7,7 @@ export const site = {
   telegram: { handle: '@aminmaghrebi', url: 'https://t.me/aminmaghrebi' },
   // An empty url means the link is not rendered. Owner must confirm these profiles before launch.
   socials: [
-    { platform: 'linkedin', label: 'LinkedIn', url: 'https://www.linkedin.com/in/nodari-bitsadze' },
+    { platform: 'linkedin', label: 'LinkedIn', url: 'https://www.linkedin.com/in/amin-maghrebi' },
     { platform: 'github', label: 'GitHub', url: 'https://github.com/pelakee13' },
     { platform: 'x', label: 'X', url: 'https://x.com/pelakee13' },
   ],
