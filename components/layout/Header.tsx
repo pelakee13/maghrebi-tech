@@ -14,9 +14,9 @@ export function Header({ counterparts }: { counterparts: ArticleCounterparts }) 
           <Image
             src="/images/about/amin.jpg"
             alt={t('siteName')}
-            width={36}
-            height={36}
-            className="size-9 rounded-full object-cover"
+            width={52}
+            height={52}
+            className="size-[52px] rounded-full object-cover"
           />
           <span className="text-base font-semibold text-fg">{t('siteName')}</span>
         </Link>

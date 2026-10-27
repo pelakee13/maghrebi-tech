@@ -53,7 +53,7 @@ export default async function HomePage({ params }: Props) {
         title={t('processTitle')}
         steps={[1, 2, 3].map((n) => ({ title: t(`step${n}Title` as never), text: t(`step${n}Text` as never) }))}
       />
-      <Bio title={t('bioTitle')} text={t('bioText')} photoAlt={t('bioPhotoAlt')} />
+      <Bio title={t('bioTitle')} text={t('bioText')} />
       <CtaBanner title={t('ctaTitle')} text={t('ctaText')} />
     </>
   );
