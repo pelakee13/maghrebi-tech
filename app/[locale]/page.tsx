@@ -9,7 +9,6 @@ import { Hero } from '@/components/sections/Hero';
 import { ServicesHighlight } from '@/components/sections/ServicesHighlight';
 import { TechStackBanner } from '@/components/sections/TechStackBanner';
 import { ProjectsHighlight } from '@/components/sections/ProjectsHighlight';
-import { Testimonials } from '@/components/sections/Testimonials';
 import { ProcessSteps } from '@/components/sections/ProcessSteps';
 import { Bio } from '@/components/sections/Bio';
 import { CtaBanner } from '@/components/sections/CtaBanner';
@@ -48,17 +47,11 @@ export default async function HomePage({ params }: Props) {
       <ServicesHighlight title={t('servicesTitle')} lead={t('servicesLead')} items={services} viewAll={c('viewAll')} />
       <TechStackBanner title={t('techTitle')} lead={t('techLead')} />
       <ProjectsHighlight title={t('projectsTitle')} lead={t('projectsLead')} items={projects} typeLabels={typeLabels} viewAll={c('viewAll')} />
-      <Testimonials
-        locale={locale === 'fa' ? 'fa' : 'en'}
-        title={t('testimonialsTitle')}
-        lead={t('testimonialsLead')}
-        projectLabel={t('testimonialsProject')}
-      />
       <ProcessSteps
         title={t('processTitle')}
         steps={[1, 2, 3].map((n) => ({ title: t(`step${n}Title` as never), text: t(`step${n}Text` as never) }))}
       />
-      <Bio title={t('bioTitle')} text={t('bioText')} />
+      <Bio title={t('bioTitle')} text={t('bioText')} photoAlt={t('bioPhotoAlt')} />
       <CtaBanner title={t('ctaTitle')} text={t('ctaText')} />
     </>
   );

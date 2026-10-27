@@ -43,9 +43,6 @@
     "ctaText": "Describe the task your team repeats every day. First consultation is free and you will get my honest opinion — including if a simple spreadsheet beats custom software.",
     "techTitle": "Tools I build with",
     "techLead": "Chosen for reliability, not novelty.",
-    "testimonialsTitle": "What clients say",
-    "testimonialsLead": "Feedback from people who use these systems daily.",
-    "testimonialsProject": "Project",
     "processTitle": "How we would work",
     "step1Title": "Free review",
     "step1Text": "First we talk. Tell me what eats your time every day; I will honestly tell you whether you need software at all, or a plain spreadsheet is enough.",
@@ -54,7 +51,8 @@
     "step3Title": "Launch and support",
     "step3Text": "At hand-off you do not get a file and my back. We work with your team until it is actually running. And I stay after, because software ages.",
     "bioTitle": "Why I build",
-    "bioText": "I dislike repetitive work — especially someone doing the same task by hand every day while a computer sits right there. So I build bots and small software: I listen first, learn how the work really happens, then build the smallest tool that takes that task away. I talk less than I show."
+    "bioText": "My background is accounting and finance — that is where I learned what a report is for and what numbers a business actually needs. And that is where I saw it: when tools have come this far, no one should be doing the same task by hand every day — the kind a program can handle in seconds. That thought is what brought me to automation. Now I build bots and software: I listen first, learn how the work really happens, then build the smallest tool that takes that task away. I talk less than I show.",
+    "bioPhotoAlt": "Amin Maghrebi"
   },
   "services": {
     "title": "Services",
