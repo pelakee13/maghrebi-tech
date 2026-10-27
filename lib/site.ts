@@ -3,7 +3,7 @@ export const site = {
   name: { fa: 'امین مغربی', en: 'Amin Maghrebi' },
   domain: 'maghrebi.tech',
   url: (process.env.SITE_URL ?? 'https://maghrebi.tech').replace(/\/$/, ''),
-  email: 'hi@maghrebi.tech',
+  email: 'amin.mb21@gmail.com',
   telegram: { handle: '@aminmaghrebi', url: 'https://t.me/aminmaghrebi' },
   // An empty url means the link is not rendered. Owner must confirm these profiles before launch.
   socials: [
