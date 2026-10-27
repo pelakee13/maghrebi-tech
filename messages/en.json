@@ -43,6 +43,8 @@
     "ctaText": "Describe the task your team repeats every day. First consultation is free and you will get my honest opinion — including if a simple spreadsheet beats custom software.",
     "techTitle": "Tools I build with",
     "techLead": "Chosen for reliability, not novelty.",
+    "githubTitle": "Recent GitHub activity",
+    "githubLead": "Public code I have been working on lately.",
     "processTitle": "How we would work",
     "step1Title": "Free review",
     "step1Text": "First we talk. Tell me what eats your time every day; I will honestly tell you whether you need software at all, or a plain spreadsheet is enough.",

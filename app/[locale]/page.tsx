@@ -8,6 +8,7 @@ import { buildMetadata, personJsonLd, professionalServiceJsonLd } from '@/lib/se
 import { Hero } from '@/components/sections/Hero';
 import { ServicesHighlight } from '@/components/sections/ServicesHighlight';
 import { TechStackBanner } from '@/components/sections/TechStackBanner';
+import { GitHubActivity } from '@/components/sections/GitHubActivity';
 import { ProjectsHighlight } from '@/components/sections/ProjectsHighlight';
 import { ProcessSteps } from '@/components/sections/ProcessSteps';
 import { Bio } from '@/components/sections/Bio';
@@ -47,6 +48,7 @@ export default async function HomePage({ params }: Props) {
       <ServicesHighlight title={t('servicesTitle')} lead={t('servicesLead')} items={services} viewAll={c('viewAll')} />
       <TechStackBanner title={t('techTitle')} lead={t('techLead')} />
       <ProjectsHighlight title={t('projectsTitle')} lead={t('projectsLead')} items={projects} typeLabels={typeLabels} viewAll={c('viewAll')} />
+      <GitHubActivity title={t('githubTitle')} lead={t('githubLead')} />
       <ProcessSteps
         title={t('processTitle')}
         steps={[1, 2, 3].map((n) => ({ title: t(`step${n}Title` as never), text: t(`step${n}Text` as never) }))}
