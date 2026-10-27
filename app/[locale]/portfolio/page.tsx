@@ -42,7 +42,7 @@ export default async function PortfolioPage({ params }: Props) {
         {projects.map(({ meta, body }) => (
           <Card key={meta.id} className="flex flex-col gap-4">
             {meta.image ? (
-              <Image src={meta.image} alt="" width={640} height={360} className="aspect-[16/9] w-full rounded-xl object-cover" />
+              <Image src={meta.image} alt={meta.imageAlt ?? ''} width={640} height={360} className="aspect-[16/9] w-full rounded-xl object-cover" />
             ) : (
               <ProjectImagePlaceholder type={meta.type} />
             )}

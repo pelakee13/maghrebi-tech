@@ -27,6 +27,8 @@ export const projectSchema = z.object({
   techStack: z.array(z.string().min(2).max(30)).max(10).optional(),
   // Optional animated/high-res preview (gif, mp4, webm or image) rendered on the card.
   mediaPreview: z.string().startsWith('/').optional(),
+  // Short descriptive alt text for `image` (describes the screenshot, not the title).
+  imageAlt: z.string().min(5).max(150).optional(),
   // Consumer/hobby projects are shown on /portfolio only, not on the homepage.
   consumer: z.boolean().default(false),
   featured: z.boolean().default(false),

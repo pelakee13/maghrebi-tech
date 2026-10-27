@@ -132,12 +132,14 @@
     "tech": "Tech stack"
   },
   "quickForm": {
-    "title": "Get a free process review",
-    "lead": "Tell me what you want to automate; the first review is free.",
-    "contact": "Telegram / Email / Phone",
-    "process": "What manual process do you want to automate?",
-    "submit": "Send request",
-    "orTelegram": "Or quick chat on Telegram",
+      "title": "Get a free process review",
+      "lead": "Describe the task your team repeats every day. First consultation is free and you will get my honest opinion — including if a simple spreadsheet beats custom software.",
+      "intro": "Skip the formality — just tell me what the job looks like today. I read every message myself.",
+      "contact": "Telegram / Email / Phone",
+      "process": "What manual process do you want to automate?",
+      "processPlaceholder": "e.g. every morning someone copies yesterday's orders into a spreadsheet...",
+      "submit": "Send it over",
+      "orTelegram": "Or quick chat on Telegram",
     "success": "Your request was received. I will reply soon.",
     "errors": {
       "name_short": "Name must be at least 2 characters.",

@@ -34,6 +34,7 @@ export function QuickReviewForm() {
 
   return (
     <div className="mx-auto max-w-2xl">
+      <p className="mb-5 text-center leading-7 text-fg-muted">{t('intro')}</p>
       <form action={action} noValidate className="space-y-4 text-start" aria-busy={pending}>
         <input type="hidden" name="locale" value={locale} />
         <input type="hidden" name="startedAt" value={startedAt} />
@@ -92,6 +93,7 @@ export function QuickReviewForm() {
             id="quick-process"
             name="process"
             rows={3}
+            placeholder={t('processPlaceholder')}
             defaultValue={values.process}
             className={fieldClass}
             aria-invalid={Boolean(fields.process)}
