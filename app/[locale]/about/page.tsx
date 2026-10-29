@@ -4,7 +4,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import { getPage } from '@/lib/content';
-import { buildMetadata, personJsonLd } from '@/lib/seo';
+import { buildMetadata, personJsonLd, professionalServiceJsonLd } from '@/lib/seo';
 import { Container } from '@/components/ui/Container';
 import { MdxRenderer } from '@/components/content/MdxRenderer';
 import { JsonLd } from '@/components/ui/JsonLd';
@@ -28,6 +28,7 @@ export default async function AboutPage({ params }: Props) {
   return (
     <Container className="max-w-3xl py-14 sm:py-20">
       <JsonLd data={personJsonLd(locale)} />
+      <JsonLd data={professionalServiceJsonLd(locale)} />
       <h1 className="mb-8 text-3xl font-extrabold sm:text-4xl">{meta.title}</h1>
       <MdxRenderer source={body} />
       <div className="mt-10">

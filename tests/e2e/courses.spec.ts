@@ -54,7 +54,7 @@ test('coming-soon lesson pages 404', async ({ page }) => {
 
 test('language switcher keeps the same session and hreflang is paired', async ({ page }) => {
   await page.goto(`/en/courses/${SLUG}`);
-  await expect(page.locator('link[rel=alternate][hreflang=fa]')).toHaveAttribute('href', `https://maghrebi.tech/fa/courses/${SLUG}`);
+  await expect(page.locator('link[rel=alternate][hreflang=fa]')).toHaveAttribute('href', `https://www.maghrebi.tech/fa/courses/${SLUG}`);
   await page.locator('a[hreflang=fa]').first().click();
   await expect(page).toHaveURL(new RegExp(`/fa/courses/${SLUG}$`));
   await expect(page.locator('html')).toHaveAttribute('dir', 'rtl');

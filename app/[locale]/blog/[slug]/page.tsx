@@ -7,6 +7,7 @@ import { getArticle, getArticles, getCounterpartSlug } from '@/lib/content';
 import { articleJsonLd, buildMetadata } from '@/lib/seo';
 import { site } from '@/lib/site';
 import { Container } from '@/components/ui/Container';
+import { Card } from '@/components/ui/Card';
 import { MdxRenderer } from '@/components/content/MdxRenderer';
 import { JsonLd } from '@/components/ui/JsonLd';
 import { ButtonLink } from '@/components/ui/Button';
@@ -46,6 +47,7 @@ export default async function ArticlePage({ params }: Props) {
   const article = getArticle(locale, slug);
   if (!article) notFound();
   const c = await getTranslations('common');
+  const t = await getTranslations('blog');
   const fmt = new Intl.DateTimeFormat(locale === 'fa' ? 'fa-IR' : 'en-US', { dateStyle: 'long', timeZone: 'UTC' });
 
   return (
@@ -60,6 +62,28 @@ export default async function ArticlePage({ params }: Props) {
       <div className="mt-8">
         <MdxRenderer source={article.body} />
       </div>
+      {/* Related posts: same-locale articles except this one */}
+      <h2 className="mt-12 text-xl font-semibold">{t('relatedTitle')}</h2>
+      <ul className="mt-4 space-y-2">
+        {getArticles(locale)
+          .filter((a) => a.meta.slug !== slug)
+          .slice(0, 3)
+          .map((a) => (
+            <li key={a.meta.slug}>
+              <a href={`/${locale}/blog/${a.meta.slug}`} className="text-accent hover:underline">
+                {a.meta.title}
+              </a>
+            </li>
+          ))}
+      </ul>
+      {/* CTA under every post */}
+      <Card className="mt-10">
+        <h2 className="text-lg font-semibold">{t('ctaTitle')}</h2>
+        <p className="mt-2 text-sm leading-7 text-fg-muted">{t('ctaText')}</p>
+        <div className="mt-4">
+          <ButtonLink href="/contact">{c('contactMe')}</ButtonLink>
+        </div>
+      </Card>
       <div className="mt-12">
         <ButtonLink href="/blog" variant="secondary">
           {c('backToList')}

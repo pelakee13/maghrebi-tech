@@ -57,7 +57,12 @@
   },
   "services": {
     "title": "Services",
-    "lead": "From a Telegram bot to a full management system, scoped to what your business actually needs."
+    "lead": "From a Telegram bot to a full management system, scoped to what your business actually needs.",
+    "pricingTitle": "How engagements work",
+    "pricingLead": "Simple, honest pricing. Tell me the process and I will suggest the smallest thing that solves it.",
+    "pricingFixed": "Fixed-price build",
+    "pricingMonthly": "Monthly support",
+    "pricingWorkshop": "AI workshop"
   },
   "portfolio": {
     "title": "Portfolio",
@@ -66,7 +71,10 @@
   "blog": {
     "title": "Articles & tutorials",
     "lead": "Notes from real projects: automation, Telegram bots and AI.",
-    "empty": "No articles have been published yet. Please check back soon."
+    "empty": "No articles have been published yet. Please check back soon.",
+    "relatedTitle": "Related posts",
+    "ctaTitle": "Have a similar problem?",
+    "ctaText": "I read every message. Describe the manual process you want to automate and I will tell you honestly what it needs."
   },
   "contact": {
     "title": "Contact",
@@ -96,7 +104,8 @@
       "rate_limited": "Too many requests. Please try again later.",
       "delivery_failed": "Could not send. Please contact me directly by email or Telegram.",
       "generic": "Something went wrong. Please try again."
-    }
+    },
+    "consent": "Your details are used only to reply to you — nothing is shared with anyone."
   },
   "footer": {
     "rights": "All rights reserved.",

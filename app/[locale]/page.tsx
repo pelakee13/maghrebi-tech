@@ -48,7 +48,7 @@ export default async function HomePage({ params }: Props) {
       <ServicesHighlight title={t('servicesTitle')} lead={t('servicesLead')} items={services} viewAll={c('viewAll')} />
       <TechStackBanner title={t('techTitle')} lead={t('techLead')} />
       <ProjectsHighlight title={t('projectsTitle')} lead={t('projectsLead')} items={projects} typeLabels={typeLabels} viewAll={c('viewAll')} />
-      <GitHubActivity title={t('githubTitle')} lead={t('githubLead')} />
+      <GitHubActivity title={t('githubTitle')} lead={t('githubLead')} locale={locale === 'fa' ? 'fa' : 'en'} />
       <ProcessSteps
         title={t('processTitle')}
         steps={[1, 2, 3].map((n) => ({ title: t(`step${n}Title` as never), text: t(`step${n}Text` as never) }))}

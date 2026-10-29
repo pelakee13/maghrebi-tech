@@ -56,6 +56,24 @@ export default async function ServicesPage({ params }: Props) {
           </Card>
         ))}
       </div>
+
+      {/* TODO(owner): fill in starting prices / package ranges when ready. */}
+      <h2 className="mt-14 text-2xl font-bold sm:text-3xl">{t('pricingTitle')}</h2>
+      <p className="mt-3 max-w-2xl text-fg-muted">{t('pricingLead')}</p>
+      <dl className="mt-6 grid gap-4 sm:grid-cols-3">
+        <div>
+          <dt className="text-sm font-semibold">{t('pricingFixed')}</dt>
+          <dd className="mt-1 text-sm leading-7 text-fg-muted">[TODO: starting price]</dd>
+        </div>
+        <div>
+          <dt className="text-sm font-semibold">{t('pricingMonthly')}</dt>
+          <dd className="mt-1 text-sm leading-7 text-fg-muted">[TODO: monthly range]</dd>
+        </div>
+        <div>
+          <dt className="text-sm font-semibold">{t('pricingWorkshop')}</dt>
+          <dd className="mt-1 text-sm leading-7 text-fg-muted">[TODO: workshop pricing]</dd>
+        </div>
+      </dl>
     </Section>
   );
 }

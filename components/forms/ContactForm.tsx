@@ -72,6 +72,8 @@ export function ContactForm() {
 
       <Turnstile />
 
+      <p className="text-xs leading-6 text-fg-muted">{t('consent')}</p>
+
       <Button type="submit" disabled={pending}>
         {pending ? t('sending') : t('send')}
       </Button>

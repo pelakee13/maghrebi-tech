@@ -34,7 +34,6 @@ export function LanguageSwitcher({ counterparts }: { counterparts: ArticleCounte
       className="flex items-center gap-2 rounded-lg border border-border px-3 py-1.5 text-sm font-medium text-accent hover:bg-surface"
     >
       <Flag country={COUNTRY[locale === 'fa' ? 'fa' : 'en']} />
-      <span aria-hidden="true">/</span>
       <Flag country={COUNTRY[other]} />
       <span>{t('switchTo')}</span>
     </Link>

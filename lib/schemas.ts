@@ -35,6 +35,8 @@ export const projectSchema = z.object({
   image: z.string().startsWith('/images/').optional(),
   gallery: z.array(z.string().startsWith('/images/')).max(8).optional(),
   url: z.url().optional(),
+  // Optional alternate links; render only when provided. TODO: telegram-trader-bot needs a screenshot + links.
+  githubUrl: z.url().optional(),
   tags: z.array(z.string()).max(6).optional(),
 });
 
