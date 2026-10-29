@@ -7,7 +7,8 @@ import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server
 import { routing, localeDir } from '@/i18n/routing';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
-import { assertLocaleParity, getArticles, getCounterpartSlug, getCourseCounterpartSlug, getCourses } from '@/lib/content';
+import { assertLocaleParity, getArticles, getCounterpartSlug } from '@/lib/content';
+import { getPublishedSessions } from '@/lib/course-data';
 import type { ArticleCounterparts } from '@/components/layout/LanguageSwitcher';
 import '../globals.css';
 
@@ -35,7 +36,8 @@ function buildCounterparts(): ArticleCounterparts {
     const to = routing.locales.find((l) => l !== from)!;
     result[from] = Object.fromEntries([
       ...getArticles(from).map((a) => [`blog:${a.meta.slug}`, getCounterpartSlug(from, a.meta.slug, to) ?? null] as const),
-      ...getCourses(from).map((c) => [`courses:${c.meta.slug}`, getCourseCounterpartSlug(from, c.meta.slug, to) ?? null] as const),
+      // Course slugs are shared across locales (single source of truth).
+      ...getPublishedSessions().map((s) => [`courses:${s.slug}`, s.slug] as const),
     ]);
   }
   return result;

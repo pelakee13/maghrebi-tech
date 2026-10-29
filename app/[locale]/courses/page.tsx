@@ -3,10 +3,13 @@ import { hasLocale } from 'next-intl';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
-import { getCourses } from '@/lib/content';
+import { courseFormat, courseOverview, courseSessions } from '@/lib/course-data';
 import { buildMetadata } from '@/lib/seo';
+import { site } from '@/lib/site';
 import { Section } from '@/components/ui/Section';
-import { CourseCard } from '@/components/content/CourseCard';
+import { Badge, Card } from '@/components/ui/Card';
+import { ExternalButtonLink } from '@/components/ui/Button';
+import { JsonLd } from '@/components/ui/JsonLd';
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -22,25 +25,80 @@ export default async function CoursesPage({ params }: Props) {
   if (!hasLocale(routing.locales, locale)) notFound();
   setRequestLocale(locale);
   const t = await getTranslations('courses');
-  const courses = getCourses(locale);
-  const fmt = new Intl.DateTimeFormat(locale === 'fa' ? 'fa-IR' : 'en-US', { dateStyle: 'long', timeZone: 'UTC' });
+  const loc = locale === 'fa' ? 'fa' : 'en';
+
+  const syllabus = {
+    '@context': 'https://schema.org',
+    '@type': 'Course',
+    name: t('title'),
+    description: courseOverview[loc],
+    inLanguage: locale,
+    provider: { '@type': 'Person', name: site.name[loc], url: `${site.url}/${locale}` },
+    hasCourseInstance: {
+      '@type': 'CourseInstance',
+      courseMode: 'onsite',
+      courseWorkload: 'PT10H',
+    },
+    syllabusSections: courseSessions.map((s) => ({
+      '@type': 'Syllabus',
+      name: `${t('session')} ${s.order}: ${s.title[loc]}`,
+      description: s.summary[loc],
+      ...(s.status === 'published'
+        ? { url: `${site.url}/${locale}/courses/${s.slug}` }
+        : {}),
+    })),
+  };
 
   return (
-    <Section title={t('title')} lead={t('lead')}>
-      {courses.length === 0 ? (
-        <p className="rounded-card border border-border bg-surface p-8 text-center text-fg-muted">{t('empty')}</p>
-      ) : (
-        <div className={courses.length > 1 ? 'grid gap-5 md:grid-cols-2' : 'grid gap-5'}>
-          {courses.map(({ meta }) => (
-            <CourseCard
-              key={meta.slug}
-              meta={meta}
-              dateLabel={fmt.format(new Date(`${meta.date}T00:00:00Z`))}
-              labels={{ duration: t('duration'), open: t('open'), formats: [...new Set(meta.files.map((f) => f.format.toUpperCase()))] }}
-            />
-          ))}
+    <>
+      <JsonLd data={syllabus} />
+      <Section title={t('title')} lead={t('lead')}>
+        <p className="max-w-2xl leading-8 text-fg-muted">{courseOverview[loc]}</p>
+
+        <div className="mt-10 grid gap-4">
+          {courseSessions.map((s) => {
+            const published = s.status === 'published';
+            return (
+              <Card key={s.slug} className="flex flex-col gap-2">
+                <div className="flex flex-wrap items-center gap-3">
+                  <span className="text-sm text-fg-muted">{t('session')} {s.order}</span>
+                  {!published && <Badge>{t('comingSoon')}</Badge>}
+                </div>
+                <h2 className="text-xl font-semibold leading-snug">
+                  {published ? (
+                    <a href={`/${locale}/courses/${s.slug}`} className="hover:text-accent">
+                      {s.title[loc]}
+                    </a>
+                  ) : (
+                    s.title[loc]
+                  )}
+                </h2>
+                <p className="text-sm leading-7 text-fg-muted">{s.summary[loc]}</p>
+                {!published && (
+                  <ul className="mt-1 list-inside list-disc text-sm leading-7 text-fg-muted">
+                    {s.learningOutcomes.map((o) => (
+                      <li key={o.en}>{o[loc]}</li>
+                    ))}
+                  </ul>
+                )}
+              </Card>
+            );
+          })}
         </div>
-      )}
-    </Section>
+
+        <h2 className="mt-14 text-2xl font-bold sm:text-3xl">{t('formatTitle')}</h2>
+        <dl className="mt-6 grid gap-4 sm:grid-cols-3">
+          {courseFormat.map((row) => (
+            <div key={row.label.en}>
+              <dt className="text-sm font-semibold">{row.label[loc]}</dt>
+              <dd className={`mt-1 text-sm leading-7 ${row.todo ? 'text-fg-muted' : 'text-fg-muted'}`}>{row.value[loc]}</dd>
+            </div>
+          ))}
+        </dl>
+        <div className="mt-6">
+          <ExternalButtonLink href={site.telegram.url}>{t('registerCta')} ({site.telegram.handle})</ExternalButtonLink>
+        </div>
+      </Section>
+    </>
   );
 }

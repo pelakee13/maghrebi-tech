@@ -2,9 +2,8 @@ import { expect, test } from '@playwright/test';
 
 const SLUG = 'ai-session-1';
 
-test('nav has a Courses link and the list shows the sample session', async ({ page }) => {
+test('nav has a Courses link and the list shows all 10 sessions', async ({ page }) => {
   await page.goto('/en');
-  // Desktop shows the inline nav; on small screens the same links live in the mobile menu.
   const menuButton = page.locator('button[aria-controls=mobile-menu]');
   if (await menuButton.isVisible()) {
     await menuButton.click();
@@ -13,24 +12,25 @@ test('nav has a Courses link and the list shows the sample session', async ({ pa
     await page.locator('header nav a', { hasText: 'Courses' }).click();
   }
   await expect(page).toHaveURL(/\/en\/courses$/);
-  // first h2 is the page title; the rest are course cards
-  await expect(page.locator('main h2')).toHaveCount(3);
-  await expect(page.locator('main h2').nth(1)).toContainText('Where Did AI Come From');
-  await expect(page.locator('main h2').nth(2)).toContainText('How Do Machines Learn');
+  // 10 session cards; only the 2 published ones are links
+  await expect(page.getByText(/Where Did AI Come From/)).toBeVisible();
+  await expect(page.getByText(/How Do Machines Learn/)).toBeVisible();
+  await expect(page.getByText('Coming soon')).toHaveCount(8);
+  await expect(page.locator('a[href="/en/courses/ai-session-3"]')).toHaveCount(0);
 });
 
-test('Persian list is RTL and has the Persian title and nav label', async ({ page }) => {
+test('Persian list is RTL and has the Persian titles', async ({ page }) => {
   await page.goto('/fa/courses');
   await expect(page.locator('html')).toHaveAttribute('dir', 'rtl');
-  await expect(page.locator('main h2').nth(1)).toContainText('هوش مصنوعی از کجا آمد');
+  await expect(page.getByText('هوش مصنوعی از کجا آمد')).toBeVisible();
+  await expect(page.getByText('به‌زودی')).toHaveCount(8);
   await expect(page.locator('header nav a', { hasText: 'آموزش‌ها' })).toHaveCount(1);
 });
 
 for (const locale of ['en', 'fa'] as const) {
-  test(`/${locale}/courses/${SLUG} shows details and downloads the PDF`, async ({ page, request }) => {
+  test(`/${locale}/courses/${SLUG} shows the lesson and downloads the PDF`, async ({ page, request }) => {
     await page.goto(`/${locale}/courses/${SLUG}`);
     await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
-    await expect(page.locator('time')).toHaveAttribute('datetime', '2026-10-22');
     const [download] = await Promise.all([page.waitForEvent('download'), page.getByTestId('course-download').click()]);
     expect(download.suggestedFilename()).toBe(`ai-session-1-${locale}.pdf`);
     const res = await request.get(`/courses/ai-session-1-${locale}.pdf`);
@@ -38,6 +38,19 @@ for (const locale of ['en', 'fa'] as const) {
     expect(res.headers()['content-type']).toContain('application/pdf');
   });
 }
+
+test('lesson shows slides and written notes with a review TODO marker', async ({ page }) => {
+  await page.goto(`/en/courses/${SLUG}`);
+  // Slide carousel renders the first slide image
+  await expect(page.locator('figure img').first()).toHaveAttribute('src', /slide-01\.webp/);
+  // Written notes carry a visible TODO(review) marker for the owner
+  await expect(page.getByText(/TODO/).first()).toBeVisible();
+});
+
+test('coming-soon lesson pages 404', async ({ page }) => {
+  const res = await page.goto('/en/courses/ai-session-3');
+  expect(res?.status()).toBe(404);
+});
 
 test('language switcher keeps the same session and hreflang is paired', async ({ page }) => {
   await page.goto(`/en/courses/${SLUG}`);

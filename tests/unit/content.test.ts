@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { articleSchema, courseSchema, projectSchema, serviceSchema } from '../../lib/schemas';
+import { articleSchema, projectSchema, serviceSchema } from '../../lib/schemas';
+import { courseSessions, getNeighbours, getPublishedSessions } from '../../lib/course-data';
 import { checkIdParity, isPublished, readingMinutes, sortArticles } from '../../lib/content-utils';
 
 describe('frontmatter schemas', () => {
@@ -26,17 +27,32 @@ describe('frontmatter schemas', () => {
   });
 });
 
-describe('course schema', () => {
-  const ok = { slug: 'ai-session-1', title: 'A valid course title', summary: 'A valid summary with enough characters.', date: '2026-10-22', duration: '60 minutes', order: 1, translationKey: 'ai-session-1', files: [{ label: 'Slides', url: '/courses/a.pdf', format: 'pdf' }] };
-  it('accepts a valid course and defaults draft/files', () => {
-    const r = courseSchema.safeParse({ ...ok, files: undefined });
-    expect(r.success).toBe(true);
-    if (r.success) expect(r.data.files).toEqual([]);
+describe('course data', () => {
+  it('has 10 sessions in order and only published ones get pages', () => {
+    expect(courseSessions.map((s) => s.order)).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+    const published = getPublishedSessions();
+    expect(published.map((s) => s.slug)).toEqual(['ai-session-1', 'ai-session-2']);
   });
-  it('only allows downloads under /courses with a document extension', () => {
-    expect(courseSchema.safeParse({ ...ok, files: [{ label: 'x1', url: '/other/a.pdf', format: 'pdf' }] }).success).toBe(false);
-    expect(courseSchema.safeParse({ ...ok, files: [{ label: 'x1', url: '/courses/a.exe', format: 'pdf' }] }).success).toBe(false);
-    expect(courseSchema.safeParse({ ...ok, files: [{ label: 'x1', url: '/courses/a.pptx', format: 'pptx' }] }).success).toBe(true);
+
+  it('derives prev/next including coming-soon neighbours', () => {
+    const { next } = getNeighbours('ai-session-2');
+    expect(next?.slug).toBe('ai-session-3');
+    expect(next?.status).toBe('coming-soon');
+    const { prev } = getNeighbours('ai-session-3');
+    expect(prev?.slug).toBe('ai-session-2');
+    const { prev: none } = getNeighbours('ai-session-1');
+    expect(none).toBeUndefined();
+  });
+
+  it('published sessions carry notes, slides and pdf in both locales', () => {
+    for (const s of getPublishedSessions()) {
+      expect(s.notes?.fa.length ?? 0).toBeGreaterThan(200);
+      expect(s.notes?.en.length ?? 0).toBeGreaterThan(200);
+      expect(s.slides?.count).toBeGreaterThan(10);
+      expect(s.pdf?.fa).toMatch(/\.pdf$/);
+      expect(s.pdf?.en).toMatch(/\.pdf$/);
+      expect(s.exercise?.fa).toBeTruthy();
+    }
   });
 });
 

@@ -6,13 +6,11 @@ import matter from 'gray-matter';
 import type { ZodType } from 'zod';
 import {
   articleSchema,
-  courseSchema,
   homePageSchema,
   pageSchema,
   projectSchema,
   serviceSchema,
   type ArticleMeta,
-  type CourseMeta,
   type HomePageMeta,
   type PageMeta,
   type ProjectMeta,
@@ -84,22 +82,6 @@ export function getArticle(locale: string, slug: string): (Entry<ArticleMeta> & 
   return found ? { ...found, minutes: readingMinutes(found.body) } : undefined;
 }
 
-export const getCourses = cache((locale: string): Entry<CourseMeta>[] => {
-  const all = listDir(locale, 'courses').map((f) => parseFile(f, courseSchema));
-  return all.filter((c) => !c.meta.draft).sort((a, b) => a.meta.order - b.meta.order);
-});
-
-export function getCourse(locale: string, slug: string): Entry<CourseMeta> | undefined {
-  return getCourses(locale).find((c) => c.meta.slug === slug);
-}
-
-/** Counterpart course slug in another locale (by translationKey), if any. */
-export function getCourseCounterpartSlug(fromLocale: string, slug: string, toLocale: string): string | undefined {
-  const from = getCourse(fromLocale, slug);
-  if (!from) return undefined;
-  return getCourses(toLocale).find((c) => c.meta.translationKey === from.meta.translationKey)?.meta.slug;
-}
-
 /** Counterpart article slug in another locale (by translationKey), if any. */
 export function getCounterpartSlug(fromLocale: string, slug: string, toLocale: string): string | undefined {
   const from = getArticles(fromLocale).find((a) => a.meta.slug === slug);
@@ -111,15 +93,7 @@ export function getCounterpartSlug(fromLocale: string, slug: string, toLocale: s
 export function assertLocaleParity(): void {
   const problems = [
     ...checkIdParity('services', Object.fromEntries(LOCALES.map((l) => [l, getServices(l).map((s) => s.meta.id)]))),
-    ...checkIdParity('courses', Object.fromEntries(LOCALES.map((l) => [l, getCourses(l).map((c) => c.meta.translationKey)]))),
     ...checkIdParity('projects', Object.fromEntries(LOCALES.map((l) => [l, getProjects(l).map((p) => p.meta.id)]))),
   ];
-  for (const l of LOCALES) {
-    for (const c of getCourses(l)) {
-      for (const f of c.meta.files) {
-        if (!fs.existsSync(path.join(process.cwd(), 'public', f.url))) problems.push(`course "${c.meta.slug}" (${l}): missing file ${f.url}`);
-      }
-    }
-  }
   if (problems.length) throw new Error(`Content parity errors:\n${problems.join('\n')}`);
 }
