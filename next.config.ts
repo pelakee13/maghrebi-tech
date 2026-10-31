@@ -20,6 +20,9 @@ const csp = [
 ].join('; ');
 
 const nextConfig: NextConfig = {
+  // Render streaming metadata into <head> for all user agents (Next >= 15.2),
+  // so Lighthouse and non-Google crawlers see title/description in the head.
+  htmlLimitedBots: /.*/,
   // `standalone` needs symlinks (not permitted on a default Windows account), so it is opt-in:
   // the Dockerfile sets NEXT_OUTPUT=standalone on Linux.
   ...(process.env.NEXT_OUTPUT === 'standalone' ? { output: 'standalone' as const } : {}),
