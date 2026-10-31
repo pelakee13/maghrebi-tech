@@ -534,6 +534,26 @@ export function getPublishedSessions(): CourseSession[] {
   return courseSessions.filter((s) => s.status === 'published');
 }
 
+/** A value that must never reach the page in production (empty or a TODO marker). */
+export function isSkippable(value: string | undefined): boolean {
+  const v = (value ?? '').trim();
+  return v === '' || /^(\[)?TODO/i.test(v);
+}
+
+/**
+ * Placeholder markers are kept in the data for the owner, but only rendered in dev.
+ * Returns the notes with any leading blockquote that contains TODO removed in production.
+ */
+export function notesForRender(md: string | undefined): string {
+  if (!md) return '';
+  if (process.env.NODE_ENV !== 'production') return md;
+  return md
+    .split('\n')
+    .filter((line) => !(line.trimStart().startsWith('>') && /TODO/i.test(line)))
+    .join('\n')
+    .trim();
+}
+
 export function getPublishedSession(slug: string): CourseSession | undefined {
   return getPublishedSessions().find((s) => s.slug === slug);
 }

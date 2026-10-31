@@ -5,7 +5,7 @@ import { hasLocale } from 'next-intl';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
-import { courseSessions, getNeighbours, getPublishedSession } from '@/lib/course-data';
+import { courseSessions, getNeighbours, getPublishedSession, isSkippable, notesForRender } from '@/lib/course-data';
 import { buildMetadata } from '@/lib/seo';
 import { site } from '@/lib/site';
 import { Container } from '@/components/ui/Container';
@@ -126,16 +126,16 @@ export default async function CoursePage({ params }: Props) {
           </>
         )}
 
-        {session.notes && (
+        {session.notes && notesForRender(session.notes[loc]) && (
           <section className="mt-10">
             <h2 className="text-xl font-semibold">{t('notes')}</h2>
             <div className="mt-4">
-              <MdxRenderer source={session.notes[loc]} />
+              <MdxRenderer source={notesForRender(session.notes[loc])} />
             </div>
           </section>
         )}
 
-        {session.exercise && (
+        {session.exercise && !isSkippable(session.exercise[loc]) && (
           <Card className="mt-10">
             <h2 className="text-lg font-semibold">{t('exercise')}</h2>
             <p className="mt-2 text-sm leading-7 text-fg-muted">{session.exercise[loc]}</p>

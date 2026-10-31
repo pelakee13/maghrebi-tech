@@ -3,7 +3,7 @@ import { hasLocale } from 'next-intl';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
-import { courseFormat, courseOverview, courseSessions } from '@/lib/course-data';
+import { courseFormat, courseOverview, courseSessions, isSkippable } from '@/lib/course-data';
 import { buildMetadata } from '@/lib/seo';
 import { site } from '@/lib/site';
 import { Section } from '@/components/ui/Section';
@@ -88,12 +88,14 @@ export default async function CoursesPage({ params }: Props) {
 
         <h2 className="mt-14 text-2xl font-bold sm:text-3xl">{t('formatTitle')}</h2>
         <dl className="mt-6 grid gap-4 sm:grid-cols-3">
-          {courseFormat.map((row) => (
-            <div key={row.label.en}>
-              <dt className="text-sm font-semibold">{row.label[loc]}</dt>
-              <dd className={`mt-1 text-sm leading-7 ${row.todo ? 'text-fg-muted' : 'text-fg-muted'}`}>{row.value[loc]}</dd>
-            </div>
-          ))}
+          {courseFormat
+            .filter((row) => !isSkippable(row.value[loc]))
+            .map((row) => (
+              <div key={row.label.en}>
+                <dt className="text-sm font-semibold">{row.label[loc]}</dt>
+                <dd className="mt-1 text-sm leading-7 text-fg-muted">{row.value[loc]}</dd>
+              </div>
+            ))}
         </dl>
         <div className="mt-6">
           <ExternalButtonLink href={site.telegram.url}>{t('registerCta')} ({site.telegram.handle})</ExternalButtonLink>

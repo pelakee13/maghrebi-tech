@@ -39,12 +39,12 @@ for (const locale of ['en', 'fa'] as const) {
   });
 }
 
-test('lesson shows slides and written notes with a review TODO marker', async ({ page }) => {
+test('lesson shows slides and written notes without placeholder text', async ({ page }) => {
   await page.goto(`/en/courses/${SLUG}`);
   // Slide carousel renders the first slide image
   await expect(page.locator('figure img').first()).toHaveAttribute('src', /slide-01\.webp/);
-  // Written notes carry a visible TODO(review) marker for the owner
-  await expect(page.getByText(/TODO/).first()).toBeVisible();
+  // Production never shows TODO placeholders (build-time check enforces this too)
+  await expect(page.getByText(/TODO/)).toHaveCount(0);
 });
 
 test('coming-soon lesson pages 404', async ({ page }) => {
