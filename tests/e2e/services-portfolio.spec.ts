@@ -1,10 +1,10 @@
 import { expect, test } from '@playwright/test';
 
 for (const locale of ['fa', 'en']) {
-  test(`/${locale}/services lists 4 services with a CTA`, async ({ page }) => {
+  test(`/${locale}/services lists 4 services with CTAs`, async ({ page }) => {
     await page.goto(`/${locale}/services`);
     await expect(page.locator('main h2')).toHaveCount(4 + 2); // section title + 4 services + pricing section
-    await expect(page.locator('main a[href$="/contact"]')).toHaveCount(4);
+    await expect(page.locator('main a[href$="/contact"]')).toHaveCount(5); // 4 service cards + pricing CTA
   });
 
   test(`/${locale}/portfolio lists 4 projects`, async ({ page }) => {

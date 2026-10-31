@@ -58,11 +58,9 @@
   "services": {
     "title": "Services",
     "lead": "From a Telegram bot to a full management system, scoped to what your business actually needs.",
-    "pricingTitle": "How engagements work",
-    "pricingLead": "Simple, honest pricing. Tell me the process and I will suggest the smallest thing that solves it.",
-    "pricingFixed": "Fixed-price build",
-    "pricingMonthly": "Monthly support",
-    "pricingWorkshop": "AI workshop"
+    "pricingTitle": "How pricing works",
+    "pricingBody": "Every project is different, so I don't publish a fixed price list. We start with a free consultation. Then you get a clear written scope, timeline and price before anything is built. No surprises, and you decide whether to go ahead.",
+    "pricingCta": "Request a consultation"
   },
   "portfolio": {
     "title": "Portfolio",
@@ -135,7 +133,7 @@
     "previous": "Previous",
     "next": "Next",
     "formatTitle": "Course format",
-    "registerCta": "Register via Telegram",
+    "registerCta": "Ask about the next cohort on Telegram",
     "ctaTitle": "Want this for your team?",
     "ctaText": "I also run these sessions as private workshops for teams and businesses."
   },
