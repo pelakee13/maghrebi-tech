@@ -209,7 +209,7 @@ export default async function CoursePage({ params }: Props) {
           <h2 className="text-lg font-semibold">{t('ctaTitle')}</h2>
           <p className="mt-2 text-sm leading-7 text-fg-muted">{t('ctaText')}</p>
           <div className="mt-4">
-            <ExternalButtonLink href={site.telegram.url}>{t('registerCta')} ({site.telegram.handle})</ExternalButtonLink>
+            <ExternalButtonLink href={site.telegram.url}>{t('workshopCta')} ({site.telegram.handle})</ExternalButtonLink>
           </div>
         </Card>
       </Container>

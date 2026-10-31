@@ -136,8 +136,9 @@
     "registerCta": "Ask about the next cohort on Telegram",
     "ctaTitle": "Want this for your team?",
     "ctaText": "I also run these sessions as private workshops for teams and businesses.",
-    "coverSlide": "Session cover slide:",
-    "pages": "pages"
+    "coverSlide": "Cover slide of session",
+    "pages": "pages",
+    "workshopCta": "Ask about a team workshop on Telegram"
   },
   "projectCard": {
     "problem": "Problem",
