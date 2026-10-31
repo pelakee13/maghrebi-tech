@@ -13,6 +13,8 @@ export function buildMetadata(opts: {
   type?: 'website' | 'article';
   publishedTime?: string;
   languagesOverride?: Record<string, string>;
+  /** Optional page-specific og:image; falls back to the global og-image.png. */
+  ogImage?: { url: string; width: number; height: number; alt: string };
 }): Metadata {
   const { locale, path, title, description } = opts;
   const url = `${site.url}/${locale}${path}`;
@@ -20,6 +22,7 @@ export function buildMetadata(opts: {
     opts.languagesOverride ??
     Object.fromEntries(routing.locales.map((l) => [l, `${site.url}/${l}${path}`]));
   languages['x-default'] = languages['en'] ?? Object.values(languages)[0] ?? `${site.url}/en${path}`;
+  const image = opts.ogImage ?? { url: `${site.url}/og-image.png`, width: 1600, height: 840, alt: site.name[locale === 'fa' ? 'fa' : 'en'] };
 
   return {
     metadataBase: new URL(site.url),
@@ -33,10 +36,15 @@ export function buildMetadata(opts: {
       siteName: site.name[locale === 'fa' ? 'fa' : 'en'],
       locale: OG_LOCALE[locale] ?? 'fa_IR',
       type: opts.type ?? 'website',
-      images: [{ url: `${site.url}/og-image.png`, width: 1600, height: 840 }],
+      images: [{ url: image.url, width: image.width, height: image.height, alt: image.alt }],
       ...(opts.publishedTime ? { publishedTime: opts.publishedTime } : {}),
     },
-    twitter: { card: 'summary_large_image', title, description, images: [`${site.url}/og-image.png`] },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: [{ url: image.url, width: image.width, height: image.height, alt: image.alt }],
+    },
   };
 }
 

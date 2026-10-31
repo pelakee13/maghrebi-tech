@@ -5,7 +5,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import { courseSessions, getNeighbours, getPublishedSession, isSkippable, notesForRender } from '@/lib/course-data';
-import { pdfInfo, slideThumb } from '@/lib/course-media';
+import { ogCover, pdfInfo, slideThumb } from '@/lib/course-media';
 import { buildMetadata } from '@/lib/seo';
 import { site } from '@/lib/site';
 import { Container } from '@/components/ui/Container';
@@ -37,6 +37,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     path: `/courses/${slug}`,
     title: s.title[loc],
     description: s.summary[loc],
+    type: 'article',
+    // Cover slide as og:image when generated (scripts/generate-og-covers.py), else global.
+    ogImage: ogCover(slug, loc)
+      ? { url: ogCover(slug, loc)!, width: 1200, height: 630, alt: s.title[loc] }
+      : undefined,
   });
 }
 

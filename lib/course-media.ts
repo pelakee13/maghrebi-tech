@@ -9,6 +9,12 @@ export function slideThumb(slug: string, locale: 'fa' | 'en'): string | null {
   return fs.existsSync(path.join(PUBLIC, url.slice(1))) ? url : null;
 }
 
+/** Generated 1200x630 OG cover for a published session (scripts/generate-og-covers.py). Null when missing. */
+export function ogCover(slug: string, locale: 'fa' | 'en'): string | null {
+  const url = `/courses/${slug}/og/${locale}.jpg`;
+  return fs.existsSync(path.join(PUBLIC, url.slice(1))) ? url : null;
+}
+
 /** Real size and page count of a PDF under /public. Null when the file is missing. */
 export function pdfInfo(url: string): { sizeLabel: string; pages: number | null } | null {
   const full = path.join(PUBLIC, url.replace(/^\//, ''));

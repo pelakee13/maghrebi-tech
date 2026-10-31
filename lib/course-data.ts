@@ -241,8 +241,8 @@ Three clear paths: autonomous agents that plan and execute end to end, multimoda
         en: 'A model learns through “guess → error → adjust”, exactly like email spam detection.',
       },
       {
-        fa: 'سه دام رایج: حفظ کردن به‌جای یادگیری (overfitting)، داده‌ی کم (underfitting) و داده‌ی یک‌طرفه (bias).',
-        en: 'Three common traps: memorizing instead of learning (overfitting), too little data (underfitting) and one-sided data (bias).',
+        fa: 'سه دام رایج: حفظ کردن به‌جای یادگیری (overfitting)، مدل ساده‌تر از حد برای الگو (underfitting) و داده‌ی یک‌طرفه (bias).',
+        en: 'Three common traps: memorizing instead of learning (overfitting), a model too simple for the pattern (underfitting) and one-sided data (bias).',
       },
     ],
     exercise: {
@@ -284,7 +284,7 @@ Three clear paths: autonomous agents that plan and execute end to end, multimoda
 
 ## سه دام آموزشی
 
-**Overfitting:** ماشین به‌جای فهمیدن، حفظ می‌کند — مثل دانش‌آموزی که سؤال‌ها را حفظ کرده. **Underfitting:** داده آن‌قدر کم است که نتیجه‌گیری ممکن نیست. **Bias:** داده یک‌طرفه، قضاوت ناعادلانه می‌سازد.
+**Overfitting:** ماشین به‌جای فهمیدن، حفظ می‌کند — مثل دانش‌آموزی که سؤال‌ها را حفظ کرده. **Underfitting:** مدل آن‌قدر ساده است که اصلاً الگو را نمی‌گیرد. **Bias:** داده یک‌طرفه، قضاوت ناعادلانه می‌سازد. (داده‌ی کم هم مشکل جداگانه‌ای است و نباید با underfitting یکی گرفته شود.)
 
 ## پرسش‌های پرتکرار
 
@@ -323,7 +323,7 @@ In class we built a model with Google’s online tool, not a single line of code
 
 ## Three training traps
 
-**Overfitting:** the machine memorizes instead of understanding — like a student who memorized the exam questions. **Underfitting:** too little data to conclude anything. **Bias:** one-sided data produces unfair judgments.
+**Overfitting:** the machine memorizes instead of understanding — like a student who memorized the exam questions. **Underfitting:** the model is too simple to capture the pattern at all. **Bias:** one-sided data produces unfair judgments. (Too little data is a separate problem and should not be confused with underfitting.)
 
 ## Beginner FAQs
 
