@@ -40,6 +40,8 @@ export async function GitHubActivity({
   lead: string;
   locale: 'en' | 'fa';
 }) {
+  // The section only earns its space when the pinned list is real: hide it otherwise.
+  if (pinnedRepos.length < 2) return null;
   const repos = await getRepos();
   if (!repos?.length) return null;
   return (
