@@ -3,7 +3,9 @@ import { hasLocale } from 'next-intl';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
+import Image from 'next/image';
 import { courseFormat, courseOverview, courseSessions, isSkippable } from '@/lib/course-data';
+import { slideThumb } from '@/lib/course-media';
 import { buildMetadata } from '@/lib/seo';
 import { site } from '@/lib/site';
 import { Section } from '@/components/ui/Section';
@@ -56,31 +58,57 @@ export default async function CoursesPage({ params }: Props) {
         <p className="max-w-2xl leading-8 text-fg-muted">{courseOverview[loc]}</p>
 
         <div className="mt-10 grid gap-4">
-          {courseSessions.map((s) => {
+          {courseSessions.map((s, i) => {
             const published = s.status === 'published';
+            const thumb = published ? slideThumb(s.slug, loc) : null;
             return (
-              <Card key={s.slug} className="flex flex-col gap-2">
-                <div className="flex flex-wrap items-center gap-3">
-                  <span className="text-sm text-fg-muted">{t('session')} {s.order}</span>
-                  {!published && <Badge>{t('comingSoon')}</Badge>}
-                </div>
-                <h2 className="text-xl font-semibold leading-snug">
-                  {published ? (
-                    <a href={`/${locale}/courses/${s.slug}`} className="hover:text-accent">
-                      {s.title[loc]}
+              <Card key={s.slug} className="flex flex-col gap-4 sm:flex-row sm:items-start">
+                {published ? (
+                  thumb ? (
+                    <a href={`/${locale}/courses/${s.slug}`} className="block w-full shrink-0 sm:w-56">
+                      <Image
+                        src={thumb}
+                        alt={`${t('coverSlide')} ${s.order}: ${s.title[loc]}`}
+                        width={640}
+                        height={360}
+                        priority={i === 0}
+                        loading={i === 0 ? undefined : 'lazy'}
+                        sizes="(min-width: 640px) 224px, 100vw"
+                        className="aspect-[16/9] w-full rounded-lg object-cover"
+                      />
                     </a>
-                  ) : (
-                    s.title[loc]
-                  )}
-                </h2>
-                <p className="text-sm leading-7 text-fg-muted">{s.summary[loc]}</p>
-                {!published && (
-                  <ul className="mt-1 list-inside list-disc text-sm leading-7 text-fg-muted">
-                    {s.learningOutcomes.map((o) => (
-                      <li key={o.en}>{o[loc]}</li>
-                    ))}
-                  </ul>
+                  ) : null
+                ) : (
+                  <div
+                    aria-hidden="true"
+                    className="flex aspect-[16/9] w-full shrink-0 items-center justify-center rounded-lg bg-surface-2 sm:w-56"
+                  >
+                    <span className="text-3xl font-bold text-fg-muted">{s.order}</span>
+                  </div>
                 )}
+                <div className="flex flex-col gap-2">
+                  <div className="flex flex-wrap items-center gap-3">
+                    <span className="text-sm text-fg-muted">{t('session')} {s.order}</span>
+                    {!published && <Badge>{t('comingSoon')}</Badge>}
+                  </div>
+                  <h2 className="text-xl font-semibold leading-snug">
+                    {published ? (
+                      <a href={`/${locale}/courses/${s.slug}`} className="hover:text-accent">
+                        {s.title[loc]}
+                      </a>
+                    ) : (
+                      s.title[loc]
+                    )}
+                  </h2>
+                  <p className="text-sm leading-7 text-fg-muted">{s.summary[loc]}</p>
+                  {!published && (
+                    <ul className="mt-1 list-inside list-disc text-sm leading-7 text-fg-muted">
+                      {s.learningOutcomes.map((o) => (
+                        <li key={o.en}>{o[loc]}</li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
               </Card>
             );
           })}

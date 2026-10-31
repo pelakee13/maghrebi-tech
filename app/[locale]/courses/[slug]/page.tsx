@@ -1,11 +1,11 @@
 import type { Metadata } from 'next';
-import fs from 'node:fs';
-import path from 'node:path';
+import Image from 'next/image';
 import { hasLocale } from 'next-intl';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import { courseSessions, getNeighbours, getPublishedSession, isSkippable, notesForRender } from '@/lib/course-data';
+import { pdfInfo, slideThumb } from '@/lib/course-media';
 import { buildMetadata } from '@/lib/seo';
 import { site } from '@/lib/site';
 import { Container } from '@/components/ui/Container';
@@ -40,10 +40,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   });
 }
 
-function formatSize(bytes: number): string {
-  return bytes >= 1024 * 1024 ? `${(bytes / 1024 / 1024).toFixed(1)} MB` : `${Math.max(1, Math.round(bytes / 1024))} KB`;
-}
-
 export default async function CoursePage({ params }: Props) {
   const { locale, slug } = await params;
   if (!hasLocale(routing.locales, locale)) notFound();
@@ -58,12 +54,8 @@ export default async function CoursePage({ params }: Props) {
     ? Array.from({ length: session.slides.count }, (_, i) => `/courses/${session.slug}/slides/${loc}/slide-${String(i + 1).padStart(2, '0')}.webp`)
     : [];
   const pdfUrl = session.pdf?.[loc];
-  const pdfSize = pdfUrl
-    ? (() => {
-        const full = path.join(process.cwd(), 'public', pdfUrl);
-        return fs.existsSync(full) ? formatSize(fs.statSync(full).size) : null;
-      })()
-    : null;
+  const pdf = pdfUrl ? pdfInfo(pdfUrl) : null;
+  const thumb = slideThumb(session.slug, loc);
 
   const { prev, next } = getNeighbours(slug);
   const p = prev ? { s: prev, isPublished: prev.status === 'published' } : null;
@@ -145,14 +137,36 @@ export default async function CoursePage({ params }: Props) {
         {pdfUrl && (
           <div className="mt-10">
             <h2 className="text-lg font-semibold">{t('files')}</h2>
-            <a
-              href={pdfUrl}
-              download
-              data-testid="course-download"
-              className="mt-3 inline-flex items-center rounded-xl border border-border px-4 py-2 text-sm hover:bg-surface"
-            >
-              {t('download')} (PDF{pdfSize ? ` · ${pdfSize}` : ''})
-            </a>
+            <div className="mt-3 flex flex-wrap items-center gap-4">
+              {thumb && (
+                <Image
+                  src={thumb}
+                  alt={`${t('coverSlide')} ${session.order}: ${session.title[loc]}`}
+                  width={640}
+                  height={360}
+                  loading="lazy"
+                  className="aspect-[16/9] w-40 rounded-lg object-cover"
+                />
+              )}
+              <div>
+                <a
+                  href={pdfUrl}
+                  download
+                  data-testid="course-download"
+                  className="inline-flex items-center rounded-xl border border-border px-4 py-2 text-sm hover:bg-surface"
+                >
+                  {t('download')} (PDF)
+                </a>
+                <p className="mt-2 text-xs text-fg-muted">
+                  {pdf && (
+                    <>
+                      {pdf.sizeLabel}
+                      {pdf.pages ? ` · ${pdf.pages} ${t('pages')}` : ''}
+                    </>
+                  )}
+                </p>
+              </div>
+            </div>
           </div>
         )}
 
