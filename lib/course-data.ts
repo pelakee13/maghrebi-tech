@@ -338,10 +338,11 @@ No advanced math needed — understanding the core logic is enough. Data volume 
   {
     slug: 'ai-session-3',
     order: 3,
-    status: 'coming-soon',
+    status: 'published',
+    publishedAt: '2026-11-07',
     title: {
       fa: 'مغز مصنوعی: شبکه‌های عصبی به زبان ساده',
-      en: 'The Artificial Brain: Neural Networks in Plain Language',
+      en: 'Artificial Brain: Neural Networks Explained Simply',
     },
     summary: {
       fa: 'قیاس شبکه‌ی عصبی با مغز انسان؛ لایه‌ها، وزن‌ها و یادگیری به‌صورت بصری؛ چرا یادگیری عمیق قدرتمند است؛ مثال‌های تصویری (تشخیص چهره، ترجمه، تولید تصویر).',
@@ -350,14 +351,137 @@ No advanced math needed — understanding the core logic is enough. Data volume 
     level: { fa: 'مقدماتی', en: 'Beginner' },
     duration: { fa: '۶۰ دقیقه', en: '60 minutes' },
     learningOutcomes: [
-      { fa: 'شبکه‌ی عصبی به‌زبان ساده و قیاس آن با مغز', en: 'Neural networks in plain language, compared to the brain' },
-      { fa: 'لایه‌ها و وزن‌ها: یادگیری به‌صورت بصری', en: 'Layers and weights: learning made visual' },
-      { fa: 'چرا یادگیری عمیق قدرتمند است', en: 'Why deep learning is powerful' },
-      { fa: 'مثال‌های واقعی: تشخیص چهره، ترجمه، تولید تصویر', en: 'Real examples: face recognition, translation, image generation' },
+      {
+        fa: 'الهام از طبیعت: عملکرد نورون‌های مغز انسان',
+        en: 'Nature-inspired: understanding how human brain neurons work',
+      },
+      {
+        fa: 'ساختار شبکه: لایه‌ها و وزن‌های تصمیم‌گیری',
+        en: 'Network architecture: layers and decision weights',
+      },
+      {
+        fa: 'یادگیری عمیق: راز قدرت شبکه‌های چندلایه',
+        en: 'Deep learning: the power behind multi-layer networks',
+      },
+      {
+        fa: 'کاربردهای روزمره: تشخیص چهره، ترجمه و تولید',
+        en: 'Everyday applications: face recognition, translation and generation',
+      },
+    ],
+    takeaways: [
+      {
+        fa: 'شبکه‌های عصبی با الهام از نورون‌های مغز انسان طراحی شده‌اند.',
+        en: 'Neural networks are designed after human brain neurons.',
+      },
+      {
+        fa: 'هر شبکه سه بخش دارد: لایه‌ی ورودی، لایه‌های پنهان و لایه‌ی خروجی.',
+        en: 'Every network has three parts: input layer, hidden layers and output layer.',
+      },
+      {
+        fa: 'یادگیری یعنی اصلاح تدریجی وزن‌ها برای کم‌کردن خطای پیش‌بینی.',
+        en: 'Learning means gradually adjusting weights to reduce prediction error.',
+      },
+      {
+        fa: 'قدرت یادگیری عمیق از افزایش لایه‌های پنهان می‌آید: درک الگوهای پیچیده.',
+        en: 'Deep learning gains its power from more hidden layers: understanding complex patterns.',
+      },
+      {
+        fa: 'تشخیص چهره، ترجمه‌ی هوشمند و تولید تصویر محصول همین فناوری‌اند.',
+        en: 'Face recognition, smart translation and image generation are products of this technology.',
+      },
     ],
     exercise: {
-      fa: '[TODO: آیتم فعالیت/دمو جلسه‌ی ۳ را مشخص کن]',
-      en: '[TODO: confirm the activity/demo item for session 3]',
+      fa: '«شکارچی شبکه‌ی عصبی!» در طول هفته دو ابزار هوشمند را آزمایش کنید: یک ضرب‌المثل فارسی را در مترجم گوگل امتحان کنید، در گالری گوشی «غروب» یا «ماشین» را جستجو کنید، و یک مورد دقت بالا و یک مورد خطای هوش مصنوعی را یادداشت کنید.',
+      en: '“Neural Network Hunter!” Test two smart tools this week: try a Persian proverb in Google Translate or a chatbot, search “sunset” or “car” in your phone gallery, and note one case of high accuracy and one AI error.',
+    },
+    notes: {
+      fa: `> **TODO (بررسی متن):** این یادداشت‌ها از روی اسلایدهای جلسه نوشته شده و برای انتشار نهایی به تأیید شما نیاز دارد.
+
+## مغز انسان چطور کار می‌کند؟
+
+مغز انسان حدود ۸۶ میلیارد نورون فعال دارد. هر نورون سیگنال را از حواس پنج‌گانه می‌گیرد، پیام الکتریکی را با سرعت بین نورون‌ها جابه‌جا می‌کند، و با تکرار و تمرین ارتباط‌ها قوی‌تر می‌شوند. همین سه قدم — دریافت، پردازش گروهی و تقویت مسیر — الگویی است که شبکه‌ی عصبی مصنوعی از آن کپی کرده است.
+
+## شبکه‌ی عصبی مصنوعی چیست؟
+
+مقایسه‌ی مستقیم: در مغز طبیعی واحد سازنده سلول زنده‌ی عصبی، پل ارتباطی سیناپس‌های زیستی و روش یادگیری تجربه‌ی روزمره و تکرار است. در شبکه‌ی مصنوعی واحد سازنده گره‌های محاسباتی نرم‌افزاری، پل ارتباطی وزن‌های عددی قابل‌تنظیم و روش یادگیری دیدن هزاران نمونه‌ی داده است.
+
+## نورون مصنوعی به‌سادگی
+
+فرض کنید ورودی‌ها «هوا آفتابی»، «وقت آزاد» و «دوستان هستند» باشند. هر ورودی یک وزن اهمیت می‌گیرد (ضرب در وزن)، مجموع گرفته می‌شود، و نورون مرکزی تصمیم می‌گیرد: «به پارک می‌رویم!» ساختار هر نورون همین است: ورودی‌ها، وزن‌ها، خروجی.
+
+## معماری شبکه
+
+سه لایه: **ورودی** تصویر، متن یا صدا را می‌گیرد؛ **لایه‌های پنهان** الگوها و ویژگی‌های پنهان را استخراج می‌کنند؛ **خروجی** نتیجه‌ی نهایی را تحویل می‌دهد.
+
+## وزن‌ها و یادگیری
+
+دقیقاً مثل تنظیم دمای دوش آب با چرخاندن تدریجی شیر: اول با وزن‌های کاملاً تصادفی حدس می‌زنیم، خطا را با جواب درست مقایسه می‌کنیم، وزن‌ها را برای کم‌کردن خطا تنظیم می‌کنیم، و بعد از هزاران تکرار به دقت بالا می‌رسیم.
+
+## یادگیری عمیق چیست؟
+
+ده‌ها لایه‌ی پنهان متوالی در کنار هم: لایه‌های ابتدایی نقطه‌ها، لبه‌ها و خطوط ساده را تشخیص می‌دهند، لایه‌های میانی خطوط را برای شناخت شکل‌ها ترکیب می‌کنند، و لایه‌های عمیق نهایی درک کاملی از کل تصویر یا متن پیدا می‌کنند. قدرتش هم سه دلیل دارد: کشف خودکار ویژگی‌ها بدون برنامه‌نویسی دستی قواعد، رشد با کلان‌داده‌ها، و پردازش موازی GPU.
+
+## سه کاربرد واقعی
+
+**بینایی ماشین:** تشخیص چهره در گوشی — لایه اول خطوط و مرزهای روشنایی، لایه دوم چشم و ابرو و بینی، لایه سوم تطبیق ساختار کامل چهره. حتی با عینک یا تغییر نور هم کار می‌کند.
+
+**پردازش زبان طبیعی:** ترجمه‌ی هوشمند — عبور از ترجمه‌ی کلمه‌به‌کلمه، درک معنای کلی جمله، تشخیص اصطلاحات و کنایه‌ها («It is raining cats and dogs» یعنی باران شدید).
+
+**هوش مصنوعی مولد:** تولید تصویر از متن — ترکیب مفاهیم آموخته‌شده از میلیون‌ها تصویر هنری و ساخت تصویرهایی که هرگز وجود نداشته‌اند.
+
+## قبل و بعد
+
+ترجمه‌ی ماشینی از «خشک و کلمه‌به‌کلمه» شد «روان و مفهومی»؛ تشخیص چهره از «خطا با عینک» شد «تشخیص فوری در هر نور»؛ تولید تصویر از «غیرممکن بدون طراح انسانی» شد «اثر هنری در چند ثانیه».
+
+## محدودیت‌ها
+
+تشتت به داده: برای یادگیری به هزاران نمونه نیاز است. معمای جعبه‌ی سیاه: توضیح دقیق منطق تصمیم دشوار است. مصرف انرژی و هزینه: به سرورها و سخت‌افزار گران‌قیمت نیاز دارد. و البته شبکه‌ی عصبی مصنوعی احساس ندارد — صرفاً یک سامانه‌ی ریاضی برای کشف الگوهای آماری است.`,
+      en: `> **TODO (review):** These notes were written from the session slides and need your approval before publishing.
+
+## How does the human brain work?
+
+The human brain has about 86 billion active neurons. Each neuron receives signals from the five senses, passes electrical messages between neurons at high speed, and connections strengthen through repetition and practice. Those three steps — input, group processing, pathway strengthening — are the pattern the artificial neural network copies.
+
+## What is an artificial neural network?
+
+Direct comparison: in the natural brain the building block is the living nerve cell, the connecting bridge is biological synapses, and learning comes from daily experience and repetition. In the artificial network the building block is software computational nodes, the bridge is adjustable numerical weights, and learning comes from observing thousands of data samples.
+
+## The artificial neuron, simply
+
+Say the inputs are “sunny weather”, “free time” and “friends joining”. Each input gets an importance weight (multiply by the weight), the sum goes to the central neuron, and the final output is: “Going to the park!” That is the whole anatomy: inputs, weights, output.
+
+## Network architecture
+
+Three layers: **input** takes the image, text or audio; **hidden layers** extract patterns and hidden features; **output** delivers the final result.
+
+## Weights and learning
+
+Just like adjusting shower water temperature by gradually turning the faucet: start with completely random weights, measure the error against the correct answer, adjust weights to reduce the error, and after thousands of iterations reach high accuracy.
+
+## What is deep learning?
+
+Dozens of sequential hidden layers: early layers detect dots, edges and simple lines; middle layers combine lines into shapes; deep final layers build full understanding of the whole image or text. Three reasons for its power: automatic feature extraction (no manual rule programming), scaling with big data, and GPU parallel processing.
+
+## Three real applications
+
+**Computer vision:** face recognition on phones — layer one detects light boundaries, layer two identifies eyes, eyebrows, nose and lips, layer three matches the full facial structure. It still works with glasses or changed lighting.
+
+**Natural language processing:** smart translation — going beyond word-for-word translation to full sentence meaning, catching idioms and tone (“It is raining cats and dogs” means heavy rain).
+
+**Generative AI:** text-to-image — combining concepts learned from millions of artwork images to create pictures that never existed.
+
+## Before and after
+
+Machine translation went from rigid and word-for-word to fluent and conceptual; face recognition went from failing with glasses to instant recognition in any lighting; image generation went from impossible without a human designer to artwork in seconds.
+
+## Limitations
+
+High data demand: thousands of samples to learn. The black-box dilemma: hard to explain the exact decision logic. Energy and cost: expensive servers and hardware. And no, the artificial neural network has no feelings — it is simply a mathematical system for discovering statistical patterns.`,
+    },
+    slides: { count: 20 },
+    pdf: {
+      fa: '/courses/ai-session-3-fa.pdf',
+      en: '/courses/ai-session-3-en.pdf',
     },
   },
   {

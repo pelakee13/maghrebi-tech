@@ -31,13 +31,16 @@ describe('course data', () => {
   it('has 10 sessions in order and only published ones get pages', () => {
     expect(courseSessions.map((s) => s.order)).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
     const published = getPublishedSessions();
-    expect(published.map((s) => s.slug)).toEqual(['ai-session-1', 'ai-session-2']);
+    expect(published.map((s) => s.slug)).toEqual(['ai-session-1', 'ai-session-2', 'ai-session-3']);
   });
 
   it('derives prev/next including coming-soon neighbours', () => {
     const { next } = getNeighbours('ai-session-2');
     expect(next?.slug).toBe('ai-session-3');
-    expect(next?.status).toBe('coming-soon');
+    expect(next?.status).toBe('published');
+    const { next: afterThree } = getNeighbours('ai-session-3');
+    expect(afterThree?.slug).toBe('ai-session-4');
+    expect(afterThree?.status).toBe('coming-soon');
     const { prev } = getNeighbours('ai-session-3');
     expect(prev?.slug).toBe('ai-session-2');
     const { prev: none } = getNeighbours('ai-session-1');
