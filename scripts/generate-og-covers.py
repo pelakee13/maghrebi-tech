@@ -15,7 +15,7 @@ OG_W, OG_H = 1200, 630
 MAX_BYTES = 150 * 1024
 
 # Published sessions only (mirrors lib/course-data.ts status: "published").
-PUBLISHED = ['ai-session-1', 'ai-session-2', 'ai-session-3']
+PUBLISHED = ['ai-session-1', 'ai-session-2', 'ai-session-3', 'ai-session-4', 'ai-session-5', 'ai-session-6']
 
 
 def cover_og(src: str, dst: str) -> None:

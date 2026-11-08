@@ -16,16 +16,17 @@ test('nav has a Courses link and the list shows all 10 sessions', async ({ page 
   await expect(page.getByText(/Where Did AI Come From/)).toBeVisible();
   await expect(page.getByText(/How Do Machines Learn/)).toBeVisible();
   await expect(page.getByText(/Neural Networks/)).toBeVisible();
-  await expect(page.getByText('Coming soon')).toHaveCount(7);
+  await expect(page.getByText('Coming soon')).toHaveCount(4);
   await expect(page.locator('a[href="/en/courses/ai-session-3"]')).toHaveCount(2); // thumbnail + title
-  await expect(page.locator('a[href="/en/courses/ai-session-4"]')).toHaveCount(0);
+  await expect(page.locator('a[href="/en/courses/ai-session-6"]')).toHaveCount(2);
+  await expect(page.locator('a[href="/en/courses/ai-session-7"]')).toHaveCount(0);
 });
 
 test('Persian list is RTL and has the Persian titles', async ({ page }) => {
   await page.goto('/fa/courses');
   await expect(page.locator('html')).toHaveAttribute('dir', 'rtl');
   await expect(page.getByText('هوش مصنوعی از کجا آمد')).toBeVisible();
-  await expect(page.getByText('به‌زودی')).toHaveCount(7);
+  await expect(page.getByText('به‌زودی')).toHaveCount(4);
   await expect(page.locator('header nav a', { hasText: 'آموزش‌ها' })).toHaveCount(1);
 });
 
@@ -50,7 +51,7 @@ test('lesson shows slides and written notes without placeholder text', async ({ 
 });
 
 test('coming-soon lesson pages 404', async ({ page }) => {
-  const res = await page.goto('/en/courses/ai-session-4');
+  const res = await page.goto('/en/courses/ai-session-7');
   expect(res?.status()).toBe(404);
 });
 

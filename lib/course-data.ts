@@ -487,7 +487,8 @@ High data demand: thousands of samples to learn. The black-box dilemma: hard to 
   {
     slug: 'ai-session-4',
     order: 4,
-    status: 'coming-soon',
+    status: 'published',
+    publishedAt: '2026-11-08',
     title: {
       fa: 'انقلاب هوش مصنوعی مولد',
       en: 'The Generative AI Revolution',
@@ -499,19 +500,124 @@ High data demand: thousands of samples to learn. The black-box dilemma: hard to 
     level: { fa: 'مقدماتی', en: 'Beginner' },
     duration: { fa: '۶۰ دقیقه', en: '60 minutes' },
     learningOutcomes: [
-      { fa: 'مدل‌های زبانی بزرگ چطور کار می‌کنند (ساده)', en: 'How large language models work (simply)' },
-      { fa: 'تولید متن، تصویر، ویدیو، صدا و کد', en: 'Generating text, image, video, audio and code' },
-      { fa: 'مقایسه‌ی مدل‌های معروف (GPT، Claude، Gemini و...)', en: 'Comparing popular models (GPT, Claude, Gemini and more)' },
+      {
+        fa: 'تفاوت هوش مصنوعی توصیفی (تشخیص) و مولد (خلق)',
+        en: 'The difference between discriminative (classifying) and generative (creating) AI',
+      },
+      {
+        fa: 'رمز مدل‌های زبانی بزرگ: پیش‌بینی کلمه‌ی بعدی',
+        en: 'The core secret of LLMs: predicting the next word',
+      },
+      {
+        fa: 'تولید متن، تصویر، ویدیو، صدا و کد',
+        en: 'Generating text, image, video, audio and code',
+      },
+      {
+        fa: 'مقایسه‌ی مدل‌های معروف و انتخاب ابزار مناسب هر کار',
+        en: 'Comparing popular models and choosing the best tool per task',
+      },
+    ],
+    takeaways: [
+      {
+        fa: 'هوش مصنوعی مولد به‌جای تشخیص داده‌های موجود، محتوای تازه می‌سازد.',
+        en: 'Generative AI creates new content instead of classifying existing data.',
+      },
+      {
+        fa: 'چت‌بات‌ها با پیش‌بینی هوشمندانه‌ی کلمه‌ی بعدی جمله‌های منسجم می‌سازند.',
+        en: 'Chatbots build coherent sentences by intelligently predicting the next word.',
+      },
+      {
+        fa: 'فرمول طلایی پرامپت تصویر: موضوع + محیط + سبک هنری + نورپردازی.',
+        en: 'The golden formula for image prompts: subject + environment + art style + lighting.',
+      },
+      {
+        fa: 'سه قانون طلایی: پرامپت دقیق، راستی‌آزمایی خروجی، و بازبینی با پیام‌های تکمیلی.',
+        en: 'Three golden rules: precise prompting, fact-checking outputs, and iterating with follow-ups.',
+      },
+      {
+        fa: 'هوش مصنوعی جای کسی را نمی‌گیرد؛ کسانی که با آن کار می‌کنند جای کسانی را می‌گیرند که نمی‌کنند.',
+        en: 'AI will not replace people; people who master AI will replace those who do not use it.',
+      },
     ],
     exercise: {
-      fa: 'دموی زنده: تولید محتوا و تصویر با مدل‌های مولد.',
-      en: 'Live demo: generating content and images with generative models.',
+      fa: '«اولین پروژه‌ی خلاقانه‌ی شما!» با یکی از ابزارهای معرفی‌شده کار عملی کنید: یک پرامپت متنی (مثلاً برنامه‌ی یک صفحه‌ی اینستاگرام) و یک تصویر تولیدشده از روی توصیف بنویسید و به اشتراک بگذارید.',
+      en: '“Your First Creative Project!” Do hands-on work with one of the featured tools: write a text prompt (e.g. an Instagram launch plan) and generate an image from a description, then share both.',
+    },
+    notes: {
+      fa: `> **TODO (بررسی متن):** این یادداشت‌ها از روی اسلایدهای جلسه نوشته شده و برای انتشار نهایی به تأیید شما نیاز دارد.
+
+## هوش مصنوعی مولد چیست؟
+
+هوش مصنوعی سنتی (توصیفی) کارش دسته‌بندی و تشخیص داده‌های موجود است — مثلاً تشخیص این‌که هوا بارانی است یا نه. هوش مصنوعی مولد برعکس، چیز تازه می‌سازد: متن، تصویر، صدا، ویدیو و کد.
+
+## موتور چت‌بات‌ها چطور کار می‌کند؟
+
+مدل‌های زبانی بزرگ (LLM) روی میلیاردها صفحه از کتاب‌ها، مقاله‌ها و وب‌سایت‌ها آموزش دیده‌اند و ساختار معنایی زبان را یاد گرفته‌اند. رمز کلی‌شان خیلی ساده است: **پیش‌بینی کلمه‌ی بعدی.** همین کار ساده، وقتی میلیاردها بار تکرار شود، جمله‌های منسجم و پاسخ‌های هوشمند می‌سازد.
+
+## چه چیزهایی می‌سازد؟
+
+**متن:** نوشتن ایمیل کاری، مقاله، پست شبکه‌های اجتماعی، خلاصه‌سازی و ترجمه‌ی گزارش‌های طولانی. **تصویر:** از یک جمله تا عکس و نقاشی — مثلاً «قلعه‌ی کریستالی درخشان میان ابرها در نور غروب». **ویدیو، صدا و کد:** کلیپ سینمایی از متن، صداگذاری طبیعی، آهنگ‌سازی و تولید کد نرم‌افزاری.
+
+## مقایسه‌ی مدل‌ها
+
+ChatGPT (OpenAI) همه‌فن‌حریف گفت‌وگو و ایده‌پردازی است؛ Gemini (Google) در درک چندوجهی و اتصال به ابزارهای گوگل قوی است؛ Claude در نوشتن فارسی و کدنویسی لبه دارد؛ جست‌وجوی زنده و فایل‌های بزرگ با Gemini سریع‌تر است. نکته‌ی عملی: ابزار را بر اساس کار انتخاب کنید، نه بر اساس تبلیغات.
+
+## دو کارگاه عملی
+
+**کارگاه ۱ — تولید متن:** پرامپت آماده‌ی کلاس: «تو یک مشاور کسب‌وکاری. برنامه‌ی ۳ روزه‌ی افتتاح صفحه‌ی اینستاگرام یک کافه‌کتاب محلی را با لحن گرم و صمیمی بنویس.»
+
+**کارگاه ۲ — تصویر از متن:** فرمول طلایی: موضوع + محیط و پس‌زمینه + سبک هنری + نورپردازی.
+
+## سه قانون طلایی
+
+۱. **پرامپت دقیق:** نقش، هدف، مخاطب و فرمت خروجی را مشخص کنید. ۲. **راستی‌آزمایی:** آمار، ارقام و داده‌های فنی را حتماً با منبع انسانی چک کنید. ۳. **بازبینی:** از جواب اول راضی نشوید؛ با پیام‌های تکمیلی آن را بهتر کنید.
+
+## پرسش‌های پرتکرار
+
+آیا هوش مصنوعی جای ما را می‌گیرد؟ نه — کسانی که هوش مصنوعی را یاد بگیرند جای کسانی را می‌گیرند که استفاده نمی‌کنند. آیا محتوای تولیدشده کپی از اینترنت است؟ نه — کلمه‌ها و پیکسل‌ها از نو ساخته می‌شوند، نه کپی.`,
+      en: `> **TODO (review):** These notes were written from the session slides and need your approval before publishing.
+
+## What is generative AI?
+
+Traditional (discriminative) AI classifies and detects existing data — say, whether it is raining. Generative AI creates something new: text, images, audio, video and code.
+
+## How do chatbots actually work?
+
+Large language models are trained on billions of pages of books, papers and websites, learning the semantic structure of language. The core secret is simple: **predicting the next word.** That one repeated move builds coherent sentences and smart answers.
+
+## What does it produce?
+
+**Text:** business emails, articles, social posts, summarizing and translating long reports. **Images:** from one sentence to photos and paintings — e.g. “a glowing crystal castle floating on clouds in sunset light”. **Video, audio and code:** cinematic clips from text, natural voiceovers, custom music and working software code.
+
+## Comparing models
+
+ChatGPT (OpenAI) is the all-rounder for conversation and ideation; Gemini (Google) shines at multimodal understanding and Workspace integration; Claude has a clear edge in Persian writing and coding; live search and large files are fastest with Gemini. Practical rule: choose the tool by the job, not by the hype.
+
+## Two hands-on workshops
+
+**Workshop 1 — text generation:** classroom prompt: “You are a business consultant. Write a 3-day launch plan for a local book cafe’s Instagram page in a warm, friendly tone.”
+
+**Workshop 2 — image from text:** the golden formula: subject + environment & background + art style + lighting.
+
+## Three golden rules
+
+1. **Precise prompting:** define role, goal, audience and output format. 2. **Fact-checking:** always verify statistics, figures and technical data with a human source. 3. **Iterate:** do not settle for the first response — refine with follow-ups.
+
+## FAQ
+
+Will AI replace our jobs? People who master AI will replace those who do not use it. Is generated content copied from the internet? No — words and pixels are generated anew, not copied.`,
+    },
+    slides: { count: 19 },
+    pdf: {
+      fa: '/courses/ai-session-4-fa.pdf',
+      en: '/courses/ai-session-4-en.pdf',
     },
   },
   {
     slug: 'ai-session-5',
     order: 5,
-    status: 'coming-soon',
+    status: 'published',
+    publishedAt: '2026-11-08',
     title: {
       fa: 'ابزارهای روزمره‌ی هوش مصنوعی',
       en: 'Everyday AI Tools',
@@ -523,37 +629,250 @@ High data demand: thousands of samples to learn. The black-box dilemma: hard to 
     level: { fa: 'مقدماتی', en: 'Beginner' },
     duration: { fa: '۶۰ دقیقه', en: '60 minutes' },
     learningOutcomes: [
-      { fa: 'پرامپت‌نویسی حرفه‌ای', en: 'Professional prompt writing' },
-      { fa: 'ChatGPT و Claude برای کار، درس و خلاقیت', en: 'ChatGPT and Claude for work, study and creativity' },
-      { fa: 'ابزارهای تصویر، ویدیو، صدا و اتوماسیون', en: 'Image, video, audio and automation tools' },
+      {
+        fa: 'چارچوب ۴ بخشی پرامپت‌نویسی: نقش، زمینه، کار، فرمت',
+        en: 'The 4-part prompt framework: role, context, task, format',
+      },
+      {
+        fa: 'کاربرد عملی ChatGPT و Claude در کار، درس و خلاقیت',
+        en: 'Practical ChatGPT and Claude use in work, study and creativity',
+      },
+      {
+        fa: 'ابزارهای تصویر، ویدیو، صدا و اتوماسیون',
+        en: 'Image, video, voice and automation tools',
+      },
+      {
+        fa: 'ترکیب ابزارها برای نتیجه‌ی چندبرابری',
+        en: 'Orchestrating tools together for multiplied results',
+      },
+    ],
+    takeaways: [
+      {
+        fa: 'کیفیت خروجی هوش مصنوعی بازتاب شفافیت پرامپت شماست.',
+        en: 'AI output quality is a direct reflection of prompt clarity and precision.',
+      },
+      {
+        fa: 'چارچوب ۴ بخشی (نقش، زمینه، کار، فرمت) پاسخ‌های خوب و مستمر می‌دهد.',
+        en: 'The 4-part framework (role, context, task, format) unlocks consistently strong responses.',
+      },
+      {
+        fa: 'از جواب اول راضی نشوید: با پیام‌های تکمیلی آن را بهتر کنید.',
+        en: 'Never settle for the first response: refine with follow-up prompts.',
+      },
+      {
+        fa: 'هالوسینیشن (توهم) واقعی است؛ آمار و ارقام را حتماً راستی‌آزمایی کنید.',
+        en: 'Hallucination is real; always fact-check statistics and claims.',
+      },
+      {
+        fa: 'پرامپت فارسی خوب کار می‌کند؛ ولی ابزارهای تصویر هنوز در انگلیسی جزئیات بهتری می‌دهند.',
+        en: 'Persian prompts work well, though image tools still give sharper details in English.',
+      },
     ],
     exercise: {
-      fa: 'هر نفر یک کار واقعی از کار خودش را با هوش مصنوعی انجام دهد.',
-      en: 'Each person does one real task of their own with AI.',
+      fa: '«پرامپت‌نویسی در عمل!» یک کار واقعی وقت‌گیر از کار یا درس‌تان را به هوش مصنوعی بسپارید و با چارچوب ۴ بخشی پرامپت را ارتقا دهید.',
+      en: '“Prompt Engineering in Action!” Delegate one time-consuming task to AI this week and elevate the prompt using the 4-part framework.',
+    },
+    notes: {
+      fa: `> **TODO (بررسی متن):** این یادداشت‌ها از روی اسلایدهای جلسه نوشته شده و برای انتشار نهایی به تأیید شما نیاز دارد.
+
+## چرا ابزارهای روزمره مهم‌اند؟
+
+ساعت‌ها نوشتن، ترجمه و خلاصه‌سازی در چند دقیقه تمام می‌شود؛ و دیگر لازم نیست جلوی صفحه‌ی خالی بمانید و بپرسید «از کجا شروع کنم؟»
+
+## پرامپت‌نویسی چیست؟
+
+پرامپت هر متن، سؤال یا دستوری است که به مدل هوش مصنوعی می‌دهید تا خروجی دلخواه بسازد. قانون طلایی: ورودی دقیق و شفاف یعنی خروجی دقیق و شفاف.
+
+## چارچوب ۴ بخشی
+
+۱. **نقش:** شخصیت یا تخصص را مشخص کنید (مثلاً «مثل یک معلم فیزیک باتجربه رفتار کن»). ۲. **زمینه:** پس‌زمینه و مخاطب هدف را توضیح دهید. ۳. **کار:** دقیقاً چه می‌خواهید. ۴. **فرمت:** خروجی چه شکلی باشد.
+
+مثال ضعیف: «درباره‌ی ورزش مقاله بنویس» — نتیجه: مقاله‌ای کلی و تکراری. مثال قوی: همان درخواست با نقش، زمینه و فرمت مشخص — نتیجه: محتوای عملی و مفید.
+
+## ChatGPT و Claude در عمل
+
+**ChatGPT:** معلم خصوصی، حل تمرین، نوشتن ایمیل و رزومه، جست‌وجوی زنده و گفت‌وگوی صوتی. **Claude:** نوشتن روان و ادبی، تحلیل عمیق اسناد طولانی، بازنویسی و ویرایش. جدول انتخاب ابزار: جست‌وجوی وب و مکالمه → ChatGPT؛ نوشتن طولانی و ویرایش → Claude.
+
+## ابزارهای تصویر، ویدیو و صدا
+
+**تصویر:** Midjourney و Google ImageFX برای تصاویر فوتورئالیستی و کانسپت‌آرت؛ Canva AI برای حذف پس‌زمینه و طراحی سریع. **ویدیو و صدا:** ElevenLabs برای صداهای طبیعی و دوبله‌ی چندزبانه؛ Runway و Kling برای ویدیو از متن.
+
+## اتوماسیون و ترکیب ابزارها
+
+خلاصه‌سازی خودکار جلسات (ضبط + استخراج اقدامات)، اتصال ابزارها با Make و Zapier. و نکته‌ی قدرتمند: **ترکیب ابزارها** — مثلاً ایده‌پردازی و نوشتن فیلم‌نامه با Claude، طراحی کانسپت با Midjourney، و ویرایش نهایی با ابزار ویدیو.
+
+## اشتباهات رایج
+
+از جواب اول راضی نشوید؛ واقعیت آمار را کورکورانه باور نکنید (هالوسینیشن)؛ و پرامپت را با چارچوب ۴ بخشی بازنویسی کنید.
+
+## پرسش‌های پرتکرار
+
+بهتر است فارسی پرامپت بزنم یا انگلیسی؟ مدل‌های مدرن فارسی را خیلی خوب می‌فهمند، ولی ابزارهای تصویر هنوز در انگلیسی جزئیات بهتری می‌دهند.`,
+      en: `> **TODO (review):** These notes were written from the session slides and need your approval before publishing.
+
+## Why everyday AI tools matter
+
+Hours of drafting, translation and summarization in minutes — and no more staring at a blank page asking “where do I begin?”
+
+## What is prompt engineering?
+
+A prompt is any text, question or instruction given to an AI model to produce a desired output. Golden rule: precise, clear input gives precise, clear output.
+
+## The 4-part framework
+
+1. **Role:** specify the persona or expertise (e.g. “act as an experienced physics teacher”). 2. **Context:** describe background and target audience. 3. **Task:** exactly what you want. 4. **Format:** what the output should look like.
+
+Weak prompt: “Write an article about exercising” — generic, repetitive result. Strong prompt: the same request with role, context and format defined — actionable, useful content.
+
+## ChatGPT and Claude in practice
+
+**ChatGPT:** personal tutor, practice quizzes, business writing, resumes, live search and voice mode. **Claude:** highly fluent writing, deep long-document analysis, rewriting and editing. Tool picker: web search & voice → ChatGPT; long-form writing & editing → Claude.
+
+## Image, video and voice tools
+
+**Images:** Midjourney and Google ImageFX for photorealistic imagery and concept art; Canva AI for one-click background removal. **Video & voice:** ElevenLabs for lifelike text-to-speech and multilingual dubbing; Runway and Kling for text-to-video.
+
+## Automation and tool orchestration
+
+Automated meeting summarization (transcribe + extract action items), app integrations with Make and Zapier. And the power move: **combine tools** — e.g. ideation and scriptwriting with Claude, concept art with Midjourney, final editing with a video tool.
+
+## Common mistakes
+
+Never settle for the very first response; blindly trusting facts and stats (hallucination) is dangerous; rewrite weak prompts using the 4-part framework.
+
+## FAQ
+
+Is it better to prompt in English or Persian? Modern LLMs handle Persian exceptionally well; image generators still yield sharper details in English.`,
+    },
+    slides: { count: 20 },
+    pdf: {
+      fa: '/courses/ai-session-5-fa.pdf',
+      en: '/courses/ai-session-5-en.pdf',
     },
   },
   {
     slug: 'ai-session-6',
     order: 6,
-    status: 'coming-soon',
+    status: 'published',
+    publishedAt: '2026-11-08',
     title: {
       fa: 'هوش مصنوعی در کسب‌وکار و زندگی واقعی',
-      en: 'AI in Business and Real Life',
+      en: 'Artificial Intelligence in Business & Everyday Life',
     },
     summary: {
       fa: 'بازاریابی، فروش، منابع انسانی، پزشکی، آموزش و محتوا؛ مطالعه‌ی موردی‌های واقعی؛ اتوماسیون فرایند با هوش مصنوعی.',
-      en: 'Marketing, sales, HR, medicine, education and content; real case studies; process automation with AI.',
+      en: 'Practical applications and case studies across marketing, sales, HR, medicine, education and content; intelligent process automation.',
     },
     level: { fa: 'مقدماتی', en: 'Beginner' },
     duration: { fa: '۶۰ دقیقه', en: '60 minutes' },
     learningOutcomes: [
-      { fa: 'کاربرد هوش مصنوعی در حوزه‌های مختلف کسب‌وکار', en: 'AI applied across business domains' },
-      { fa: 'مطالعه‌ی موردی‌های واقعی', en: 'Real case studies' },
-      { fa: 'اتوماسیون فرایند با هوش مصنوعی', en: 'Process automation with AI' },
+      {
+        fa: 'کاربرد هوش مصنوعی در بازاریابی، فروش، منابع انسانی و سایر حوزه‌ها',
+        en: 'AI applications in marketing, sales, HR and other business domains',
+      },
+      {
+        fa: 'مطالعه‌ی موردی‌های واقعی (مثل تحول پشتیبانی مشتری در Klarna)',
+        en: 'Real case studies (e.g. Klarna customer-support transformation)',
+      },
+      {
+        fa: 'اتوماسیون فرایند: از رویداد ماشه تا اقدام خودکار',
+        en: 'Process automation: from trigger event to automated action',
+      },
+      {
+        fa: 'سناریوهای عملی اتوماسیون برای کسب‌وکار خودتان',
+        en: 'Practical automation scenarios for your own business',
+      },
+    ],
+    takeaways: [
+      {
+        fa: 'هوش مصنوعی از وعده‌ی نظری به موتور رشد درآمد و کاهش هزینه رسیده است.',
+        en: 'AI has moved from theoretical promise to an engine for revenue growth and cost efficiency.',
+      },
+      {
+        fa: 'نمونه‌ی واقعی: دستیار هوشمند Klarna میلیون‌ها تیکت پشتیبانی را در زمان کمتری حل کرد.',
+        en: 'Real case: Klarna’s AI assistant resolved millions of support tickets faster.',
+      },
+      {
+        fa: 'سه سناریوی عملی: دسته‌بندی پیام مشتری، تولید گزارش خودکار، و پیگیری خودکار سرنخ‌های فروش.',
+        en: 'Three practical scenarios: customer-message triage, automated reporting, automated sales-lead follow-up.',
+      },
+      {
+        fa: 'فرصت: مقیاس‌پذیری سریع. چالش: کیفیت داده، حریم خصوصی و آمادگی تیم.',
+        en: 'Opportunity: rapid scaling. Challenges: data quality, privacy and team readiness.',
+      },
+      {
+        fa: 'آیا فقط شرکت‌های بزرگ؟ نه — ابزارهای SaaS و no-code برای کسب‌وکارهای کوچک هم در دسترس‌اند.',
+        en: 'Only for big enterprises? No — SaaS and no-code tools make it accessible to small businesses too.',
+      },
     ],
     exercise: {
-      fa: 'گفت‌وگوی گروهی: کسب‌وکار خودتان را چطور با هوش مصنوعی بهتر می‌کنید؟',
-      en: 'Group discussion: how would you improve your own business with AI?',
+      fa: '«اولین گردش‌کار هوشمند خود را طراحی کنید!» یک کار تکراری در کار، درس یا زندگی‌تان را پیدا کنید و مراحل خودکارکردنش را بنویسید.',
+      en: '“Design Your First Intelligent Workflow!” Find one repetitive task in your work or life and map out how to automate it.',
+    },
+    notes: {
+      fa: `> **TODO (بررسی متن):** این یادداشت‌ها از روی اسلایدهای جلسه نوشته شده و برای انتشار نهایی به تأیید شما نیاز دارد.
+
+## چرا هوش مصنوعی در کسب‌وکار حیاتی شده؟
+
+کاهش چشمگیر هزینه و سرعت اجرا: کارهای اداری، پشتیبانی و تولید محتوا در کسری از زمان انجام می‌شود. این یعنی مزیت رقابتی تازه‌ای که قبلاً در دسترس نبود.
+
+## کاربردها به ترتیب حوزه
+
+**بازاریابی:** پیشنهاد شخصی‌سازی‌شده‌ی محصول (مثل موتور پیشنهاد آمازون) و تبلیغات هدفمند. **فروش:** امتیازدهی هوشمند سرنخ‌ها تا نمایندگان فروش روی خریداران آماده تمرکز کنند. **منابع انسانی:** غربالگری هوشمند رزومه‌ها در چند ثانیه. **پزشکی:** تشخیص زودهنگام بیماری در تصاویر پزشکی (رادیولوژی، MRI، CT). **آموزش:** معلم خصوصی هوشمند که سرعت و سختی یادگیری را با دانش‌آموز تنظیم می‌کند. **محتوا:** تبدیل یک ویدیوی طولانی به کلیپ کوتاه، پست بلاگ و محتوای شبکه‌های اجتماعی.
+
+## دو مطالعه‌ی موردی
+
+**Klarna (پشتیبانی مشتری):** دستیار هوشمند سازمانی میلیون‌ها درخواست پشتیبانی را با کیفیت بالا حل کرد. **خرده‌فروشی و لجستیک:** پیش‌بینی تقاضا و انبار هوشمند — تحلیل روندهای فصلی، آب‌وهوا و سابقه‌ی خرید برای پیش‌موجودی‌کردن کالا قبل از سفارش.
+
+## اتوماسیون هوشمند فرایند
+
+سه قدم: ۱. **رویداد ماشه** — مثلاً رسیدن ایمیل جدید یا پیام مشتری. ۲. **پردازش هوشمند** — تشخیص محتوا، اولویت و اقدام لازم. ۳. **اقدام خودکار** — ثبت در صفحه‌گسترده، هشدار به تیم، یا ارسال پاسخ.
+
+## سه سناریوی عملی
+
+۱. **دسته‌بندی پیام مشتری:** تشخیص احساسات (فوری/عادی)، ثبت در Google Sheets و هشدار به تیم. ۲. **گزارش خودکار.** ۳. **پیگیری خودکار سرنخ فروش.**
+
+## فرصت‌ها و چالش‌ها
+
+فرصت: مقیاس‌پذیری سریع و چابک. چالش: کیفیت داده، حریم خصوصی، و آمادگی تیم.
+
+## پرسش‌های پرتکرار
+
+آیا فقط برای شرکت‌های بزرگ است؟ نه — ابزارهای SaaS و بدون کدنویسی برای کسب‌وکارهای کوچک و محلی هم در دسترس است.`,
+      en: `> **TODO (review):** These notes were written from the session slides and need your approval before publishing.
+
+## Why AI has become vital in business
+
+Significant cost reduction and faster execution: admin tasks, support operations and content creation happen in a fraction of the time. That is a new competitive edge.
+
+## Applications by domain
+
+**Marketing:** hyper-personalized product recommendations (like Amazon’s engine) and precision advertising. **Sales:** intelligent lead scoring so reps focus on buyers ready to close. **HR:** screening hundreds of resumes in seconds. **Medicine:** early disease detection in medical imaging (X-rays, MRI, CT). **Education:** a personalized tutor that adapts pace and difficulty per student. **Content:** turning one long video into clips, a blog post and social media.
+
+## Two case studies
+
+**Klarna (customer support):** an enterprise AI assistant resolved millions of support tickets at quality. **Retail & logistics:** predictive demand and smart warehousing — analyzing seasonal trends, weather and buying history to pre-stock before orders.
+
+## Intelligent process automation
+
+Three steps: 1. **Trigger event** — a new email or customer message. 2. **Intelligent processing** — reading content, priority and required action. 3. **Automated action** — logging to a spreadsheet, alerting the team or sending a reply.
+
+## Three practical scenarios
+
+1. **Customer-message triage:** detect sentiment (urgent vs standard), log to Google Sheets, alert the team. 2. **Automated reporting.** 3. **Automated sales-lead follow-up.**
+
+## Opportunities & considerations
+
+Opportunity: rapid scalability for agile teams. Challenges: data quality, privacy and team readiness.
+
+## FAQ
+
+Is AI adoption reserved for large enterprises? No — accessible SaaS and no-code platforms let small businesses and local shops start too.`,
+    },
+    slides: { count: 20 },
+    pdf: {
+      fa: '/courses/ai-session-6-fa.pdf',
+      en: '/courses/ai-session-6-en.pdf',
     },
   },
   {
