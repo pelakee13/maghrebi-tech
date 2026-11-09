@@ -878,10 +878,11 @@ Is AI adoption reserved for large enterprises? No — accessible SaaS and no-cod
   {
     slug: 'ai-session-7',
     order: 7,
-    status: 'coming-soon',
+    status: 'published',
+    publishedAt: '2026-11-09',
     title: {
       fa: 'داده‌ها، سوخت واقعی هوش مصنوعی',
-      en: 'Data: The Real Fuel of AI',
+      en: 'Data: The Real Fuel of Artificial Intelligence',
     },
     summary: {
       fa: 'کیفیت داده؛ سوگیری، overfitting و داده‌ی ناکافی؛ حریم خصوصی و جمع‌آوری داده. دمو: تأثیر داده‌ی بد روی خروجی مدل.',
@@ -890,22 +891,123 @@ Is AI adoption reserved for large enterprises? No — accessible SaaS and no-cod
     level: { fa: 'مقدماتی', en: 'Beginner' },
     duration: { fa: '۶۰ دقیقه', en: '60 minutes' },
     learningOutcomes: [
-      { fa: 'کیفیت داده و چرا سوخت واقعی هوش مصنوعی است', en: 'Data quality and why it is the real fuel of AI' },
-      { fa: 'سوگیری، overfitting و داده‌ی ناکافی', en: 'Bias, overfitting and insufficient data' },
-      { fa: 'حریم خصوصی و جمع‌آوری داده', en: 'Privacy and data collection' },
+      {
+        fa: 'چرا داده‌ی باکیفیت مهم‌تر از داده‌ی زیاد است',
+        en: 'Why data quality matters far more than quantity',
+      },
+      {
+        fa: 'سه مشکل رایج: سوگیری، overfitting (حفظ‌کردن) و داده‌ی ناکافی',
+        en: 'Three common pitfalls: data bias, overfitting and insufficient data',
+      },
+      {
+        fa: 'حریم خصوصی: چه اطلاعاتی نباید به هوش مصنوعی داد',
+        en: 'Privacy: what information must never be submitted to AI tools',
+      },
+      {
+        fa: 'آماده‌سازی داده‌ی باکیفیت برای مدل‌های هوش مصنوعی',
+        en: 'How to prepare better data for AI models',
+      },
+    ],
+    takeaways: [
+      {
+        fa: 'داده‌ی بد یعنی یادگیری بد؛ حتی بهترین مدل‌ها بدون داده‌ی خوب شکست می‌خورند.',
+        en: 'Garbage in, garbage out: even state-of-the-art models fail without quality data.',
+      },
+      {
+        fa: 'مثال واقعی: ابزار استخدام آمازون به‌دلیل داده‌ی تاریخی یک‌طرفه شکست خورد.',
+        en: 'Real case: Amazon’s AI recruiting tool failed due to one-sided historical data.',
+      },
+      {
+        fa: 'هالوسینیشن چت‌بات‌ها واقعی است؛ آمار و ادعاهای علمی را راستی‌آزمایی کنید.',
+        en: 'Chatbot hallucination is real; fact-check statistics and scientific claims.',
+      },
+      {
+        fa: 'قبل از آپلود فایل به ابزارهای هوش مصنوعی، نام و شماره و شناسه‌ها را حذف کنید.',
+        en: 'Before uploading to AI tools, remove names, phone numbers and personal identifiers.',
+      },
+      {
+        fa: 'سوگیری را به صفر مطلق نمی‌توان رساند، ولی با تنوع داده و بازبینی مستمر می‌توان کاهشش داد.',
+        en: 'Bias cannot be reduced to absolute zero, but data diversity and continuous auditing minimize it.',
+      },
     ],
     exercise: {
-      fa: 'دمو: تأثیر داده‌ی بد روی خروجی مدل.',
-      en: 'Demo: the effect of bad data on model output.',
+      fa: '«کارآگاه کیفیت داده!» یک جدول یا متن شلوغ و ناقص را در دو مرحله به هوش مصنوعی بدهید و خروجی‌ها را مقایسه کنید؛ تفاوت‌ها را یادداشت کنید.',
+      en: '“Data Quality Detective!” Submit a messy, incomplete table or text to AI in two stages and compare the responses — note the differences.',
+    },
+    notes: {
+      fa: `> **TODO (بررسی متن):** این یادداشت‌ها از روی اسلایدهای جلسه نوشته شده و برای انتشار نهایی به تأیید شما نیاز دارد.
+
+## چرا داده سوخت واقعی هوش مصنوعی است؟
+
+الگوریتم مثل موتور مسابقه‌ای است؛ حتی پیشرفته‌ترین موتور بدون سوخت باکیفیت یک قدم هم حرکت نمی‌کند. هوش مصنوعی قواعد پنهان را از تصاویر، متن‌ها و تجربه‌های ثبت‌شده استخراج می‌کند — بدون داده، چیزی برای استخراج نیست.
+
+## کیفیت مهم‌تر از کمیت
+
+داده‌ی زیاد با کیفیت پایین مثل خواندن هزار کتاب پر از غلط املایی و اطلاعات نادرست است — دانش‌آموز را گیج‌تر می‌کند. داده‌ی باکیفیت سه ویژگی دارد: **دقت** (بدون خطا و برچسب اشتباه)، **تنوع** (پوشش همه‌ی سناریوها و محیط‌ها) و **تازگی** (به‌روز بودن).
+
+## سه مشکل رایج
+
+**سوگیری داده:** وقتی داده‌ی آموزشی یک‌طرفه باشد، هوش مصنوعی نگاه کج و ناعادلانه پیدا می‌کند — مثلاً مدل تشخیص صدا که فقط با لهجه‌ی استاندارد آموزش دیده باشد. **Overfitting (حفظ‌کردن):** مثل دانش‌آموزی که سؤال‌های امتحان قبلی را حفظ کرده و با تغییر یک عدد نمره‌ی صفر می‌گیرد. **داده‌ی ناکافی:** قضاوت عجولانه — مثل قضاوت درباره‌ی آب‌هوای یک شهر بر اساس یک بعدازظهر بارانی.
+
+## درس تاریخی: شکست ابزار استخدام آمازون
+
+آمازون سیستمی برای غربالگری رزومه ساخت که روی ۱۰ سال داده‌ی تاریخی متقاضیان آموزش دیده بود. مشکل: اکثر رزومه‌های فنی متعلق به مردان بود و مدل یاد گرفت زنان را کنار بگذارد. نتیجه: ابزار کنار گذاشته شد — داده‌ی گذشته همیشه منصفانه نیست.
+
+## حریم خصوصی و امنیت
+
+چت‌بات‌های عمومی به‌طور پیش‌فرض ممکن است پرامپت‌ها و فایل‌های شما را برای آموزش مدل‌های بعدی استفاده کنند. هرگز شماره ملی، اطلاعات بانکی و اسناد محرمانه را ارسال نکنید. قوانین امنیتی: **ناشناس‌سازی داده** قبل از آپلود، **غیرفعال‌کردن آموزش** در تنظیمات، و احتیاط در اشتراک‌گذاری.
+
+## آماده‌سازی داده‌ی باکیفیت
+
+قدم اول **پاک‌سازی:** حذف ردیف‌های تکراری، اصلاح غلط‌های املایی، رفع سلول‌های خالی. قدم دوم **استانداردسازی:** یکدست‌کردن قالب تاریخ، واحد پول و اندازه‌گیری‌ها.
+
+## پرسش‌های پرتکرار
+
+آیا سوگیری را می‌توان به صفر رساند؟ تقریباً غیرممکن است، ولی تنوع داده و بازبینی مستمر آن را به‌شدت کاهش می‌دهد. چقدر داده لازم است؟ بسته به مسئله، از چندصد نمونه تا میلیون‌ها رکورد.`,
+      en: `> **TODO (review):** These notes were written from the session slides and need your approval before publishing.
+
+## Why data is the real fuel of AI
+
+The algorithm is like a race-car engine: even the most advanced engine won’t move an inch without high-quality fuel. AI extracts underlying rules from images, texts and recorded experiences — without data, there is nothing to extract from.
+
+## Quality beats quantity
+
+Massive low-quality data is like reading a thousand books full of typos and false information — it only confuses a student further. High-quality data has three traits: **accuracy** (no errors or wrong labels), **diversity** (covering all scenarios and environments) and **freshness** (up to date).
+
+## Three common pitfalls
+
+**Data bias:** one-sided training data makes AI skewed and unfair — e.g. a voice model trained only on a standard accent. **Overfitting (memorization):** like a student who memorized past exam questions word-for-word and scores zero when one number changes. **Insufficient data:** hasty conclusions — like judging a city’s year-round climate from one rainy afternoon.
+
+## Historical case: Amazon’s AI recruiting tool
+
+Amazon built an AI to screen resumes, trained on 10 years of historical applicant data. The flaw: most technical resumes came from men, and the model learned to penalize women. The tool was scrapped — past data is not always fair.
+
+## Privacy & security
+
+Public chatbots may use the prompts and files you submit to train future model versions. Never submit national IDs, bank details or confidential documents. Golden rules: **anonymize data** before uploading, **opt out of training** in settings, and share carefully.
+
+## Preparing better data
+
+Step 1 **cleaning:** remove duplicate rows, fix spelling errors, resolve blank cells. Step 2 **standardization:** unify date formats, currency units and measurements.
+
+## FAQ
+
+Can data bias be reduced to absolute zero? Nearly impossible, but diversifying data and continuous auditing minimize it substantially. How much data is needed? Depending on the problem, anywhere from hundreds of samples to millions of records.`,
+    },
+    slides: { count: 19 },
+    pdf: {
+      fa: '/courses/ai-session-7-fa.pdf',
+      en: '/courses/ai-session-7-en.pdf',
     },
   },
   {
     slug: 'ai-session-8',
     order: 8,
-    status: 'coming-soon',
+    status: 'published',
+    publishedAt: '2026-11-09',
     title: {
       fa: 'اخلاق، چالش‌ها و خطرات هوش مصنوعی',
-      en: 'AI Ethics, Challenges and Risks',
+      en: 'Ethics, Challenges and Risks of Artificial Intelligence',
     },
     summary: {
       fa: 'سوگیری الگوریتمیک؛ دیپ‌فیک، اطلاعات غلط و ریسک‌های امنیتی؛ شغل‌ها و جایگزینی؛ پاسخگویی و قانون‌گذاری.',
@@ -914,61 +1016,447 @@ Is AI adoption reserved for large enterprises? No — accessible SaaS and no-cod
     level: { fa: 'مقدماتی', en: 'Beginner' },
     duration: { fa: '۶۰ دقیقه', en: '60 minutes' },
     learningOutcomes: [
-      { fa: 'سوگیری الگوریتمیک و ریشه‌هایش', en: 'Algorithmic bias and its roots' },
-      { fa: 'دیپ‌فیک، اطلاعات غلط و ریسک‌های امنیتی', en: 'Deepfakes, misinformation and security risks' },
-      { fa: 'تأثیر بر شغل‌ها، پاسخگویی و قانون‌گذاری', en: 'Impact on jobs, accountability and regulation' },
+      {
+        fa: 'سوگیری الگوریتمیک و سه ریشه‌ی اصلی آن',
+        en: 'Algorithmic bias and its three main roots',
+      },
+      {
+        fa: 'دیپ‌فیک، اطلاعات غلط و ریسک‌های امنیتی',
+        en: 'Deepfakes, misinformation and security risks',
+      },
+      {
+        fa: 'تأثیر هوش مصنوعی بر شغل‌ها و مسئولیت‌پذیری',
+        en: 'Impact on jobs and accountability',
+      },
+      {
+        fa: 'قانون‌گذاری جهانی (مثل EU AI Act) و اصول استفاده‌ی مسئولانه',
+        en: 'Global regulation (e.g. EU AI Act) and responsible-use principles',
+      },
+    ],
+    takeaways: [
+      {
+        fa: 'هوش مصنوعی بی‌طرف نیست؛ سوگیری می‌تواند در تصمیم‌های حیاتی مثل وام و استخدام اثر بگذارد.',
+        en: 'AI is not neutral; bias can affect critical decisions like loans and hiring.',
+      },
+      {
+        fa: 'دیپ‌فیک و اطلاعات جعلی تهدیدهای واقعی‌اند؛ منبع اطلاعات را همیشه بررسی کنید.',
+        en: 'Deepfakes and fake content are real threats; always verify the source.',
+      },
+      {
+        fa: 'هوش مصنوعی جای انسان را نمی‌گیرد؛ ولی مهارت‌های جدید و تغییر شغل‌ها اجتناب‌ناپذیر است.',
+        en: 'AI won’t replace humans, but new skills and job transformations are inevitable.',
+      },
+      {
+        fa: 'پاسخگویی: اگر هوش مصنوعی اشتباه کند، تقصیر کیست؟ برنامه‌نویس، سازنده، تأمین‌کننده‌ی داده؟',
+        en: 'Accountability: when AI errs, is the fault the programmer, manufacturer or data provider?',
+      },
+      {
+        fa: 'آگاهی بهتر از ترس است؛ درک چالش‌ها ما را کاربران هوشمند و مقاوم می‌کند.',
+        en: 'Awareness beats fear; understanding challenges makes us resilient, intelligent users.',
+      },
     ],
     exercise: {
-      fa: 'گفت‌وگو: سناریوهای واقعی و تصمیم‌های اخلاقی.',
-      en: 'Discussion: real scenarios and ethical decisions.',
+      fa: '«ممیز اخلاق هوش مصنوعی شوید!» یکی از دو آزمایش را انجام دهید: تشخیص سوگیری در خروجی یک مدل، یا راستی‌آزمایی ادعاهای آن. یافته‌هایتان را در چند خط بنویسید.',
+      en: '“Become an AI Ethics Auditor!” Do one of two experiments: spot bias in a model’s output, or fact-check its claims. Document your findings in a few concise lines.',
+    },
+    notes: {
+      fa: `> **TODO (بررسی متن):** این یادداشت‌ها از روی اسلایدهای جلسه نوشته شده و برای انتشار نهایی به تأیید شما نیاز دارد.
+
+## چرا اخلاق در هوش مصنوعی مهم است؟
+
+هوش مصنوعی در تصمیم‌های حیاتی وارد شده: تأیید وام، استخدام، تشخیص پزشکی و حتی احکام قضایی. خطا در این سطح، با سرعت و مقیاس زیاد، زندگی انسان‌ها را مستقیم تحت تأثیر قرار می‌دهد.
+
+## سوگیری الگوریتمیک چیست؟
+
+تمایل سیستماتیک و تکرارشونده‌ی یک سیستم هوش مصنوعی به تولید نتایج ناعادلانه. افسانه‌ی بی‌طرفی ماشین: برخلاف تصور رایج، ماشین‌ها بی‌طرف نیستند — چون داده‌هایی که از آن‌ها یاد گرفته‌اند، خودشان ممکن است یک‌طرفه باشند.
+
+سه ریشه‌ی اصلی: **داده‌ی نامتعادل** (گروه‌های جمعیتی یا زبانی کمتر نمایش داده شده‌اند)، **طراحی مدل و وزن‌دهی** (الگوریتم‌ساز ممکن است ناخواسته سوگیری وارد کند)، و **بازخورد معیوب** (خروجی نادرست که به چرخه‌ی آموزش برمی‌گردد).
+
+مثال واقعی: سیستم تشخیص چهره با دقت بالای ۹۹٪ برای پوست‌های روشن ولی خطای بیش از ۳۰٪ برای پوست‌های تیره — به‌دلیل عکس‌های آموزشی ناقص.
+
+## دیپ‌فیک و اطلاعات جعلی
+
+دیپ‌فیک یعنی ساخت چهره، حرکت لب و صدا با یادگیری عمیق — خطرات مالی و اعتباری جدی. و در کنارش، پدیده‌ی هالوسینیشن: چت‌بات‌ها با اعتمادبه‌نفس کامل آمار، رویدادهای تاریخی و ارجاعات علمی جعلی می‌سازند.
+
+## امنیت سایبری
+
+فیشینگ هوشمند: ایمیل‌های شخصی‌سازی‌شده‌ی بی‌نقص برای سرقت اطلاعات. و نشت داده‌های محرمانه‌ی شرکت‌ها: ریسک افشای کد منبع و اسرار تجاری.
+
+## تأثیر بر بازار کار
+
+خودکارسازی کارهای تکراری (نه حذف شغل‌ها): ورود اطلاعات ساده، ترجمه‌ی پایه و خلاصه‌سازی به ماشین‌ها سپرده می‌شود. شغل‌ها تغییر شکل می‌دهند و مهارت‌های تازه می‌آید.
+
+## پاسخگویی و قانون‌گذاری
+
+مثال چالش‌برانگیز: تصادف خودروی خودران یا خطای پزشکی — تقصیر برنامه‌نویس است، سازنده، تأمین‌کننده‌ی داده، یا مسافر؟ قانون‌گذاری جهانی مثل **EU AI Act** سیستم‌ها را بر اساس ریسک دسته‌بندی می‌کند.
+
+چالش‌های اخلاقی دیگر: **کپی‌رایت** (آموزش مدل روی آثار هنرمندان بدون اجازه)، **شفافیت** (جعبه‌ی سیاه تصمیم‌ها).
+
+## اقدامات عملی برای هر گروه
+
+**کاربران عادی:** آمار و ادعاهای علمی را راستی‌آزمایی کنید؛ هوش مصنوعی را به‌عنوان دستیار یادگیری استفاده کنید، نه برای تقلب. **تولیدکنندگان محتوا:** شفاف با مخاطب باشید درباره‌ی استفاده از هوش مصنوعی.
+
+## یک سناریوی بحث‌برانگیز
+
+بیمارستانی سیستم هوش مصنوعی خریده که با دقت ۹۵٪ بیماری تشخیص می‌دهد، ولی در ۵٪ موارد اشتباه می‌کند و هیچ‌کس دلیلش را نمی‌فهمد. آیا باید از آن استفاده کرد؟ این سؤال اخلاقی را در کلاس بحث می‌کنیم.
+
+## پرسش‌های پرتکرار
+
+آیا هوش مصنوعی مثل فیلم‌های علمی‌تخیلی علیه بشریت شورش می‌کند؟ نه. مدل‌های فعلی خودآگاهی، اراده و احساس ندارند؛ خطر واقعی سوءاستفاده‌ی انسانی، بی‌احتیاطی و اعتماد بیش از حد است.`,
+      en: `> **TODO (review):** These notes were written from the session slides and need your approval before publishing.
+
+## Why ethics in AI matters
+
+AI is now integrated into critical decisions: loan approvals, hiring, medical diagnosis and even judicial sentencing. Errors at this scale and speed directly affect human lives.
+
+## What is algorithmic bias?
+
+The systematic, repeatable tendency of an AI system to produce unfair outcomes. The myth of machine neutrality: machines are not neutral — the data they learn from can itself be one-sided.
+
+Three main roots: **imbalanced training data** (underrepresented demographic, linguistic or cultural groups), **model design and weighting** (unintentional bias from algorithm designers), and **flawed feedback loops** (wrong outputs feeding back into training).
+
+Real example: facial recognition systems with over 99% accuracy for lighter skin tones versus over 30% error rates for darker skin — because of flawed training photos.
+
+## Deepfakes and fake content
+
+Deepfakes are hyper-realistic synthesis of faces, lip movements and voices using deep learning — with serious financial and reputational risks. And the hallucination phenomenon: chatbots fabricating statistics, historical events or scientific citations with supreme confidence.
+
+## Cybersecurity
+
+Smart phishing: highly personalized, flawless emails to steal credentials. Corporate data leakage: risks of exposing source code and trade secrets.
+
+## Impact on jobs
+
+Automation of repetitive tasks (not job elimination): routine data entry, basic translation and summarization are delegated to machines. Jobs evolve and new skills emerge.
+
+## Accountability and regulation
+
+A challenging example: autonomous vehicle crash or medical error — is the fault the programmer, manufacturer, data provider or passenger? Global regulation like the **EU AI Act** categorizes systems by risk level.
+
+Additional ethical dimensions: **copyright** (training on artists’ works without consent), **transparency** (the black-box problem).
+
+## Practical actions
+
+**Everyday users:** fact-check critical statistics and scientific claims; use AI as a learning assistant, not for plagiarism. **Content creators:** maintain transparency with your audience about AI usage.
+
+## A thought challenge
+
+A hospital buys an AI system that diagnoses diseases with 95% accuracy but makes errors in 5% of cases and no one knows why. Should it be used? We discuss this ethical scenario in class.
+
+## FAQ
+
+Will AI rebel against humanity like in sci-fi movies? No. Current models lack self-awareness, volition and emotion; the real danger is human misuse, negligence or over-reliance.`,
+    },
+    slides: { count: 20 },
+    pdf: {
+      fa: '/courses/ai-session-8-fa.pdf',
+      en: '/courses/ai-session-8-en.pdf',
     },
   },
   {
     slug: 'ai-session-9',
     order: 9,
-    status: 'coming-soon',
+    status: 'published',
+    publishedAt: '2026-11-09',
     title: {
       fa: 'ساخت اولین پروژه‌ی هوش مصنوعی خودتان',
-      en: 'Build Your First AI Project',
+      en: 'Build Your Very First Artificial Intelligence Project',
     },
     summary: {
       fa: 'پروژه‌های بدون کد: چت‌بات ساده، طبقه‌بند تصویر یا تولیدکننده‌ی محتوا؛ ابزارهایی مثل n8n، Make، Google AI Studio و Hugging Face Spaces.',
-      en: 'No-code projects: a simple chatbot, image classifier or content generator; tools such as n8n, Make, Google AI Studio and Hugging Face Spaces.',
+      en: 'A practical guide to building intelligent tools without coding: chatbot, image classifier or content generator; Google AI Studio, Teachable Machine, Make, n8n and Hugging Face Spaces.',
     },
     level: { fa: 'مقدماتی', en: 'Beginner' },
     duration: { fa: '۶۰ دقیقه', en: '60 minutes' },
     learningOutcomes: [
-      { fa: 'ساخت پروژه‌ی بدون کد: چت‌بات، طبقه‌بند یا تولید محتوا', en: 'No-code projects: chatbot, classifier or content generation' },
-      { fa: 'کار با ابزارهای n8n، Make، Google AI Studio و Hugging Face', en: 'Working with n8n, Make, Google AI Studio and Hugging Face' },
-      { fa: 'ارائه‌ی یک پروژه‌ی کوچک', en: 'Presenting a small project' },
+      {
+        fa: 'چرا بدون کدنویسی هم می‌توان پروژه‌ی هوش مصنوعی ساخت',
+        en: 'Why anyone can build AI projects without coding',
+      },
+      {
+        fa: 'سه ایده‌ی ساده برای اولین پروژه: چت‌بات، طبقه‌بند تصویر، کارخانه‌ی محتوا',
+        en: 'Three simple project ideas: chatbot, image classifier, content factory',
+      },
+      {
+        fa: 'کار با Google AI Studio، Teachable Machine، Make و n8n',
+        en: 'Working with Google AI Studio, Teachable Machine, Make and n8n',
+      },
+      {
+        fa: 'چهار قدم طلایی: مسئله‌ی مشخص، داده‌ی تمیز، ساخت، ارائه',
+        en: 'Four golden steps: concrete problem, clean data, build, present',
+      },
+    ],
+    takeaways: [
+      {
+        fa: 'مثل ساختن با لگو: مدل‌های آماده را مثل قطعات به هم وصل می‌کنید.',
+        en: 'Like assembling Lego bricks: connect pre-built models into solutions.',
+      },
+      {
+        fa: 'مسئله‌ی کوچک و مشخص بهتر از «خودکارسازی کل شرکت» است — از «خلاصه‌سازی نظرات مشتری» شروع کنید.',
+        en: 'A small, focused problem beats “automate the entire company” — start with “summarize customer reviews”.',
+      },
+      {
+        fa: 'پروژه‌ی ساده‌ای که یک نیاز واقعی را حل کند، هزار برابر ارزشمندتر از مفهوم پیچیده‌ی روی کاغذ است.',
+        en: 'A simple working project solving one real need is a thousand times more valuable than a complex concept on paper.',
+      },
+      {
+        fa: 'برای چت‌بات‌ها حصار امنیتی مشخص بگذارید: چه بگوید، چه نگوید.',
+        en: 'Set clear guardrails for chatbots: what to say and what not to say.',
+      },
+      {
+        fa: 'فرمول ارائه‌ی حرفه‌ای: مشکل → راه‌حل → نتیجه (زمان یا هزینه‌ی صرفه‌جویی‌شده).',
+        en: 'The storytelling formula: problem → solution → impact (time or cost saved).',
+      },
     ],
     exercise: {
-      fa: 'عملی: هر نفر یا هر گروه یک پروژه‌ی کوچک می‌سازد و ارائه می‌دهد.',
-      en: 'Hands-on: each person or group builds and presents a small project.',
+      fa: '«اولین مینی‌پروژه‌ی خود را بسازید و ارائه دهید!» یکی از سه ایده‌ی جلسه را انتخاب کنید (چت‌بات دانش‌محور، طبقه‌بند تصویر، یا کارخانه‌ی محتوا) و با ابزارهای معرفی‌شده بسازید.',
+      en: '“Build & Present Your First Mini-Project!” Pick one of today’s three project ideas (knowledge chatbot, image classifier or content factory) and build it with the tools introduced today.',
+    },
+    notes: {
+      fa: `> **TODO (بررسی متن):** این یادداشت‌ها از روی اسلایدهای جلسه نوشته شده و برای انتشار نهایی به تأیید شما نیاز دارد.
+
+## انقلاب بدون کدنویسی
+
+دو دلیل: ۱. مدل‌های پیشرفته توسط شرکت‌های بزرگ آماده شده‌اند — ما فقط مثل لگو به هم وصل‌شان می‌کنیم. ۲. زبان طبیعی زبان جدید برنامه‌نویسی است: با جمله‌ی ساده می‌توانید به هوش مصنوعی دستور بدهید.
+
+## سه ایده‌ی ساده برای اولین پروژه
+
+**چت‌بات تخصصی:** دستیاری که بر اساس اسناد مرجع شما به سؤالات مشتریان یا دانش‌جویان پاسخ دهد. **طبقه‌بند هوشمند تصویر یا صدا:** مثلاً تشخیص «محصول سالم/معیوب» یا «برگ سالم/بیمار». **کارخانه‌ی تولید محتوا:** فقط موضوع را وارد کنید، بقیه ستون‌ها خودکار تولید شوند.
+
+## پلتفرم‌ها
+
+**Google AI Studio:** بهترین نقطه‌ی شروع — دستورات سیستمی بنویسید، فایل مرجع آپلود کنید، و چت‌بات چندوجهی بسازید. **Teachable Machine:** آموزش مدل تشخیص تصویر و صدا در مرورگر، بدون نصب. **Hugging Face Spaces:** هزاران پروژه‌ی آماده از حذف پس‌زمینه تا سنتز صدا. **Make و n8n:** اتصال هوش مصنوعی به ابزارهای روزمره مثل تلگرام و Gmail با طراحی بصری drag-and-drop.
+
+## سه پروژه‌ی نمونه
+
+**پروژه ۱:** چت‌بات پشتیبانی یا آموزشی با Google AI Studio — دستور سیستمی: «مشاور پذیرش دانشگاه هستی؛ مودبانه و صرفاً بر اساس سند پیوست‌شده پاسخ بده.»
+
+**پروژه ۲:** مدل تشخیص تصویر در ۱۰ دقیقه با Teachable Machine — دو کلاس تعریف کنید، عکس بگیرید، آموزش دهید.
+
+**پروژه ۳:** کارخانه‌ی تولید محتوا با Google Sheets + Make + API مدل زبانی — موضوع در یک ردیف، بقیه ستون‌ها خودکار.
+
+## چهار قدم طلایی
+
+۱. مسئله‌ی مشخص و متمرکز تعریف کنید. ۲. داده‌ی تمیز آماده کنید. ۳. بسازید. ۴. ارائه دهید — با فرمول «مشکل → راه‌حل → نتیجه».
+
+## نکات سازنده
+
+ساده نگه دارید و کوچک شروع کنید؛ برای چت‌بات‌ها حصار مشخص بگذارید؛ و همیشه یک دموی زنده همراه ارائه داشته باشید.
+
+## پرسش‌های پرتکرار
+
+آیا Google AI Studio و Teachable Machine رایگان‌اند؟ بله، هر دو رایگان. آیا پروژه‌های بدون کدنویسی حرفه‌ای هستند؟ بله — بسیاری از راه‌حل‌های واقعی کسب‌وکارها با همین ابزارها ساخته شده‌اند.`,
+      en: `> **TODO (review):** These notes were written from the session slides and need your approval before publishing.
+
+## The no-code revolution
+
+Two reasons: 1. Sophisticated models are pre-trained by tech giants — we just connect them like Lego pieces. 2. Natural language is the new universal programming interface.
+
+## Three simple project ideas
+
+**Specialized chatbot:** an assistant that answers customer or student questions based on your reference documents. **Smart image/audio classifier:** e.g. “healthy vs defective products” or “healthy vs diseased plant leaves”. **Automated content factory:** enter a topic and all remaining columns generate automatically.
+
+## Platforms
+
+**Google AI Studio:** best starting point — define system instructions, upload reference files, build multimodal assistants. **Teachable Machine:** train image and audio recognition models in the browser. **Hugging Face Spaces:** thousands of free ready-to-use ML apps. **Make and n8n:** connect AI to Telegram, Gmail and more with visual drag-and-drop workflows.
+
+## Three sample projects
+
+**Project 1:** support/educational chatbot with Google AI Studio — system instructions: “You are an academic admissions advisor; answer politely and strictly based on the attached reference document.”
+
+**Project 2:** image recognition model in 10 minutes with Teachable Machine — define two classes, capture images, train.
+
+**Project 3:** automated content factory with Google Sheets + Make + LLM API — enter a topic in a row, generate everything else.
+
+## Four golden steps
+
+1. Define a concrete, focused problem. 2. Curate clean data. 3. Build it. 4. Present it — using the “problem → solution → impact” formula.
+
+## Creator’s secrets
+
+Keep it simple and start small; set clear guardrails for chatbots; always include a live demo with your presentation.
+
+## FAQ
+
+Are Google AI Studio and Teachable Machine free? Yes, both free. Do no-code projects hold professional value? Yes — many real business solutions are built with exactly these tools.`,
+    },
+    slides: { count: 20 },
+    pdf: {
+      fa: '/courses/ai-session-9-fa.pdf',
+      en: '/courses/ai-session-9-en.pdf',
     },
   },
   {
     slug: 'ai-session-10',
     order: 10,
-    status: 'coming-soon',
+    status: 'published',
+    publishedAt: '2026-11-09',
     title: {
       fa: 'آینده‌ی هوش مصنوعی و مسیر شغلی شما',
       en: 'The Future of AI and Your Career Path',
     },
     summary: {
       fa: 'روندهای آینده (AGI، عامل‌ها، چندوجهی، هوش مصنوعی شخصی)؛ مهارت‌های پرتقاضا؛ مسیرهای شغلی؛ نقشه‌ی راه یادگیری شخصی؛ جمع‌بندی و اعطای گواهی.',
-      en: 'Future trends (AGI, agents, multimodal, personal AI); in-demand skills; career paths; a personal learning roadmap; wrap-up and certificate.',
+      en: 'Future trends (AGI, agents, multimodal, personal AI); in-demand skills; career paths; a personal learning roadmap; course wrap-up and certificate.',
     },
     level: { fa: 'مقدماتی', en: 'Beginner' },
     duration: { fa: '۶۰ دقیقه', en: '60 minutes' },
     learningOutcomes: [
-      { fa: 'روندهای آینده: AGI، عامل‌ها، چندوجهی، هوش شخصی', en: 'Future trends: AGI, agents, multimodal, personal AI' },
-      { fa: 'مهارت‌ها و مسیرهای شغلی پرتقاضا', en: 'In-demand skills and career paths' },
-      { fa: 'نقشه‌ی راه یادگیری شخصی', en: 'A personal learning roadmap' },
+      {
+        fa: 'روندهای آینده: AGI، عامل‌های خودمختار، هوش چندوجهی و دستیار شخصی',
+        en: 'Future trends: AGI, autonomous agents, multimodal and personal AI',
+      },
+      {
+        fa: 'مهارت‌های پرتقاضای عصر هوش مصنوعی',
+        en: 'High-demand skills in the age of AI',
+      },
+      {
+        fa: 'مسیرهای شغلی تازه برای برنامه‌نویسان و غیربرنامه‌نویسان',
+        en: 'Emerging career paths for programmers and non-programmers',
+      },
+      {
+        fa: 'نقشه‌ی راه یادگیری شخصی برای ماه‌های آینده',
+        en: 'A personal learning roadmap for the months ahead',
+      },
+    ],
+    takeaways: [
+      {
+        fa: 'هوش مصنوعی از ابزار منفعل به شریک فعال و خودمختار می‌رسد.',
+        en: 'AI is moving from reactive tools to active, autonomous partners.',
+      },
+      {
+        fa: 'AGI یعنی هوش مصنوعی هم‌تراز انسان در همه‌ی حوزه‌ها — هنوز محقق نشده ولی مسیر روشن است.',
+        en: 'AGI means human-level intelligence across all domains — not achieved yet, but the path is clear.',
+      },
+      {
+        fa: 'مهارت‌های کلیدی: تفکر انتقادی، پرامپت‌نویسی ساختاریافته و ترکیب ابزارها.',
+        en: 'Key skills: critical thinking, structured prompting and tool orchestration.',
+      },
+      {
+        fa: 'برای غیربرنامه‌نویسان: تخصص خودتان را با هوش مصنوعی تقویت کنید و نمونه‌کار قابل‌تأیید بسازید.',
+        en: 'For non-programmers: supercharge your existing domain with AI and build a verifiable portfolio.',
+      },
+      {
+        fa: '«هوش مصنوعی جای شما را نمی‌گیرد؛ ولی کسی که با هوش مصنوعی کار می‌کند، جای کسی را می‌گیرد که نمی‌کند.»',
+        en: '“AI will not replace you; but a person using AI will replace someone who does not.”',
+      },
     ],
     exercise: {
-      fa: 'جمع‌بندی دوره و دریافت گواهی شرکت.',
-      en: 'Course wrap-up and certificate of attendance.',
+      fa: 'نقشه‌ی راه یادگیری خودتان را بنویسید: ماه اول تسلط بر دو ابزار اصلی (ChatGPT و Claude)، ماه دوم ساخت یک گردش‌کار اتوماسیون، و ماه سوم ساخت و ارائه‌ی یک پروژه‌ی کوچک.',
+      en: 'Write your personal learning roadmap: month 1 — master ChatGPT and Claude; month 2 — build an end-to-end automation workflow; month 3 — build and present a small project.',
+    },
+    notes: {
+      fa: `> **TODO (بررسی متن):** این یادداشت‌ها از روی اسلایدهای جلسه نوشته شده و برای انتشار نهایی به تأیید شما نیاز دارد.
+
+## هوش مصنوعی به کجا می‌رود؟
+
+از ابزار منفعل به شریک فعال: دیگر فقط پاسخ نمی‌دهد؛ خودش پروژه‌های پیچیده را برنامه‌ریزی، مدیریت و اجرا می‌کند. و ادغام بی‌درنگ در زندگی روزمره و دستگاه‌های محیطی.
+
+## AGI چیست؟
+
+هوش مصنوعی عمومی: نسلی از هوش مصنوعی که بتواند در هر حوزه‌ی فکری، علمی یا خلاقانه هم‌تراز یا فراتر از تخصص انسان عمل کند. تفاوت با مدل‌های فعلی: AGI هنوز محقق نشده، ولی مسیر روشن است.
+
+## عامل‌های هوش مصنوعی
+
+سیستمی که به‌جای تک‌پرامپت، یک هدف نهایی می‌گیرد و خودش برنامه‌ریزی، تکرار و اجرا می‌کند — مثلاً برنامه‌ریزی سفر یا خرید.
+
+## هوش چندوجهی
+
+مدل‌های مدرن هم‌زمان متن، تصویر، صدا، ویدیو و کد را درک و تحلیل می‌کنند. تعامل با کامپیوتر مثل حرف زدن با انسان.
+
+## دستیار شخصی
+
+دستیاری که سبک نوشتن، اهداف شغلی و تاریخچه‌ی پروژه‌هایتان را می‌شناسد — مربی سلامت و مشاور یادگیری اختصاصی.
+
+## مهارت‌های پرتقاضا
+
+**تفکر انتقادی:** ارزیابی خروجی مدل‌ها، تشخیص هالوسینیشن و هدایت بازبینی. **پرامپت‌نویسی ساختاریافته:** تسلط بر سؤال‌گذاری مؤثر. **ترکیب ابزارها:** اتصال هوش مصنوعی به گردش‌کارهای واقعی.
+
+## مسیرهای شغلی تازه
+
+**متخصص اتوماسیون گردش‌کار:** با ابزارهای بدون کد مثل Make و n8n. **تولیدکننده‌ی محتوای هوش مصنوعی.** و برای غیربرنامه‌نویسان: تخصص موجود خودتان (حسابداری، مدیریت، طراحی، آموزش) را با هوش مصنوعی تقویت کنید — بهتر از شروع برنامه‌نویسی از صفر.
+
+## نقشه‌ی راه شخصی
+
+ماه ۱: تسلط بر ChatGPT و Claude با تمرین روزانه‌ی پرامپت. ماه ۲: ساخت یک گردش‌کار اتوماسیون کامل. ماه ۳: ساخت و ارائه‌ی یک پروژه‌ی کوچک.
+
+## منابع پیشنهادی
+
+خبرنامه‌ها و نشریات: The Batch، TL;DR AI و بلاگ‌های رسمی OpenAI، Google DeepMind و Anthropic. و پلتفرم‌های تخصصی بدون کد.
+
+## جمع‌بندی ۱۰ جلسه
+
+از مغز مصنوعی و شبکه‌های عصبی تا هوش مولد، ابزارهای روزمره، کاربرد کسب‌وکار، داده، اخلاق، ساخت پروژه — و حالا مسیر شغلی شما.
+
+## یادداشت مدرس
+
+«هوش مصنوعی جای شما را نمی‌گیرد؛ ولی کسی که با هوش مصنوعی کار می‌کند، جای کسی را می‌گیرد که نمی‌کند.» امروز اولین گام بزرگ را برداشتید؛ سفر واقعی همین حالا شروع می‌شود!
+
+## گواهی شرکت
+
+با تکمیل ۱۰ جلسه و ارائه‌ی تمرین‌ها، گواهی رسمی «ورود به دنیای هوش مصنوعی» دریافت می‌کنید.
+
+## پرسش‌های پرتکرار
+
+آیا باید پایتون یاد بگیرم؟ نه — پلتفرم‌های بدون کد و پرامپت‌نویسی ساختاریافته بیش از ۹۰٪ کاربردهای عملی را باز می‌کنند.`,
+      en: `> **TODO (review):** These notes were written from the session slides and need your approval before publishing.
+
+## Where is AI heading?
+
+From reactive tools to active, autonomous partners: AI no longer just answers questions — it independently plans, manages and executes complex projects. And seamless integration into daily life and ambient devices.
+
+## What is AGI?
+
+Artificial General Intelligence: a generation of AI that can match or exceed human expertise across any intellectual, scientific or creative domain. Difference from today’s models: AGI is not achieved yet, but the path is clear.
+
+## AI Agents
+
+A software system that accepts an end objective and autonomously plans, iterates and executes — e.g. planning a trip or shopping.
+
+## Multimodal AI
+
+Modern models simultaneously perceive, synthesize and analyze text, images, audio, video and code. Interacting with computers as effortlessly as speaking to a person.
+
+## Personal AI assistants
+
+An assistant that knows your writing style, career goals and project history — a dedicated health coach and learning advisor.
+
+## High-demand skills
+
+**Critical thinking:** evaluating model outputs, detecting hallucinations and guiding refinements. **Structured prompting:** mastering effective inquiry. **Tool orchestration:** connecting AI into real workflows.
+
+## Emerging career paths
+
+**Workflow automation specialist:** leveraging no-code platforms like Make and n8n. **AI content creator.** For non-programmers: supercharge your existing domain (accounting, management, design, education) with AI — better than learning coding from scratch.
+
+## Personal learning roadmap
+
+Month 1: master ChatGPT and Claude with daily prompting practice. Month 2: build an end-to-end automation workflow. Month 3: build and present a small project.
+
+## Recommended resources
+
+Newsletters & research: The Batch, TL;DR AI and official blogs from OpenAI, Google DeepMind and Anthropic. Plus specialized no-code platforms.
+
+## Takeaways across 10 sessions
+
+From the artificial brain and neural networks to generative AI, everyday tools, business applications, data, ethics, building projects — and now your career path.
+
+## Instructor’s note
+
+“AI will not replace you; but a person using AI will replace someone who does not.” Today you took the first major leap; the real journey begins right now!
+
+## Certificate
+
+Upon completing these 10 sessions and submitting your exercises, you receive the official Certificate of Completion for “Introduction to the World of AI”.
+
+## FAQ
+
+Do I need to learn Python? No — modern no-code platforms and structured prompting unlock over 90% of practical applications.`,
+    },
+    slides: { count: 18 },
+    pdf: {
+      fa: '/courses/ai-session-10-fa.pdf',
+      en: '/courses/ai-session-10-en.pdf',
     },
   },
 ];

@@ -38,16 +38,19 @@ describe('course data', () => {
       'ai-session-4',
       'ai-session-5',
       'ai-session-6',
+      'ai-session-7',
+      'ai-session-8',
+      'ai-session-9',
+      'ai-session-10',
     ]);
   });
 
-  it('derives prev/next including coming-soon neighbours', () => {
+  it('derives prev/next between all published sessions', () => {
     const { next } = getNeighbours('ai-session-2');
     expect(next?.slug).toBe('ai-session-3');
     expect(next?.status).toBe('published');
-    const { next: afterSix } = getNeighbours('ai-session-6');
-    expect(afterSix?.slug).toBe('ai-session-7');
-    expect(afterSix?.status).toBe('coming-soon');
+    const { next: afterTen } = getNeighbours('ai-session-10');
+    expect(afterTen).toBeUndefined();
     const { prev } = getNeighbours('ai-session-3');
     expect(prev?.slug).toBe('ai-session-2');
     const { prev: none } = getNeighbours('ai-session-1');
