@@ -2,8 +2,8 @@ import { expect, test } from '@playwright/test';
 
 test('blog list shows the starter article and it opens', async ({ page }) => {
   await page.goto('/en/blog');
-  await expect(page.locator('main h3')).toHaveCount(1);
-  await page.locator('main h3 a').click();
+  await expect(page.locator('main h3')).toHaveCount(5); // 5 articles: starter + 4 new
+  await page.locator('main h3 a[href="/en/blog/telegram-bot-for-sales"]').click();
   await expect(page).toHaveURL(/\/en\/blog\/telegram-bot-for-sales$/);
   await expect(page.getByRole('heading', { level: 1 })).toContainText('Telegram bot');
   await expect(page.locator('time')).toHaveAttribute('datetime', '2026-10-01');

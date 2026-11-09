@@ -22,13 +22,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // Lessons: published sessions only; slugs are identical across locales.
   for (const s of getPublishedSessions()) {
-    entries.push({
-      url: `${site.url}/en/courses/${s.slug}`,
-      ...(s.publishedAt ? { lastModified: s.publishedAt } : {}),
-      alternates: {
-        languages: Object.fromEntries(routing.locales.map((l) => [l, `${site.url}/${l}/courses/${s.slug}`])),
-      },
-    });
+    for (const locale of routing.locales) {
+      entries.push({
+        url: `${site.url}/${locale}/courses/${s.slug}`,
+        ...(s.publishedAt ? { lastModified: s.publishedAt } : {}),
+        alternates: {
+          languages: Object.fromEntries(routing.locales.map((l) => [l, `${site.url}/${l}/courses/${s.slug}`])),
+        },
+      });
+    }
   }
 
   for (const locale of routing.locales) {
