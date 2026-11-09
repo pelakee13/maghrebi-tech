@@ -20,5 +20,12 @@ export default defineConfig({
     url: `http://localhost:${PORT}/en`,
     reuseExistingServer: !process.env.CI,
     timeout: 60_000,
+    // e2e must never send real email: a dummy key + RESEND_DRY_RUN records instead of sending.
+    // A real key from the environment is used as-is (e.g. for a manual end-to-end delivery proof).
+    env: {
+      ...process.env,
+      RESEND_API_KEY: process.env.RESEND_API_KEY ?? 'e2e-dry-run-key',
+      RESEND_DRY_RUN: process.env.RESEND_REAL_E2E ? '' : '1',
+    },
   },
 });

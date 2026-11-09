@@ -61,7 +61,14 @@ export async function submitContact(_prev: ContactState, formData: FormData): Pr
   });
   if (guard !== 'ok') return { status: 'error', code: guard, values };
 
-  const result = await notifier.notify({ locale, messageLength: message.length });
+  const result = await notifier.notify({
+    locale,
+    messageLength: message.length,
+    name: parsed.data.name,
+    email: parsed.data.email,
+    message,
+    form: 'contact',
+  });
   if (!result.ok) return { status: 'error', code: 'delivery_failed', values };
   return { status: 'success' };
 }

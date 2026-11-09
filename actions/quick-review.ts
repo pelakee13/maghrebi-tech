@@ -72,7 +72,15 @@ export async function submitQuickReview(_prev: QuickFormState, formData: FormDat
   if (guard !== 'ok') return { status: 'error', code: guard, values };
 
   // LogNotifier never logs name/contact/body — only anonymised metadata.
-  const result = await notifier.notify({ locale, messageLength: process.length });
+  const result = await notifier.notify({
+    locale,
+    messageLength: process.length,
+    name: parsed.data.name,
+    // The "contact" field is free text (email/phone/telegram) — used in the email body only.
+    email: /.+@.+\..+/.test(parsed.data.contact) ? parsed.data.contact : undefined,
+    message: `Contact / تماس: ${parsed.data.contact}\n\nProcess / فرایند:\n${process}`,
+    form: 'quick',
+  });
   if (!result.ok) return { status: 'error', code: 'delivery_failed', values };
   return { status: 'success' };
 }
