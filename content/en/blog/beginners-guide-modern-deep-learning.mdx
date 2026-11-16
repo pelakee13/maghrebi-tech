@@ -1,0 +1,220 @@
+---
+slug: beginners-guide-modern-deep-learning
+title: "A Beginner's Guide to Modern Deep Learning"
+date: 2026-11-16
+summary: "How do chatbots talk? From one simple formula to the transformer: tokens, embeddings, attention, and temperature, explained without heavy math."
+translationKey: beginners-guide-modern-deep-learning
+draft: false
+---
+
+How do chatbots write poetry? How do they talk? How do they answer questions nobody wrote the answers to in advance?
+
+This article is for someone who has heard about deep learning but still has no clear picture of what happens inside it. Its goal is to build intuition, without going deep into the math. You are not expected to memorize formulas; you are expected to come away able to tell the story when someone asks you, "What do these chatbots actually do?"
+
+## What does "modern" mean?
+
+"Modern" in this title is not decoration. Deep learning is decades old, but what we know today as chatbots comes from a newer era that began with the **Transformer** architecture in 2017. "Modern" means exactly that era: large language models, transformers, and their possible successors. This article is about that era.
+
+Here is the path ahead: first we will understand what a "model" is and how it is trained; then why modern architectures are "deep"; then we will open up the transformer; and finally we will follow one sentence from start to finish so all the pieces fall into place.
+
+## 1. A model is a formula
+
+The simplest possible start: we want to build a model from data. Suppose the horizontal axis is a house's floor area and the vertical axis is its price. The larger the area, the higher the price tends to be. We have data for 100 houses, and we want an approximate price for house number 101 before its real price is known.
+
+One way is to write a formula. The simplest formula is a linear one:
+
+**y = ax + b**
+
+Here x is the input (area), y is the output (price), and a and b are called **parameters**. Our job is to find the best values of a and b from the data we have: start from random values, measure the model's error, and change the parameters so the error gets smaller. That work is called **training** — finding the right numbers for the parameters.
+
+Once a and b are found, using the model is easy: plug the new house's area into the formula and out comes an approximate price. That stage is called **inference**. In inference, the parameters are fixed; we just run the new input forward through the equation to reach the answer.
+
+## 2. How exactly are parameters found?
+
+So far we have said parameters are "adjusted so the error gets smaller." But how is that adjusting actually done?
+
+The core idea is this: the model makes a guess, measures its error, and then for **each parameter** works out whether moving that parameter a little in one direction or the other would make the error bigger or smaller. Then it moves all the parameters one small step in the direction that reduces the error. That small step is repeated over and over — millions of times — until the error is low enough.
+
+The method for computing the right direction for each parameter is called **backpropagation**, and the stepping itself is called **gradient descent**. These two ideas are the engine behind the training of every deep model, from the linear house-price formula to the largest language models. The only difference is scale: instead of two parameters, hundreds of billions of them, and instead of 100 houses, text from much of the internet.
+
+## 3. Training vs. inference
+
+- **Training** means finding the parameters from data. It is slow and expensive: training a model like GPT-4 takes months on thousands of GPUs, and hundreds of billions of parameters must all be tuned. Its main cost is enormous computation, paid once.
+- **Inference** means using the finished model on fresh input. It is fast, and each answer is produced in seconds; but when millions of people use a chatbot at the same time, throughput and the cost of inference become a serious issue of their own.
+
+## 4. Why "deep"?
+
+The real world is not as simple as the house example. The world we want to model does not behave linearly, is not one-dimensional, and involves a space of roughly 12,000 dimensions and hundreds of billions of parameters. We cannot try every possible equation of the world one by one to see which one becomes a chatbot.
+
+The solution is a trick: instead of designing one giant formula from scratch, we define a few **simple building blocks** with two properties:
+
+1. **They are expressive** — combining them can build a huge variety of models.
+2. **They run fast** — especially on GPUs, because all the text of the internet and Wikipedia has to pass through them.
+
+We put these blocks side by side to make one **layer**, then repeat that same layer, identically, over and over. That is why it is called **deep** learning: layer after layer after layer. The design is deliberately kept simple and uniform, because if every layer needed its own separate design, training the model would slip out of our hands.
+
+One point worth stressing: the formulas we choose are not necessarily the best formulas possible in the world; they are the ones we can run fast. The popularity of GPUs and the progress of deep learning helped each other like chicken and egg: powerful GPUs pushed deep learning forward, and deep learning made GPUs more important.
+
+The interesting part is that combining simple blocks — some linear, some nonlinear — across several layers suddenly produces a very large equation with hundreds of billions of parameters that also runs very fast. Nobody sits down and writes out that complete equation; they just say these blocks are placed one after another, and the system itself runs the big equation.
+
+## 5. The transformer at a glance
+
+Now if you open the diagram of a modern deep learning system — say the Transformer, the architecture ChatGPT and similar models are built on — you see the same pattern: a few input and output pieces at the start and end, and the same repeated layers in the middle. In each layer, a few basic blocks are connected: normalization, attention, and a feed-forward network.
+
+Every paper that introduces a new architecture looks like this too: a diagram of blocks placed one after another. Add more layers and you have effectively made the formula bigger, with more parameters — in the hope that the formula is large enough to be trained on a lot of data and answer well.
+
+## 6. How does a chatbot talk?
+
+Generative language models — like what you see in ChatGPT — work like this:
+
+First there is a **system prompt** you usually never see; for example, "You are an AI assistant and your job is to give correct answers." Then your message arrives; for example, "Why is the sky blue?" All of it together becomes the **context** — the model's input.
+
+The model pushes this context through all its layers and puts out **one word**: the best word it thinks should come after this context. Then that word is attached to the context, and the new input is fed to the model again to produce the next word. Word by word, until the answer is complete. This method is called autoregressive generation: the model builds its next input out of its own output.
+
+That is why speed matters: if every word took a long time, you would wait a long time for a complete answer. Some of today's models accept very long contexts — up to around one million tokens — as input.
+
+## 7. Is predicting the next word intelligence?
+
+The natural question: does a system whose only ability is to say the best next word really understand what it is doing?
+
+Ilya Sutskever, one of OpenAI's co-founders, gives an interesting example: imagine you are watching a Poirot film. Poirot has talked to ten people, visited the murder scene, and seen the evidence. At the end of the film he gathers everyone and says: "I have seen all the evidence and heard everything you said, and based on that I know who the murderer is." If a model really does its job correctly, the next word is **the murderer's name** — and you cannot know the murderer's name unless you are intelligent, have examined all the evidence, and have genuinely understood who the murderer is. So "merely" predicting the next word can, in practice, require real understanding.
+
+The creativity debate is similar. Today it is not easy to tell whether a work of art was made by a human or by AI. You can accept that these systems are creative or not; but rejecting it is hard too. We will leave these debates here and go back to what happens inside the model.
+
+## 8. From words to numbers: tokens
+
+A model does not work with sentences; it works with numbers. So the first step is to turn text into numbers. That work is called **tokenization**: we have a large dictionary in which each unit of text has a number — the first word zero, the second one, and so on to the end.
+
+In this article we keep it simple and assume **one token equals one word**. But reality is a little different: the method most often used is called Byte-Pair Encoding. In GPT-3 there are about 50,000 tokens, including single characters, word pieces (like "ing"), and complete words. The reason is that words the model never saw in training can still be built by combining pieces; with whole words alone, that would be hard.
+
+## 9. The world of meaning: embeddings
+
+Now each token is carried into a world with many dimensions — in GPT-3, the embedding space has about 12,000 dimensions. Showing a point in three-dimensional space takes three numbers; showing a word in this space takes 12,000 numbers. The matrix holding those 12,000 numbers for each token is part of the model's parameters, and it adjusts itself during training.
+
+The interesting thing is this: **meaning shows itself in this space.** When the model is trained on all of Wikipedia, words that are used similarly in sentences start gathering next to each other. Apple, orange, and pear move close together; fruits gather on one side and desserts on another. Nobody told the model this by hand; it came out of the sentences and out of the tuning of the parameters.
+
+Even more interesting, **relationships** come out too: in this 12,000-dimensional space, the distance from "man" to "woman" is very similar to the distance from "boy" to "girl." In other words, if you have man, woman, and boy, finding that distance and adding it to boy gets you to girl. The same holds for capitals and countries — Ankara and Turkey, Paris and France, Rome and Italy — sitting together with similar relationships. It is as if we managed to digitize the world of meaning: the meanings of words and their relationships, learned only through training, sitting inside numbers.
+
+## 10. From scores to words: softmax and temperature
+
+After passing through the layers, the model reaches a point in embedding space that represents the "next word." Now we need to find out which word is closest to this point. Another matrix — the unembedding matrix — takes the description of this point and gives each of the 50,000 tokens a **score**. For example, after "the sky is," the token "blue" gets the highest score, and irrelevant words get low scores.
+
+Then comes the **softmax** function: it turns scores into probabilities — numbers between zero and one that add up to one. And here an important setting enters: **temperature**.
+
+- **Temperature zero** means greedy: always the word with the highest score is chosen. The answer is always the same, and creativity disappears.
+- **Higher temperature** flattens the probability distribution: other words also get a chance, and the model starts building fresh sentences with the words it knows. Temperature is usually chosen between zero and 2, and above 1 the output becomes very creative.
+
+"Blue" might be chosen with 40% probability, "high" with 30%, and "vast" with 20%. It is this controlled randomness that lets the model write poetry instead of always repeating what it saw in training.
+
+## 11. Inside each layer, part one: attention
+
+In each layer — leaving aside positional embedding and normalization for simplicity — two main jobs are done: **attention** and the **MLP**. Attention finds the relationships between words inside the context; it understands what the sentence is saying and what it is after.
+
+Attention came out of a famous paper called "Attention Is All You Need." It was first built to improve older models (LSTMs); then it turned out to be so good on its own that those models were no longer needed.
+
+Its mechanism is defined with three concepts: **Q** (Query), **K** (Key, like an answer), and **V** (Value). All three are built from the input, using parameter matrices found in training — and the important point is that they depend on the input; they are not fixed. If Q and K were merely fixed parameters, the same for every input, the model would not work this well.
+
+Now multiplying Q by K gives a matching score: the more the question and the answer fit each other, the larger the score. Softmax turns these scores into weights, and the model understands that, for example, "blue" is related to "sky." The denominator in that formula exists so the numbers do not keep growing larger and larger across layers, keeping the computation stable.
+
+Then the weighted combination of V gives us a "direction"; this direction is added to the embeddings, and the whole matrix moves to a new place in meaning space. In other words, after attention, all the embeddings have changed based on the relationships found in the context.
+
+The main problem with attention is right here: the larger the context, the larger this matrix multiplication becomes. For very long contexts — say, giving the model a whole book and asking it a question — the computation takes long, needs a lot of memory, and requires a large GPU. This is one of attention's open problems.
+
+## 12. Inside each layer, part two: the MLP
+
+The second part of each layer is the **MLP** (multi-layer perceptron), and it is very simple: one linear layer that expands the dimension, one nonlinear function, and another linear layer that shrinks it back. The famous nonlinear function is ReLU: give it a negative number and it returns zero; give it a positive number and it returns the same number. Most of the model's parameters live right here, in the MLPs.
+
+The intuition for the MLP is this: **the MLP acts like memory.** Attention has understood what the sentence is after and what relationships are involved; now this information reaches the MLP, and the MLP looks to see whether it saw anything useful like this in training.
+
+With some simplification: the first linear layer asks many questions — is this sentence scientific? Is it a joke? Is it about color? Is it about the sky? — then ReLU deletes the negative, irrelevant answers, and the second linear layer builds the next direction of movement in meaning space out of the remaining answers. The matrix moves to a new place again.
+
+This cycle — attention, then MLP, then the next attention, then the next MLP — repeats layer by layer. At the end, the last column of the matrix is the point that predicts the next word; the unembedding, softmax, and temperature we saw in section 10 finish the job.
+
+## 13. One sentence, from start to finish
+
+So far we have seen the pieces separately. Now let us put them together and follow one sentence from start to finish. Suppose you wrote: "Why is the sky blue?"
+
+1. **Tokenize:** the sentence is turned into numerical units. In our simplification, each word is one token.
+2. **Embed:** each token goes to a point in the 12,000-dimensional space; "sky" and "blue" each have their own place.
+3. **Layers, over and over:** in each layer, attention finds the relationships — "blue" connects to "sky," "why" connects to the whole sentence — and the MLP pulls out patterns that accompanied this topic in training; for example, patterns connecting "sky" and "blue" to physics explanations. The matrix moves through meaning space, layer by layer.
+4. **Predict:** the last column reaches the "next word" point. The unembedding matrix scores all the tokens, softmax builds probabilities, and temperature shapes the choice. One word comes out.
+5. **Repeat:** that word is added to the context, and the cycle starts again — until the answer is complete.
+
+These five steps are everything a chatbot does. The rest of the story is scale: more layers, more parameters, more data.
+
+## 14. Beyond the transformer: Mamba
+
+If you approach newer papers with this same skill of "reading block diagrams," they are no longer scary. One example is **Mamba**: a model claimed to be able to take the transformer's place, which has also produced good results.
+
+Open its diagram and you see the same familiar pieces: linear layers, convolution, blocks, and a gated MLP (another kind of the same MLP). The only new piece is the **SSM** (Selective State Space Model), which, like an LSTM, carries a state forward. What Mamba did that matters a lot is the same principle we have repeated since the start of this article: blocks must run fast. Mamba optimized this computation heavily for GPUs and runs very fast; that is why it has been able to compete with the transformer.
+
+## 15. Where do you see these ideas in everyday tools?
+
+- **A "creativity" slider in AI tools** is the temperature. Turn it up and the output becomes more varied and less predictable; turn it down and answers become more conservative and repetitive.
+- **Limits on input length** come from the cost of attention. The longer the context, the heavier the computation; that is why tools cap input length, and why processing very long documents is slower and more expensive.
+- **Repetitive answers** often come back to greedy selection: when the model always picks the most probable next word, it easily falls into a repeating loop.
+- **A fluent but wrong answer** comes from the same mechanism: the model predicts the most probable next word; it does not check reality. That is why important answers should always be verified.
+
+## 16. What this article simplified
+
+So the big picture would not get lost, a few things were deliberately simplified or left out. Honestly, here is what they are:
+
+- **One token = one word** is a simplification; the reality is BPE word pieces (section 8).
+- **Positional embedding and normalization** were left out of the explanation of layers; in a real model they exist and matter — the first tells the model where each word sits in the sentence, and the second keeps the numbers in a stable range.
+- **The math of training** was covered only at the level of the idea (section 2); the details of backpropagation and gradient descent are a whole subject of their own.
+- **Fine-tuning and human feedback (RLHF)**, which shape the final behavior of chatbots, are outside the scope of this article; this article is about the model's main engine, not every stage that builds a complete product.
+- **The models' figures** (50,000 tokens, about 12,000 dimensions, months of training, hundreds of billions of parameters) are given to show scale, not as exact specifications of one particular model.
+
+## Summary and next steps
+
+If we want to sum up the whole story in a few sentences:
+
+- **A model is a formula** with parameters learned from data; training means finding those parameters, and inference means using them.
+- **The transformer is simple, fast blocks** repeated layer by layer to build a giant formula.
+- **A chatbot is next-word prediction**, over and over, adding each word to the context.
+- **Meaning lives in embedding space** and comes out of training, not out of hand-written instructions.
+- **Attention finds relationships and the MLP is memory**; temperature sets how creative the output is.
+- And the most honest sentence: even the experts do not know exactly what goes on inside these models.
+
+For the next step, I recommend the videos of the channel **3Blue1Brown** (Grant Sanderson's channel), which show with animation exactly what happens; combining this intuition with those animations gives a more complete picture. If you want to get to know the world of AI from zero, step by step, the course [Entering the World of Artificial Intelligence](/en/courses) on this site was built for exactly that.
+
+And if your business has work that is still done by hand and you think AI could automate it, send me a message through the [contact page](/en/contact); tell me what eats your time, and let us see whether there is a smart solution for it. The initial review is free.
+
+## Glossary
+
+- **Parameter:** a number the model finds in training; the model's "knowledge" is stored in them.
+- **Training:** the stage of finding the parameters from data.
+- **Inference:** using the finished model on fresh input.
+- **Context:** all the text the model sees in order to predict the next word.
+- **Token:** the unit of text turned into a number; a word, a word piece, or a character.
+- **Embedding:** each token shown as a point in a high-dimensional space, based on meaning.
+- **Attention:** the mechanism that finds relationships between words inside the context.
+- **MLP:** the part of each layer that acts like memory; most parameters live here.
+- **Softmax:** a function that turns scores into probabilities.
+- **Temperature:** a setting that controls how random and creative the output is.
+- **SSM:** selective state space model; the core piece of the Mamba architecture.
+
+## Frequently asked questions
+
+**Do models really understand?**
+
+It is an open debate. The Poirot argument (section 7) says good next-word prediction needs something like understanding; but from outward behavior alone, you cannot say with certainty whether human-like "understanding" is involved. This article's safe position: know the mechanism, and judge "understanding" with caution.
+
+**Why do models sometimes confidently give wrong answers?**
+
+Because their job is to predict the most probable continuation of the text, not to verify reality. A fluent answer is not always a correct answer, which is why important answers should be checked.
+
+**Is the transformer only for text?**
+
+No. The same idea has been used for images, audio, and other domains. This article focuses on text because chatbots — the main subject — started there.
+
+**Do I need math to understand these ideas?**
+
+For intuition, no; this article was written for exactly that. For building models, yes — linear algebra and calculus are its foundations, and the 3Blue1Brown videos are a good place to see them visually.
+
+## Sources
+
+- The talk "A Beginner's Guide to Modern Deep Learning" — Mehrzad Samadi, 30 November 2024: https://www.youtube.com/watch?v=zHu78PKkics
+- The 3Blue1Brown channel (Grant Sanderson)
+- The paper "Attention Is All You Need" — Vaswani et al., 2017
+- The paper "Mamba: Linear-Time Sequence Modeling with Selective State Spaces" — Gu and Dao, 2023
