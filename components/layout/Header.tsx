@@ -18,6 +18,14 @@ export function Header({ counterparts }: { counterparts: ArticleCounterparts }) 
             height={72}
             className="size-14 rounded-full object-cover sm:size-[72px]"
           />
+          <Image
+            src="/images/logo-mark.svg"
+            alt=""
+            aria-hidden="true"
+            width={44}
+            height={45}
+            className="h-11 w-auto shrink-0 sm:h-12"
+          />
           <span className="text-base font-semibold text-fg">{t('siteName')}</span>
         </Link>
         <Nav className="hidden md:block" />
