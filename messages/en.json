@@ -41,7 +41,7 @@
     "projectsTitle": "Featured work",
     "projectsLead": "Systems running today. Each card says what problem it solved.",
     "ctaTitle": "Tell me about the manual process",
-    "ctaText": "Describe the task your team repeats every day. First consultation is free and you will get my honest opinion — including if a simple spreadsheet beats custom software.",
+    "ctaText": "Describe the task your team repeats every day. First consultation is free and you will get my honest opinion, even if a simple spreadsheet beats custom software.",
     "techTitle": "Tools I build with",
     "techLead": "Chosen for reliability, not novelty.",
     "githubTitle": "Recent GitHub activity",
@@ -54,7 +54,7 @@
     "step3Title": "Launch and support",
     "step3Text": "I help your team get the system up and running. Before launch, we agree on the support you'll need afterward.",
     "bioTitle": "Why I build",
-    "bioText": "My background is accounting and finance — that is where I learned what a report is for and what numbers a business actually needs. And that is where I saw it: when tools have come this far, no one should be doing the same task by hand every day — the kind a program can handle in seconds. That thought is what brought me to automation. Now I build bots and software: I listen first, learn how the work really happens, then build the smallest tool that takes that task away. I talk less than I show."
+    "bioText": "My background is accounting and finance. That is where I learned what a report is for and what numbers a business actually needs. And that is where I saw it: when tools have come this far, no one should be doing the same task by hand every day, the kind a program can handle in seconds. That thought is what brought me to automation. Now I build bots and software: I listen first, learn how the work really happens, then build the smallest tool that takes that task away. I talk less than I show."
   },
   "services": {
     "title": "Services",
@@ -104,7 +104,7 @@
       "delivery_failed": "Could not send. Please contact me directly by email or Telegram.",
       "generic": "Something went wrong. Please try again."
     },
-    "consent": "Your details are used only to reply to you — nothing is shared with anyone."
+    "consent": "Your details are used only to reply to you. Nothing is shared with anyone."
   },
   "footer": {
     "rights": "All rights reserved.",
@@ -148,8 +148,8 @@
   },
   "quickForm": {
     "title": "Get a free process review",
-    "lead": "Describe the task your team repeats every day. First consultation is free and you will get my honest opinion — including if a simple spreadsheet beats custom software.",
-    "intro": "Skip the formality — just tell me what the job looks like today. I read every message myself.",
+    "lead": "Describe the task your team repeats every day. First consultation is free and you will get my honest opinion, even if a simple spreadsheet beats custom software.",
+    "intro": "Skip the formality. Just tell me what the job looks like today. I read every message myself.",
     "contact": "Telegram / Email / Phone",
     "process": "What manual process do you want to automate?",
     "processPlaceholder": "e.g. every morning someone copies yesterday's orders into a spreadsheet...",
