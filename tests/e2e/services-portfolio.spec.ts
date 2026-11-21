@@ -50,15 +50,16 @@ test('portfolio anchor lands on the Heli entry', async ({ page }) => {
   await expect(page.locator('#heli-beauty-studio')).toBeVisible();
 });
 
-test('home Heli feature links to the case study in the same language', async ({ page }) => {
-  // The Heli feature is the second section; the project card links there too,
-  // so scope the assertion to the feature section.
+test('home running feature links to the running portfolio entry in the same language', async ({ page }) => {
+  // The running feature is the second section; scope the assertions to it.
   await page.goto('/en');
+  await expect(page.locator('#main section').nth(1).locator('h2')).toHaveText('Bilingual running workout log app');
   await expect(
-    page.locator('#main section').nth(1).locator('a[href="/en/blog/heli-beauty-studio-case-study"]'),
+    page.locator('#main section').nth(1).locator('a[href="/en/portfolio#running-app"]'),
   ).toHaveCount(1);
   await page.goto('/fa');
+  await expect(page.locator('#main section').nth(1).locator('h2')).toHaveText('اپلیکیشن دوزبانهٔ ثبت تمرین‌های دویدن');
   await expect(
-    page.locator('#main section').nth(1).locator('a[href="/fa/blog/heli-beauty-studio-case-study"]'),
+    page.locator('#main section').nth(1).locator('a[href="/fa/portfolio#running-app"]'),
   ).toHaveCount(1);
 });

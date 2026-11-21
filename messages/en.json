@@ -21,6 +21,7 @@
   "common": {
     "viewAll": "View all",
     "readCaseStudy": "Read the {title} case study",
+    "viewAppDetails": "See the app details",
     "contactMe": "Contact me",
     "getQuote": "Request a consultation",
     "minutes": "min read",

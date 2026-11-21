@@ -21,6 +21,7 @@
   "common": {
     "viewAll": "مشاهده همه",
     "readCaseStudy": "مطالعهٔ موردی {title} را بخوانید",
+    "viewAppDetails": "دیدن جزئیات اپ",
     "contactMe": "تماس با من",
     "getQuote": "درخواست مشاوره",
     "minutes": "دقیقه مطالعه",

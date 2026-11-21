@@ -41,37 +41,39 @@ export default async function HomePage({ params }: Props) {
     .filter((p) => p.meta.featured && !p.meta.consumer)
     .map((p) => p.meta);
   const typeLabels = { 'web-app': pt('web-app'), bot: pt('bot'), 'mobile-app': pt('mobile-app'), website: pt('website') };
-  const heli = projects.find((p) => p.id === 'heli-beauty-studio');
+  const running = projects.find((p) => p.id === 'running-app');
 
   return (
     <>
       <JsonLd data={personJsonLd(locale)} />
       <JsonLd data={professionalServiceJsonLd(locale)} />
       <Hero hero={meta.hero} />
-      {/* Heli feature: outcome + case-study link first in DOM order on mobile
-          (order classes put the image after the action on small screens). */}
-      {heli && (
-        <Section title={heli.title} lead={heli.summary}>
+      {/* Running feature: outcome + portfolio link first in DOM order on mobile
+          (order classes put the image after the action on small screens).
+          The screenshot is a tall phone capture (run-1.jpg is 632x1280,
+          run-4.jpg 641x1280), so it renders at its natural aspect, capped at a phone-like width, instead of the
+          16/9 crop the landscape project images use — the weekly progress
+          and last-workout text must stay legible at mobile size. */}
+      {running && (
+        <Section title={running.title} lead={running.summary}>
           <div className="flex flex-col gap-8 md:flex-row md:items-center">
             <div className="order-1 md:order-2 md:flex-1">
-              {heli.result && <p className="text-lg leading-8 text-fg">{heli.result}</p>}
-              {heli.caseStudySlug && (
-                <div className="mt-6">
-                  <ButtonLink href={`/blog/${heli.caseStudySlug}`} variant="secondary">
-                    {c('readCaseStudy', { title: heli.title })}
-                  </ButtonLink>
-                </div>
-              )}
+              {running.result && <p className="text-lg leading-8 text-fg">{running.result}</p>}
+              <div className="mt-6">
+                <ButtonLink href="/portfolio#running-app" variant="secondary">
+                  {c('viewAppDetails')}
+                </ButtonLink>
+              </div>
             </div>
-            {heli.image && (
+            {running.image && (
               <div className="order-2 md:order-1 md:flex-1">
                 <Image
-                  src={heli.image}
-                  alt={heli.imageAlt ?? ''}
-                  width={640}
-                  height={360}
-                  sizes="(min-width: 768px) 50vw, 100vw"
-                  className="aspect-[16/9] w-full rounded-xl object-cover"
+                  src={running.image}
+                  alt={running.imageAlt ?? ''}
+                  width={632}
+                  height={1280}
+                  sizes="(min-width: 768px) 320px, 100vw"
+                  className="mx-auto w-full max-w-[300px] rounded-xl sm:max-w-[320px]"
                 />
               </div>
             )}

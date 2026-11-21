@@ -38,7 +38,7 @@ test(`home shows hero, ${serviceCount} services, tech stack, ${featuredCount} fe
   await page.goto('/en');
   await expect(page.locator('html')).toHaveAttribute('dir', 'ltr');
   await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
-  // Sections: 0 Hero, 1 Heli feature, 2 services, 3 tech stack, 4 projects.
+  // Sections: 0 Hero, 1 Running feature, 2 services, 3 tech stack, 4 projects.
   await expect(page.locator('#main section').nth(2).locator('h3')).toHaveCount(serviceCount);
   await expect(page.locator('#main section').nth(4).locator('h3')).toHaveCount(featuredCount);
   await page.locator('#main').getByRole('link', { name: 'Discuss my project' }).first().click();
