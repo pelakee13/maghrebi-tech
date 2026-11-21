@@ -183,7 +183,7 @@ export default async function CoursePage({ params }: Props) {
               </ButtonLink>
             ) : (
               <span className="text-sm text-fg-muted">
-                {t('previous')}: {p.s.title[loc]} — {t('comingSoon')}
+                {t('previous')}: {p.s.title[loc]} ({t('comingSoon')})
               </span>
             )
           ) : (
@@ -196,7 +196,7 @@ export default async function CoursePage({ params }: Props) {
               </ButtonLink>
             ) : (
               <span className="text-sm text-fg-muted">
-                {t('next')}: {n.s.title[loc]} — {t('comingSoon')}
+                {t('next')}: {n.s.title[loc]} ({t('comingSoon')})
               </span>
             )
           ) : (

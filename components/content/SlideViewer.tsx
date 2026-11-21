@@ -47,7 +47,7 @@ export function SlideViewer({
       {slides[index] && (
       <Image
         src={slides[index]}
-        alt={`${label} — ${index + 1}/${slides.length}`}
+        alt={`${label} · ${index + 1}/${slides.length}`}
         width={1280}
         height={720}
         priority={index === 0}

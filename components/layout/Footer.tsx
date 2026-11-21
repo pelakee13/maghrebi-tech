@@ -50,7 +50,7 @@ export function Footer() {
         </div>
       </Container>
       <div className="border-t border-border py-4 text-center text-xs text-fg-muted">
-        © {new Date().getFullYear()} {site.domain} — {t('rights')}
+        © {new Date().getFullYear()} {site.domain} · {t('rights')}
       </div>
     </footer>
   );
