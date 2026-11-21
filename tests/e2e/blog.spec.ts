@@ -24,10 +24,22 @@ function publishedArticleCount(locale: string): number {
 
 test('blog list shows the articles and they open', async ({ page }) => {
   await page.goto('/en/blog');
-  await expect(page.locator('main h3')).toHaveCount(publishedArticleCount('en'));
-  await page.locator('main h3 a[href="/en/blog/telegram-bot-for-sales"]').click();
-  await expect(page).toHaveURL(/\/en\/blog\/telegram-bot-for-sales$/);
-  await expect(page.getByRole('heading', { level: 1 })).toContainText('Telegram bot');
+  const expected = publishedArticleCount('en');
+  expect(expected).toBeGreaterThan(0);
+  await expect(page.locator('main h3')).toHaveCount(expected);
+  const hrefs = (
+    await page
+      .locator('main h3 a')
+      .evaluateAll((els) => els.map((el) => el.getAttribute('href')))
+  ).filter((href): href is string => href !== null);
+  expect(hrefs).toHaveLength(expected);
+  for (const href of hrefs) {
+    expect(href).toMatch(/^\/en\/blog\/[a-z0-9-]+$/);
+    await page.goto(href);
+    await expect(page).toHaveURL(new RegExp(`${href}$`));
+    await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
+  }
+  await page.goto('/en/blog/telegram-bot-for-sales');
   await expect(page.locator('time')).toHaveAttribute('datetime', '2026-10-01');
 });
 
