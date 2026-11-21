@@ -20,7 +20,7 @@
   },
   "common": {
     "viewAll": "View all",
-    "readMore": "Read more",
+    "readCaseStudy": "Read the {title} case study",
     "contactMe": "Contact me",
     "getQuote": "Request a consultation",
     "minutes": "min read",

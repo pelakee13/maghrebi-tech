@@ -20,7 +20,7 @@
   },
   "common": {
     "viewAll": "مشاهده همه",
-    "readMore": "ادامه مطلب",
+    "readCaseStudy": "مطالعهٔ موردی {title} را بخوانید",
     "contactMe": "تماس با من",
     "getQuote": "درخواست مشاوره",
     "minutes": "دقیقه مطالعه",

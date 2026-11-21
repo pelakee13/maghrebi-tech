@@ -58,7 +58,7 @@ export default async function HomePage({ params }: Props) {
               {heli.caseStudySlug && (
                 <div className="mt-6">
                   <ButtonLink href={`/blog/${heli.caseStudySlug}`} variant="secondary">
-                    {c('readMore')}
+                    {c('readCaseStudy', { title: heli.title })}
                   </ButtonLink>
                 </div>
               )}

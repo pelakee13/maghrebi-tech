@@ -73,7 +73,7 @@ export default async function PortfolioPage({ params }: Props) {
               <div className="flex flex-wrap gap-x-4 gap-y-2 text-sm font-medium">
                 {meta.caseStudySlug && (
                   <Link href={`/blog/${meta.caseStudySlug}`} className="text-accent hover:underline">
-                    {c('readMore')}
+                    {c('readCaseStudy', { title: meta.title })}
                   </Link>
                 )}
                 {meta.githubUrl && (
