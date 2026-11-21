@@ -5,17 +5,15 @@ import type { ServiceMeta } from '@/lib/schemas';
 
 export function ServicesHighlight({
   title,
-  lead,
   items,
   viewAll,
 }: {
   title: string;
-  lead: string;
   items: ServiceMeta[];
   viewAll: string;
 }) {
   return (
-    <Section title={title} lead={lead}>
+    <Section title={title}>
       <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
         {items.map((s) => (
           <ServiceCard key={s.id} meta={s} />

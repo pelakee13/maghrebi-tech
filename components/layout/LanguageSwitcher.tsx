@@ -31,11 +31,13 @@ export function LanguageSwitcher({ counterparts }: { counterparts: ArticleCounte
       hrefLang={other}
       lang={other}
       aria-label={t('switchLabel')}
-      className="flex items-center gap-2 rounded-lg border border-border px-3 py-1.5 text-sm font-medium text-accent hover:bg-surface"
+      className="flex shrink-0 items-center gap-2 rounded-lg border border-border px-3 py-1.5 text-sm font-medium text-accent hover:bg-surface"
     >
       <Flag country={COUNTRY[locale === 'fa' ? 'fa' : 'en']} />
       <Flag country={COUNTRY[other]} />
-      <span>{t('switchTo')}</span>
+      {/* Label hidden below sm: flags alone carry the switcher at 360px, where the
+          full label would squeeze the brand. The aria-label still names the action. */}
+      <span className="hidden sm:inline">{t('switchTo')}</span>
     </Link>
   );
 }

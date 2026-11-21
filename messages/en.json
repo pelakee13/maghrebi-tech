@@ -32,11 +32,11 @@
   "projectType": {
     "web-app": "Web app",
     "bot": "Bot",
-    "mobile-app": "Mobile app"
+    "mobile-app": "Mobile app",
+    "website": "Website"
   },
   "home": {
     "servicesTitle": "Services",
-    "servicesLead": "Four things I do for clients, described plainly.",
     "projectsTitle": "Featured work",
     "projectsLead": "Systems running today. Each card says what problem it solved.",
     "ctaTitle": "Tell me about the manual process",
@@ -45,19 +45,19 @@
     "techLead": "Chosen for reliability, not novelty.",
     "githubTitle": "Recent GitHub activity",
     "githubLead": "Public code I have been working on lately.",
-    "processTitle": "How we would work",
+    "processTitle": "How we work",
     "step1Title": "Free review",
     "step1Text": "First we talk. Tell me what eats your time every day; I will honestly tell you whether you need software at all, or a plain spreadsheet is enough.",
     "step2Title": "Custom build",
     "step2Text": "I build for how you actually work, not from a template. Along the way you see the thing taking shape and steer it.",
     "step3Title": "Launch and support",
-    "step3Text": "At hand-off you do not get a file and my back. We work with your team until it is actually running. And I stay after, because software ages.",
+    "step3Text": "I help your team get the system up and running. Before launch, we agree on the support you'll need afterward.",
     "bioTitle": "Why I build",
     "bioText": "My background is accounting and finance — that is where I learned what a report is for and what numbers a business actually needs. And that is where I saw it: when tools have come this far, no one should be doing the same task by hand every day — the kind a program can handle in seconds. That thought is what brought me to automation. Now I build bots and software: I listen first, learn how the work really happens, then build the smallest tool that takes that task away. I talk less than I show."
   },
   "services": {
     "title": "Services",
-    "lead": "From a Telegram bot to a full management system, scoped to what your business actually needs.",
+    "lead": "From a website that introduces your business to a full management system, scoped to what your business actually needs.",
     "pricingTitle": "How pricing works",
     "pricingBody": "Every project is different, so I don't publish a fixed price list. We start with a free consultation. Then you get a clear written scope, timeline and price before anything is built. No surprises, and you decide whether to go ahead.",
     "pricingCta": "Request a consultation"

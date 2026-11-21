@@ -7,8 +7,8 @@ import { getProjects } from '@/lib/content';
 import { buildMetadata } from '@/lib/seo';
 import { Section } from '@/components/ui/Section';
 import { Badge, Card } from '@/components/ui/Card';
-import { ExternalButtonLink } from '@/components/ui/Button';
-import { ProjectImagePlaceholder } from '@/components/content/ProjectImagePlaceholder';
+import { ButtonLink, ExternalButtonLink } from '@/components/ui/Button';
+import { Link } from '@/i18n/navigation';
 import { MdxRenderer } from '@/components/content/MdxRenderer';
 import Image from 'next/image';
 import { ProjectGallery } from '@/components/content/ProjectGallery';
@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     locale,
     path: '/portfolio',
     title: t('title'),
-    description: t('lead') + ' ' + (locale === 'fa' ? 'سیستم مدیریت سالن زیبایی، کنداکتور فوتبال، ربات تلگرام و اپلیکیشن دویدن.' : 'A salon management system, a football schedule tool, a Telegram bot and a running app.'),
+    description: t('lead') + ' ' + (locale === 'fa' ? 'وب‌سایت نمونه‌کار دوزبانه‌ی خودم، سیستم مدیریت سالن زیبایی، کنداکتور فوتبال، ربات تلگرام و اپلیکیشن دویدن.' : 'My bilingual portfolio website, a salon management system, a football schedule tool, a Telegram bot and a running app.'),
   });
 }
 
@@ -37,14 +37,12 @@ export default async function PortfolioPage({ params }: Props) {
   const projects = getProjects(locale);
 
   return (
-    <Section title={t('title')} lead={t('lead')}>
+    <Section title={t('title')} lead={t('lead')} headingLevel={1}>
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {projects.map(({ meta, body }) => (
-          <Card key={meta.id} className="flex flex-col gap-4">
-            {meta.image ? (
+          <Card key={meta.id} id={meta.id} className="flex flex-col gap-4">
+            {meta.image && (
               <Image src={meta.image} alt={meta.imageAlt ?? ''} width={640} height={360} className="aspect-[16/9] w-full rounded-xl object-cover" />
-            ) : (
-              <ProjectImagePlaceholder type={meta.type} />
             )}
             {meta.gallery && <ProjectGallery images={meta.gallery} title={meta.title} />}
             <Badge className="self-start">{pt(meta.type)}</Badge>
@@ -62,6 +60,30 @@ export default async function PortfolioPage({ params }: Props) {
               <span className="text-fg-muted">{meta.role}</span>
             </p>
             {meta.url && <ExternalButtonLink href={meta.url}>{c('visit')}</ExternalButtonLink>}
+            {/* Buyer's journey: the personal-website entry leads straight to a
+                website-design inquiry, with the topic preselected. */}
+            {meta.id === 'maghrebi-tech' && (
+              <div>
+                <ButtonLink href="/contact?service=website-design">
+                  {locale === 'fa' ? 'دربارهٔ طراحی سایتم صحبت کنیم' : 'Discuss my website'}
+                </ButtonLink>
+              </div>
+            )}
+            {(meta.caseStudySlug || meta.githubUrl) && (
+              <div className="flex flex-wrap gap-x-4 gap-y-2 text-sm font-medium">
+                {meta.caseStudySlug && (
+                  <Link href={`/blog/${meta.caseStudySlug}`} className="text-accent hover:underline">
+                    {c('readMore')}
+                  </Link>
+                )}
+                {meta.githubUrl && (
+                  <a href={meta.githubUrl} target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">
+                    {/* No messages key exists for this; locale-conditional literal. */}
+                    {locale === 'fa' ? 'مشاهدهٔ کد' : 'View source'}
+                  </a>
+                )}
+              </div>
+            )}
           </Card>
         ))}
       </div>

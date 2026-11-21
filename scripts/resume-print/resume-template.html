@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="$LANG" dir="$DIR">
+<head>
+<meta charset="utf-8">
+<title>$NAME — $DOC_TITLE</title>
+<style>
+$FONT_FACE_CSS
+
+:root {
+  --navy: #0a192f;
+  --cyan: #06b6d4;
+  --cyan-light: #22d3ee;
+  --ink: #1a2433;
+  --muted: #55677f;
+  --rule: #c9d6e4;
+}
+
+@page {
+  size: A4;
+  margin: 17mm 16mm 16mm 16mm;
+  @bottom-center {
+    content: "maghrebi.tech  ·  " counter(page) " / " counter(pages);
+    font-family: "IRANSans", "Noto Sans Arabic", "DejaVu Sans", sans-serif;
+    font-size: 8pt;
+    color: #8a9bb0;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: "IRANSans", "Noto Sans Arabic", "DejaVu Sans", sans-serif;
+  font-size: 10.5pt;
+  line-height: 1.55;
+  color: var(--ink);
+  margin: 0;
+}
+
+/* Header */
+header { border-bottom: 2.5pt solid var(--navy); padding-bottom: 8pt; margin-bottom: 12pt; }
+h1 {
+  font-size: 22pt;
+  line-height: 1.2;
+  color: var(--navy);
+  margin: 0 0 2pt 0;
+  font-weight: 700;
+}
+.subtitle {
+  font-size: 10.5pt;
+  color: var(--muted);
+  margin: 0 0 6pt 0;
+}
+.contact { font-size: 9pt; color: var(--muted); }
+.contact a { color: var(--cyan); text-decoration: none; }
+.contact .sep { color: var(--rule); padding: 0 3pt; }
+.ltr { direction: ltr; unicode-bidi: embed; }
+
+/* Sections */
+section { margin-bottom: 11pt; }
+h2 {
+  font-size: 12pt;
+  color: var(--navy);
+  margin: 0 0 5pt 0;
+  padding-bottom: 2pt;
+  border-bottom: 1pt solid var(--cyan-light);
+  break-after: avoid;
+  page-break-after: avoid;
+}
+h2, h3 { break-after: avoid; page-break-after: avoid; }
+p { margin: 0 0 5pt 0; }
+
+/* Skills: label + text rows */
+.skill { margin-bottom: 3pt; }
+.skill .label { font-weight: 700; color: var(--navy); }
+
+/* Experience */
+.job { margin-bottom: 8pt; break-inside: avoid; page-break-inside: avoid; }
+.job-head { margin-bottom: 1pt; }
+.job-role { font-weight: 700; color: var(--navy); font-size: 10.5pt; }
+.job-dates { color: var(--muted); font-size: 9.5pt; white-space: nowrap; }
+.job p { margin: 0; }
+
+/* Lists */
+ul { margin: 0; padding-inline-start: 14pt; }
+li { margin-bottom: 2pt; }
+li::marker { color: var(--cyan); }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>$NAME</h1>
+  <p class="subtitle">$SUBTITLE</p>
+  <p class="contact">$CONTACT_HTML</p>
+</header>
+
+<section>
+  <h2>$H_SUMMARY</h2>
+  <p>$SUMMARY</p>
+</section>
+
+<section>
+  <h2>$H_SKILLS</h2>
+  $SKILLS_HTML
+</section>
+
+<section>
+  <h2>$H_EXPERIENCE</h2>
+  $EXPERIENCE_HTML
+</section>
+
+<section>
+  <h2>$H_EDUCATION</h2>
+  $EDUCATION_HTML
+</section>
+
+<section>
+  <h2>$H_LANGUAGES</h2>
+  <p>$LANGUAGES</p>
+</section>
+
+</body>
+</html>

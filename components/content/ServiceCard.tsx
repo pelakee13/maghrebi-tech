@@ -6,6 +6,7 @@ const ICONS: Record<ServiceMeta['icon'], string> = {
   bot: 'M12 3v3M7 8h10a3 3 0 013 3v5a3 3 0 01-3 3H7a3 3 0 01-3-3v-5a3 3 0 013-3zM9 13h.01M15 13h.01',
   support: 'M12 2a10 10 0 100 20 10 10 0 000-20zM12 8v4l3 2',
   training: 'M2 9l10-5 10 5-10 5zM6 11v5c0 1.5 3 3 6 3s6-1.5 6-3v-5',
+  website: 'M12 2a10 10 0 100 20 10 10 0 000-20zM2 12h20M12 2c2.5 2.6 3.9 5.7 3.9 10s-1.4 7.4-3.9 10c-2.5-2.6-3.9-5.7-3.9-10S9.5 4.6 12 2z',
 };
 
 export function ServiceIcon({ icon }: { icon: ServiceMeta['icon'] }) {

@@ -9,6 +9,8 @@ export type ContactNotification = {
   message?: string;
   /** Which form produced the submission (for the subject line). */
   form?: 'contact' | 'quick';
+  /** Optional topic the visitor picked (contact form only). A topic enum, not PII. */
+  projectType?: string;
 };
 
 /** Delivery abstraction. EmailNotifier sends; LogNotifier keeps an anonymised record. */
@@ -28,6 +30,7 @@ export class LogNotifier implements Notifier {
         at: new Date().toISOString(),
         locale: n.locale,
         messageLength: n.messageLength,
+        ...(n.projectType ? { projectType: n.projectType } : {}),
         outcome: 'logged',
       }),
     );
@@ -87,6 +90,7 @@ export class EmailNotifier implements Notifier {
       '',
       `Name / نام: ${n.name ?? '(not provided)'}`,
       `Email / ایمیل: ${n.email ?? '(not provided)'}`,
+      ...(n.projectType ? [`Project type / موضوع: ${n.projectType}`] : []),
       '',
       '--- Message / پیام ---',
       n.message ?? `(message body unavailable, length: ${n.messageLength})`,
@@ -101,6 +105,7 @@ export class EmailNotifier implements Notifier {
           subject,
           locale: n.locale,
           messageLength: n.messageLength,
+          ...(n.projectType ? { projectType: n.projectType } : {}),
         }),
       );
       return { ok: true };

@@ -33,7 +33,7 @@ export default async function BlogPage({ params }: Props) {
   const fmt = new Intl.DateTimeFormat(locale === 'fa' ? 'fa-IR' : 'en-US', { dateStyle: 'long', timeZone: 'UTC' });
 
   return (
-    <Section title={t('title')} lead={t('lead')}>
+    <Section title={t('title')} lead={t('lead')} headingLevel={1}>
       {articles.length === 0 ? (
         <p className="rounded-card border border-border bg-surface p-8 text-center text-fg-muted">{t('empty')}</p>
       ) : (

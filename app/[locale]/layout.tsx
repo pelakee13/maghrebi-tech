@@ -13,17 +13,13 @@ import type { ArticleCounterparts } from '@/components/layout/LanguageSwitcher';
 import '../globals.css';
 
 const inter = Inter({ subsets: ['latin'], display: 'swap', variable: '--font-inter' });
-const iransans = localFont({
-  src: [
-    { path: '../../assets/fonts/IRANSans/IRANSansWeb_UltraLight.woff2', weight: '200', style: 'normal' },
-    { path: '../../assets/fonts/IRANSans/IRANSansWeb_Light.woff2', weight: '300', style: 'normal' },
-    { path: '../../assets/fonts/IRANSans/IRANSansWeb.woff2', weight: '400', style: 'normal' },
-    { path: '../../assets/fonts/IRANSans/IRANSansWeb_Medium.woff2', weight: '500', style: 'normal' },
-    { path: '../../assets/fonts/IRANSans/IRANSansWeb_Bold.woff2', weight: '700', style: 'normal' },
-    { path: '../../assets/fonts/IRANSans/IRANSansWeb_Black.woff2', weight: '900', style: 'normal' },
-  ],
+// Vazirmatn (Amin's choice, 2026-11-21): a single variable file, real weight 600.
+// IRANSans stays on disk for the resume-print script only; it is no longer
+// loaded as a webfont — only the selected family ships.
+const vazirmatn = localFont({
+  src: [{ path: '../../assets/fonts/Vazirmatn/Vazirmatn-Variable.woff2', weight: '100 900', style: 'normal' }],
   display: 'swap',
-  variable: '--font-iransans',
+  variable: '--font-vazirmatn',
 });
 
 export function generateStaticParams() {
@@ -59,7 +55,7 @@ export default async function LocaleLayout({
   const t = await getTranslations({ locale, namespace: 'nav' });
 
   return (
-    <html lang={locale} dir={localeDir(locale)} className={`${inter.variable} ${iransans.variable}`}>
+    <html lang={locale} dir={localeDir(locale)} className={`${inter.variable} ${vazirmatn.variable}`}>
       <body>
         <NextIntlClientProvider messages={messages}>
           <a

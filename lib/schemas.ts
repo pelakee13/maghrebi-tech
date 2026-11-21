@@ -8,7 +8,7 @@ export const serviceSchema = z.object({
   order: z.number().int().positive(),
   title: z.string().min(3).max(60),
   summary: z.string().min(10).max(160),
-  icon: z.enum(['system', 'bot', 'support', 'training']),
+  icon: z.enum(['system', 'bot', 'support', 'training', 'website']),
   useCases: z.array(z.string().min(2)).min(2).max(6),
 });
 
@@ -16,7 +16,7 @@ export const projectSchema = z.object({
   id: z.string().regex(kebab),
   order: z.number().int().positive(),
   title: z.string().min(3).max(60),
-  type: z.enum(['web-app', 'bot', 'mobile-app']),
+  type: z.enum(['web-app', 'bot', 'mobile-app', 'website']),
   summary: z.string().min(10).max(260),
   role: z.string().min(3),
   result: z.string().min(10).max(200).optional(),
@@ -35,7 +35,9 @@ export const projectSchema = z.object({
   image: z.string().startsWith('/images/').optional(),
   gallery: z.array(z.string().startsWith('/images/')).max(8).optional(),
   url: z.url().optional(),
-  // Optional alternate links; render only when provided. TODO: telegram-trader-bot needs a screenshot + links.
+  // Slug of the case-study article in the same locale (content/{locale}/blog/{slug}).
+  caseStudySlug: z.string().regex(kebab).optional(),
+  // Optional alternate links; render only when provided.
   githubUrl: z.url().optional(),
   tags: z.array(z.string()).max(6).optional(),
 });
@@ -58,7 +60,7 @@ export const pageSchema = z.object({
 
 export const homePageSchema = pageSchema.extend({
   hero: z.object({
-    eyebrow: z.string().min(2),
+    eyebrow: z.string().min(2).optional(), // FA omits it (Amin, 2026-11-21); EN keeps it.
     headline: z.string().min(5),
     subheadline: z.string().min(10),
     primaryCta: z.string().min(2),
@@ -71,6 +73,8 @@ export const contactSchema = z.object({
   email: z.string().trim().max(254, 'email_invalid').pipe(z.email('email_invalid')),
   message: z.string().trim().min(10, 'message_short').max(2000, 'message_long'),
   locale: z.enum(['fa', 'en']),
+  // Service the visitor is asking about, carried from the Services page (?service=...).
+  projectType: z.enum(['website-design', 'automation', 'telegram-bot', 'support', 'training', 'other']).optional(),
   website: z.string().max(0).optional().default(''),
   startedAt: z.coerce.number().int().optional(),
 });

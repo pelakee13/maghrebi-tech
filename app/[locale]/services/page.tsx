@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     locale,
     path: '/services',
     title: t('title'),
-    description: t('lead') + ' ' + (locale === 'fa' ? 'ربات تلگرام، سیستم هوشمند کسب‌وکار، پشتیبانی و آموزش هوش مصنوعی.' : 'Telegram bots, smart business systems, support and AI training.'),
+    description: t('lead') + ' ' + (locale === 'fa' ? 'طراحی وب‌سایت، ربات تلگرام، سیستم هوشمند کسب‌وکار، پشتیبانی و آموزش هوش مصنوعی.' : 'Website design, Telegram bots, smart business systems, support and AI training.'),
   });
 }
 
@@ -34,10 +34,10 @@ export default async function ServicesPage({ params }: Props) {
   const services = getServices(locale);
 
   return (
-    <Section title={t('title')} lead={t('lead')}>
+    <Section title={t('title')} lead={t('lead')} headingLevel={1}>
       <div className="grid gap-6 md:grid-cols-2">
         {services.map(({ meta, body }) => (
-          <Card key={meta.id} className="flex flex-col">
+          <Card key={meta.id} id={meta.id} className="flex flex-col">
             <ServiceIcon icon={meta.icon} />
             <h2 className="mt-4 text-xl font-semibold">{meta.title}</h2>
             <p className="mt-2 text-fg-muted">{meta.summary}</p>
@@ -48,10 +48,15 @@ export default async function ServicesPage({ params }: Props) {
                 <li key={u}>{u}</li>
               ))}
             </ul>
-            <div className="mt-6">
-              <ButtonLink href="/contact" variant="secondary">
+            <div className="mt-6 flex flex-wrap items-center gap-3">
+              <ButtonLink href={`/contact?service=${meta.id}`} variant="secondary">
                 {c('getQuote')}
               </ButtonLink>
+              {meta.id === 'website-design' && (
+                <ButtonLink href="/portfolio#maghrebi-tech" variant="ghost">
+                  {c('visit')}
+                </ButtonLink>
+              )}
             </div>
           </Card>
         ))}

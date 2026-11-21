@@ -1,0 +1,172 @@
+/* Persian (fa) typography scale — final redesign round, 2026-11-21 (worker B).
+ *
+ * Scope: EVERY rule is prefixed with html[lang='fa'], so the English layout
+ * is byte-identical to before. No component or copy was touched; this file
+ * only overrides type set by Tailwind utilities.
+ *
+ * Units: rem/clamp throughout, fluid between 360px (mobile) and 1280px
+ * (desktop, the xl header breakpoint). At the default 16px root:
+ *   360px -> mobile target, 1280px+ -> desktop target.
+ * Letter-spacing stays normal; nothing here disables user text scaling.
+ *
+ * NOTE — 2026-11-21: Amin chose Vazirmatn. The FA webfont is now the
+ * Vazirmatn variable file (weight 100-900), so a requested 600 renders
+ * a true semibold. IRANSans is no longer loaded as a webfont (its files
+ * stay on disk for the resume-print script only).
+ */
+
+html[lang='fa'] body {
+  font-size: 1rem;
+  /* Card/general body line-height: 28px mobile -> 29px desktop. */
+  line-height: clamp(1.75rem, 1.726rem + 0.1087vw, 1.8125rem);
+  letter-spacing: normal;
+}
+
+/* Keep headings from stranding a short last word; keep paragraphs from
+   leaving a single orphan word on the last line where the engine supports it. */
+html[lang='fa'] h1,
+html[lang='fa'] h2,
+html[lang='fa'] h3 {
+  text-wrap: balance;
+}
+html[lang='fa'] main p {
+  text-wrap: pretty;
+}
+
+/* --- Home hero (only the hero h1 carries text-3xl inside main's first section) --- */
+html[lang='fa'] main > section:first-of-type h1[class*='text-3xl'] {
+  /* H1 30/44 -> 44/62, weight 600 (Vazirmatn variable: a real semibold). */
+  font-size: clamp(1.875rem, 1.5326rem + 1.5217vw, 2.75rem);
+  line-height: clamp(2.75rem, 2.3098rem + 1.9565vw, 3.875rem);
+  font-weight: 600;
+}
+/* Hero supporting line: 17/30 -> 18/32, weight 400. Gap H1 -> supporting: 16px. */
+html[lang='fa'] main > section:first-of-type h1[class*='text-3xl'] + p {
+  font-size: clamp(1.0625rem, 1.038rem + 0.1087vw, 1.125rem);
+  line-height: clamp(1.875rem, 1.826rem + 0.2174vw, 2rem);
+  font-weight: 400;
+  margin-top: 1rem;
+}
+/* Hero CTA row: gap supporting -> buttons: 24px. */
+html[lang='fa'] main > section:first-of-type h1[class*='text-3xl'] + p + div {
+  margin-top: 1.5rem;
+}
+
+/* --- Section headings: h2.page/section titles (text-2xl) and index-page h1s --- */
+html[lang='fa'] h2[class*='text-2xl'],
+html[lang='fa'] h1[class*='text-2xl'],
+html[lang='fa'] h2[class*='sm:text-2xl'] {
+  /* Section heading 25/38 -> 30/44, weight 700. */
+  font-size: clamp(1.5625rem, 1.44rem + 0.5435vw, 1.875rem);
+  line-height: clamp(2.375rem, 2.228rem + 0.6522vw, 2.75rem);
+  font-weight: 700;
+}
+
+/* --- Card headings: every h3 is a card/step heading; text-xl / text-lg h2s
+       are card-level headings too (article CTA card, course sub-sections). --- */
+html[lang='fa'] h3,
+html[lang='fa'] h2[class*='text-xl'],
+html[lang='fa'] h2[class*='text-lg'],
+html[lang='fa'] .prose h3 {
+  /* Card heading 19/30 -> 20/32, weight 600 (Vazirmatn variable: a real semibold). */
+  font-size: clamp(1.1875rem, 1.163rem + 0.1087vw, 1.25rem);
+  line-height: clamp(1.875rem, 1.826rem + 0.2174vw, 2rem);
+  font-weight: 600;
+}
+
+/* Article sub-headings inside prose carry no utility class; give them the
+   section-heading scale so article structure matches the page scale. */
+html[lang='fa'] .prose h2 {
+  font-size: clamp(1.5625rem, 1.44rem + 0.5435vw, 1.875rem);
+  line-height: clamp(2.375rem, 2.228rem + 0.6522vw, 2.75rem);
+  font-weight: 700;
+}
+
+/* --- Card and general body: 16/28 -> 16/29, weight 400. --- */
+html[lang='fa'] p[class*='text-sm'],
+html[lang='fa'] dd[class*='text-sm'],
+html[lang='fa'] ul[class*='text-sm'] li {
+  font-size: 1rem;
+  line-height: clamp(1.75rem, 1.726rem + 0.1087vw, 1.8125rem);
+  font-weight: 400;
+}
+/* Section lead paragraphs have no size utility; they inherit the body 16px
+   from html[lang='fa'] body above. */
+
+/* --- Article / case-study body (prose): 17/31 -> 18/34, weight 400. --- */
+html[lang='fa'] .prose p,
+html[lang='fa'] .prose li {
+  font-size: clamp(1.0625rem, 1.038rem + 0.1087vw, 1.125rem);
+  line-height: clamp(1.9375rem, 1.864rem + 0.3261vw, 2.125rem);
+  font-weight: 400;
+}
+
+/* --- Navigation --- */
+/* Desktop nav links: 15/24, weight 500. */
+html[lang='fa'] nav[aria-label='Main'] a,
+html[lang='fa'] header a[lang] {
+  font-size: 0.9375rem;
+  line-height: 1.5rem;
+  font-weight: 500;
+}
+/* Open mobile menu links: 16/26, weight 500. */
+html[lang='fa'] #mobile-menu a {
+  font-size: 1rem;
+  line-height: 1.625rem;
+  font-weight: 500;
+}
+/* Header menu button: 16/26 (its label is a nav action, not body text). */
+html[lang='fa'] header button {
+  font-size: 1rem;
+  line-height: 1.625rem;
+}
+
+/* --- Main buttons and form inputs: 16/26; button 600, input 400. --- */
+html[lang='fa'] a[class*='rounded-xl'],
+html[lang='fa'] button[class*='rounded-xl'] {
+  font-size: 1rem;
+  line-height: 1.625rem;
+}
+html[lang='fa'] input,
+html[lang='fa'] textarea,
+html[lang='fa'] select {
+  font-size: 1rem;
+  line-height: 1.625rem;
+  font-weight: 400;
+}
+
+/* --- Dates and secondary labels: 14/22. ---
+   These rules come after the body rules above and win for the elements
+   they name, so date lines and labels do NOT grow to the 16px body size. */
+html[lang='fa'] p[class*='text-xs'],
+html[lang='fa'] span[class*='text-xs'],
+html[lang='fa'] span[class*='text-sm'],
+html[lang='fa'] dt[class*='text-sm'],
+html[lang='fa'] label {
+  font-size: 0.875rem;
+  line-height: 1.375rem;
+}
+/* Article date line (a text-sm paragraph directly inside <article>). */
+html[lang='fa'] article > p[class*='text-sm'] {
+  font-size: 0.875rem;
+  line-height: 1.375rem;
+}
+/* Form error text stays a secondary label. */
+html[lang='fa'] form p[class*='text-danger'] {
+  font-size: 0.875rem;
+  line-height: 1.375rem;
+}
+/* Footer secondary text stays 14/22 (including the list items inside,
+   which the general-body list rule above would otherwise size at 16px). */
+html[lang='fa'] footer p[class*='text-sm'],
+html[lang='fa'] footer ul[class*='text-sm'],
+html[lang='fa'] footer ul[class*='text-sm'] li,
+html[lang='fa'] footer ul[class*='text-sm'] a {
+  font-size: 0.875rem;
+  line-height: 1.375rem;
+}
+/* Standalone label chips (e.g. tech-stack pills) are secondary labels too. */
+html[lang='fa'] li[class*='text-sm'] {
+  font-size: 0.875rem;
+  line-height: 1.375rem;
+}

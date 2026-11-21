@@ -4,13 +4,17 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import { buildMetadata } from '@/lib/seo';
+import { projectTypeFromService } from '@/lib/project-types';
 import { site } from '@/lib/site';
 import { Container } from '@/components/ui/Container';
 import { Card } from '@/components/ui/Card';
 import { ContactForm } from '@/components/forms/ContactForm';
 import { SocialLinks } from '@/components/layout/SocialLinks';
 
-type Props = { params: Promise<{ locale: string }> };
+type Props = {
+  params: Promise<{ locale: string }>;
+  searchParams: Promise<{ service?: string | string[] }>;
+};
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
@@ -24,12 +28,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   });
 }
 
-export default async function ContactPage({ params }: Props) {
+export default async function ContactPage({ params, searchParams }: Props) {
   const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) notFound();
   setRequestLocale(locale);
   const t = await getTranslations('contact');
   const f = await getTranslations('footer');
+  // ?service=<service-id> preselects the form topic; unknown values are ignored.
+  const { service } = await searchParams;
+  const initialProjectType = projectTypeFromService(service);
 
   return (
     <Container className="py-14 sm:py-20">
@@ -37,7 +44,7 @@ export default async function ContactPage({ params }: Props) {
       <p className="mt-3 max-w-2xl text-fg-muted">{t('lead')}</p>
       <div className="mt-10 grid gap-8 lg:grid-cols-3">
         <div className="lg:col-span-2">
-          <ContactForm />
+          <ContactForm initialProjectType={initialProjectType} />
         </div>
         <Card className="h-fit">
           <h2 className="text-lg font-semibold">{t('direct')}</h2>

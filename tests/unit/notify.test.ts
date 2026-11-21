@@ -63,6 +63,30 @@ describe('EmailNotifier', () => {
     expect(payload.text).toContain('Hello there');
   });
 
+  it('includes the chosen project type as a body line, and omits it when unset', async () => {
+    process.env.RESEND_API_KEY = 're_test_key';
+    const fetchMock = vi.fn().mockResolvedValue(res(200));
+    const notifier = new EmailNotifier(fetchMock as unknown as typeof fetch);
+
+    await notifier.notify({
+      locale: 'en',
+      messageLength: 10,
+      name: 'Test User',
+      email: 'visitor@example.com',
+      message: 'Hello there',
+      projectType: 'website-design',
+      form: 'contact',
+    });
+    const payload = JSON.parse(String((fetchMock.mock.calls[0]?.[1] as RequestInit | undefined)?.body));
+    expect(payload.subject).toContain('contact form (en)');
+    expect(payload.text).toContain('Project type / موضوع: website-design');
+    expect(payload.text).toContain('Hello there');
+
+    await notifier.notify({ locale: 'en', messageLength: 5, message: 'hi', form: 'contact' });
+    const payload2 = JSON.parse(String((fetchMock.mock.calls[1]?.[1] as RequestInit | undefined)?.body));
+    expect(payload2.text).not.toContain('Project type');
+  });
+
   it('localises the subject for Persian submissions and never sends in dry-run mode', async () => {
     process.env.RESEND_API_KEY = 're_test_key';
     process.env.RESEND_DRY_RUN = '1';

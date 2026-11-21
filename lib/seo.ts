@@ -69,6 +69,7 @@ export function professionalServiceJsonLd(locale: string) {
     areaServed: 'Worldwide',
     availableLanguage: ['en', 'fa'],
     knowsAbout: [
+      'Website design and development',
       'Business automation',
       'Telegram bot development',
       'Web app development',
@@ -76,6 +77,7 @@ export function professionalServiceJsonLd(locale: string) {
       'AI training',
     ],
     serviceType: [
+      'Website design and development',
       'Business automation',
       'Telegram bot development',
       'Web app development',

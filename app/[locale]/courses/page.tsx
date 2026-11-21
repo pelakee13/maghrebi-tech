@@ -54,7 +54,7 @@ export default async function CoursesPage({ params }: Props) {
   return (
     <>
       <JsonLd data={syllabus} />
-      <Section title={t('title')} lead={t('lead')}>
+      <Section title={t('title')} lead={t('lead')} headingLevel={1}>
         <p className="max-w-2xl leading-8 text-fg-muted">{courseOverview[loc]}</p>
 
         <div className="mt-10 grid gap-4">

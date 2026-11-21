@@ -4,6 +4,7 @@ import { headers } from 'next/headers';
 import { z } from 'zod';
 import { notifier } from '@/lib/notify';
 import { guardSubmission } from '@/lib/form-guard';
+import { PROJECT_TYPES, isProjectType } from '@/lib/project-types';
 
 export type QuickFieldKey = 'name' | 'contact' | 'process';
 export type QuickFormState =
@@ -21,12 +22,14 @@ export type QuickFormState =
       values: QuickValues;
     };
 
-export type QuickValues = { name: string; contact: string; process: string };
+export type QuickValues = { name: string; contact: string; process: string; projectType: string };
 
 const quickReviewSchema = z.object({
   name: z.string().trim().min(2, 'name_short').max(80, 'name_long'),
   contact: z.string().trim().min(3, 'contact_required').max(120, 'contact_long'),
   process: z.string().trim().min(10, 'process_short').max(2000, 'process_long'),
+  // Optional topic, same values as the main contact form; unknown values are dropped below.
+  projectType: z.enum(PROJECT_TYPES).optional(),
   locale: z.enum(['fa', 'en']),
   website: z.string().max(0).optional().default(''),
   startedAt: z.coerce.number().int().optional(),
@@ -37,11 +40,12 @@ export async function submitQuickReview(_prev: QuickFormState, formData: FormDat
     name: String(formData.get('name') ?? ''),
     contact: String(formData.get('contact') ?? ''),
     process: String(formData.get('process') ?? ''),
+    projectType: isProjectType(formData.get('projectType')) ? String(formData.get('projectType')) : undefined,
     locale: String(formData.get('locale') ?? ''),
     website: String(formData.get('website') ?? ''),
     startedAt: formData.get('startedAt') ?? undefined,
   };
-  const values: QuickValues = { name: raw.name, contact: raw.contact, process: raw.process };
+  const values: QuickValues = { name: raw.name, contact: raw.contact, process: raw.process, projectType: raw.projectType ?? '' };
 
   // Honeypot filled -> bot. Return a generic error (no hint of the rule).
   if (raw.website.length > 0) return { status: 'error', code: 'spam', values };
@@ -76,6 +80,7 @@ export async function submitQuickReview(_prev: QuickFormState, formData: FormDat
     locale,
     messageLength: process.length,
     name: parsed.data.name,
+    projectType: parsed.data.projectType,
     // The "contact" field is free text (email/phone/telegram) — used in the email body only.
     email: /.+@.+\..+/.test(parsed.data.contact) ? parsed.data.contact : undefined,
     message: `Contact / تماس: ${parsed.data.contact}\n\nProcess / فرایند:\n${process}`,

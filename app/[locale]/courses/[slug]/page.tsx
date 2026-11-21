@@ -107,7 +107,7 @@ export default async function CoursePage({ params }: Props) {
           <>
             <h2 className="mt-10 text-xl font-semibold">{t('slides')}</h2>
             <div className="mt-4">
-              <SlideViewer slides={slides} label={session.title[loc]} />
+              <SlideViewer slides={slides} label={session.title[loc]} prevLabel={t('previous')} nextLabel={t('next')} />
             </div>
           </>
         )}
@@ -179,7 +179,7 @@ export default async function CoursePage({ params }: Props) {
           {p ? (
             p.isPublished ? (
               <ButtonLink href={`/courses/${p.s.slug}`} variant="ghost">
-                ← {t('previous')}: {p.s.title[loc]}
+                {loc === 'fa' ? '→' : '←'} {t('previous')}: {p.s.title[loc]}
               </ButtonLink>
             ) : (
               <span className="text-sm text-fg-muted">
@@ -192,7 +192,7 @@ export default async function CoursePage({ params }: Props) {
           {n ? (
             n.isPublished ? (
               <ButtonLink href={`/courses/${n.s.slug}`} variant="ghost">
-                {t('next')}: {n.s.title[loc]} →
+                {t('next')}: {n.s.title[loc]} {loc === 'fa' ? '←' : '→'}
               </ButtonLink>
             ) : (
               <span className="text-sm text-fg-muted">

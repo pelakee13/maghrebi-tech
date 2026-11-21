@@ -1,8 +1,8 @@
 import Image from 'next/image';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
+import { Link } from '@/i18n/navigation';
 import { Badge, Card } from '@/components/ui/Card';
 import type { ProjectMeta } from '@/lib/schemas';
-import { ProjectImagePlaceholder } from './ProjectImagePlaceholder';
 
 /** Animated or high-res preview (gif/mp4/webm) shown in place of the static screenshot. */
 function MediaPreview({ src, alt }: { src: string; alt: string }) {
@@ -27,15 +27,16 @@ function MediaPreview({ src, alt }: { src: string; alt: string }) {
 
 export function ProjectCard({ meta, typeLabel }: { meta: ProjectMeta; typeLabel: string }) {
   const t = useTranslations('projectCard');
+  const c = useTranslations('common');
+  const locale = useLocale();
   return (
     <Card className="flex h-full flex-col gap-4">
+      {/* No image slot at all when the project has no image/mediaPreview. */}
       {meta.mediaPreview ? (
         <MediaPreview src={meta.mediaPreview} alt={meta.imageAlt ?? ''} />
       ) : meta.image ? (
         <Image src={meta.image} alt={meta.imageAlt ?? ''} width={640} height={360} className="aspect-[16/9] w-full rounded-xl object-cover" />
-      ) : (
-        <ProjectImagePlaceholder type={meta.type} />
-      )}
+      ) : null}
       <Badge className="self-start">{typeLabel}</Badge>
       <h3 className="text-lg font-semibold">{meta.title}</h3>
       <p className="text-sm leading-7 text-fg-muted">{meta.summary}</p>
@@ -69,6 +70,21 @@ export function ProjectCard({ meta, typeLabel }: { meta: ProjectMeta; typeLabel:
             </li>
           ))}
         </ul>
+      )}
+      {(meta.caseStudySlug || meta.githubUrl) && (
+        <div className="flex flex-wrap gap-x-4 gap-y-2 pt-1 text-sm font-medium">
+          {meta.caseStudySlug && (
+            <Link href={`/blog/${meta.caseStudySlug}`} className="text-accent hover:underline">
+              {c('readMore')}
+            </Link>
+          )}
+          {meta.githubUrl && (
+            <a href={meta.githubUrl} target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">
+              {/* No messages key exists for this; locale-conditional literal. */}
+              {locale === 'fa' ? 'مشاهدهٔ کد' : 'View source'}
+            </a>
+          )}
+        </div>
       )}
     </Card>
   );
